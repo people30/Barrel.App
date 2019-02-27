@@ -1,12 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "hibiki/barrel-app",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Japanese sakes and brewers promoting.",
     "keywords": [
         "framework",
         "laravel"
     ],
-    "license": "MIT",
+    "license": "",
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
