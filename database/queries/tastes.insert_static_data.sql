@@ -1,7 +1,7 @@
 insert into `tastes`
 (
     `name`,
-    `class`,
+    `slug`,
     `order`
 )
 values
