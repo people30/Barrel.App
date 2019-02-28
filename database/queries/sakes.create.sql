@@ -1,7 +1,7 @@
 create table `sakes`
 (
     `id` int unsigned not null primary key auto_increment comment 'ID',
-    `slug` varchar(120) not null unique comment 'スラグ',
+    `slug` varchar(120) not null comment 'スラグ',
     `name` varchar(120) not null comment '銘柄',
     `order` varchar(120) not null comment '並べ替えキー',
     `bottle_filepath` varchar(200) default null comment 'ラベルまたは商品外観写真のファイルパス',
@@ -15,6 +15,7 @@ create table `sakes`
     `created_at` datetime not null default current_timestamp,
     `updated_at` datetime not null default current_timestamp,
     `deleted_at` datetime default null,
+    unique (`slug`, `designation_id`),
     foreign key (`brewer_id`)
         references `brewers` (`id`)
         on update cascade
