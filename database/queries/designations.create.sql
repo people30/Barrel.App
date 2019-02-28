@@ -1,6 +1,7 @@
 create table `designations`
 (
     `id` int unsigned not null primary key auto_increment comment 'ID',
+    `slug` varchar(120) not null unique comment 'スラグ',
     `name` varchar(20) not null comment '名前',
     `order` varchar(80) not null comment '並べ替えキー',
     `created_at` datetime not null default current_timestamp,
