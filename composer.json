@@ -1,7 +1,7 @@
 {
     "name": "hibiki/barrel-app",
     "type": "project",
-    "description": "Japanese sakes and brewers promoting.",
+    "description": "Japanese sakes made in Tokushima and brewers promoting.",
     "keywords": [
         "framework",
         "laravel"
