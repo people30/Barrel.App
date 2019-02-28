@@ -6,7 +6,7 @@ create table `sakes`
     `order` varchar(120) not null comment '並べ替えキー',
     `bottle_filepath` varchar(200) default null comment 'ラベルまたは商品外観写真のファイルパス',
     `brewer_id` int unsigned not null comment '酒蔵 ID',
-    `designation_id` int unsigned default null comment '特定名称',
+    `designation_id` int unsigned not null comment '特定名称',
     `taste_id` int unsigned not null comment '味の表現',
     `alcoholicity` double not null comment 'アルコール度 (>= 0, <= 1)',
     `raw_rice` varchar(40) not null comment '主原料米の品種',
