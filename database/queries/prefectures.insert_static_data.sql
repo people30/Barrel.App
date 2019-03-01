@@ -1,6 +1,6 @@
 insert into `prefectures`
 (
-    `prefecture_code`,
+    `code`,
     `name`,
     `order`
 )

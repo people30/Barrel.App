@@ -7,7 +7,7 @@ create table `cities`
     `order` varchar(40) not null comment '並べ替えキー',
     primary key (`prefecture_code`, `city_code`),
     foreign key (`prefecture_code`)
-        references `prefectures` (`prefecture_code`)
+        references `prefectures` (`code`)
         on update cascade
         on delete cascade,
     foreign key (`area_id`)

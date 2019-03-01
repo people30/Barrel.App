@@ -5,7 +5,7 @@ create table `areas`
     `name` varchar(20) not null comment '名前',
     `order` varchar(40) not null comment '並べ替えキー',
     foreign key (`prefecture_code`)
-        references `prefectures` (`prefecture_code`)
+        references `prefectures` (`code`)
         on update cascade
         on delete cascade
 )
