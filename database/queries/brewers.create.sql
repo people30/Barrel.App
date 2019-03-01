@@ -17,7 +17,7 @@ create table `brewers`
     `opening_time` time not null comment '開店時刻',
     `closing_time` time not null comment '閉店時刻',
     `is_backstage_seeable` boolean not null comment '酒蔵の見学可か',
-    `key_visual_filepath` varchar(200) default null comment 'キー ビジュアルのファイルパス',
+    `key_visual_filename` varchar(200) default null comment 'キー ビジュアルのファイル名からサイズ定義と拡張子を取り除いた部分 (exterior 等)',
     `text` text default null comment '説明',
     `created_at` datetime not null default current_timestamp,
     `updated_at` datetime not null default current_timestamp,

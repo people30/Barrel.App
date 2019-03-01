@@ -4,7 +4,7 @@ create table `sakes`
     `slug` varchar(120) not null comment 'スラグ',
     `name` varchar(120) not null comment '銘柄',
     `order` varchar(120) not null comment '並べ替えキー',
-    `bottle_filepath` varchar(200) default null comment 'ラベルまたは商品外観写真のファイルパス',
+    `bottle_filename` varchar(200) default null comment 'ラベルまたは商品外観写真のファイル名からサイズ定義と拡張子を取り除いた部分 (bottle 等)',
     `brewer_id` int unsigned not null comment '酒蔵 ID',
     `designation_id` int unsigned not null comment '特定名称',
     `taste_id` int unsigned not null comment '味の表現',
