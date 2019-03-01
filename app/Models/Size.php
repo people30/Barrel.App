@@ -6,7 +6,6 @@ namespace App\Models
     {
         public $id;
         public $content;
-        public $priceBeforeTax;
         public $price;
     }
 }
