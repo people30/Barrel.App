@@ -10,7 +10,7 @@ create table `brewers`
     `city_code` smallint unsigned not null comment '市区町村',
     `town` varchar(80) default null comment '街区・番地等',
     `lat` double not null comment '緯度',
-    `lan` double not null comment '経度',
+    `lon` double not null comment '経度',
     `owner` varchar(20) default null comment '代表者',
     `toji` varchar(20) default null comment '杜氏',
     `buisiness_day` varchar(80) not null comment '営業日',
