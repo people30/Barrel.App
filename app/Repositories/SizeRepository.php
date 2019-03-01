@@ -17,7 +17,7 @@ namespace App\Repositories
         {
             $query = $this->select();
 
-            if(array_key_exists('id') && is_string($where['id']))
+            if(array_key_exists('id') && is_int($where['id']))
             {
                 $this->where('id', $where['id']);
             }
