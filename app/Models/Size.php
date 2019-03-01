@@ -2,7 +2,7 @@
 
 namespace App\Models
 {
-    class Sake
+    class Size
     {
         public $id;
         public $sakeId;

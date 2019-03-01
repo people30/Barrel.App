@@ -25,8 +25,6 @@ namespace App\Models
         public $closingTime;
         public $isBackstageSeeable;
         public $text;
-        public $isFeatured;
-        public $reasonFeatured;
         public $keyVisual;
         public $links;
     }

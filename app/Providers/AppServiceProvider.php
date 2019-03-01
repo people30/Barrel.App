@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +15,11 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton(Repositories\ITasteRepository::class, Repositories\TasteRepository::class);
+        $this->app->singleton(Repositories\IDesignationRepository::class, Repositories\DesignationRepository::class);
+        $this->app->singleton(Repositories\IAreaRepository::class, Repositories\AreaRepository::class);
+        $this->app->singleton(Repositories\ISizeRepository::class, Repositories\SizeRepository::class);
+        $this->app->singleton(Repositories\IBrewerRepository::class, Repositories\BrewerRepository::class);
     }
 
     /**

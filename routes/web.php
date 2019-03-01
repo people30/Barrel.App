@@ -1,5 +1,7 @@
 <?php
 
+use App\Repositories;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +13,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Repositories\IBrewerRepository $repos) {
+    $items = $repos->getAll();
+
+    return view('welcome', ['items' => $items]);
 });
 
 Auth::routes();
