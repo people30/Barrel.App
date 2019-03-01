@@ -6,37 +6,47 @@ insert into `designations`
 )
 values
 (
-    'junmai-daiginjo-shu',
-    '純米大吟醸酒',
-    '1'
+    'futu-shu',
+    '普通酒',
+    '9'
 ),
 (
-    'junmai-ginjo-shu',
-    '純米吟醸酒',
-    '2'
+    'honjozo-shu',
+    '本醸造酒',
+    '8'
+),
+(
+    'tokubetsu-honjozo-shu',
+    '特別本醸造酒',
+    '7'
 ),
 (
     'junmai-shu',
     '純米酒',
+    '6'
+),
+(
+    'tokubetsu-junmai-shu',
+    '特別純米酒',
+    '5'
+),
+(
+    'ginjo-shu',
+    '吟醸酒',
+    '4'
+),
+(
+    'junmai-ginjo-shu',
+    '純米吟醸酒',
     '3'
 ),
 (
     'daiginjo-shu',
     '大吟醸酒',
-    '4'
+    '2'
 ),
 (
-    'ginjo-shu',
-    '吟醸酒',
-    '5'
-),
-(
-    'honjozo-shu',
-    '本醸造酒',
-    '6'
-),
-(
-    'futu-shu',
-    '普通酒',
-    '7'
+    'junmai-daiginjo-shu',
+    '純米大吟醸酒',
+    '1'
 )
