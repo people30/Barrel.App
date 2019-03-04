@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* 以下はダミーデータの設定 */
+/* line 3, ../scss/dummy.scss */
+.dummy_card {
+
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px; }
+
+/*# sourceMappingURL=dummy.css.map */

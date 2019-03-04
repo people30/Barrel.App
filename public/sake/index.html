@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <!-- ベースcss -->
     <link rel="stylesheet" href="css/base.css">
-    <!-- ダミーcss -->
-    <link rel="stylesheet" href="css/dummy.css">
+    <!-- SakesPage　css -->
+    <link rel="stylesheet" href="css/sakes_page.css">
     <!-- ファビコン -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
     <link rel="icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
@@ -26,26 +26,6 @@
     <!-- ベーススクリプト -->
     <script src="js/base.js"></script>
     <title>徳島の地酒と酒蔵 「ぐびっと」</title>
-
-    <!--キービジュアル-->
-    <link
-    rel="stylesheet"
-    href="./jquery.bxslider.css"
-  />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-    <script>
-      $(document).ready(function() {
-        $('.slider').bxSlider({
-          auto: true,
-          mode: 'fade',
-          minSlides: 3,
-          randomStart: true,
-          captions: true
-        })
-      })
-    </script>
 
 </head>
 
@@ -83,39 +63,23 @@
     <!-- メインエリア -->
     <main class="main_area">
         <article class="content">
-            <!-- ここに各コンテンツが入ります -->
-            <div class="slider">
-                <div>
-                  <img src="./img/蔵１.jpg"/>
-                  I am a slide 1
-                </div>
-          
-                <div>
-                  <img src="./img/蔵２.jpg"/>
-                  I am a slide ２
-                </div>
-                <div>
-                  <img src="./img/蔵３.jpg"/>
-                  I am a slide ３
-                </div>
-                <div>
-                  <img src="./img/蔵４.jpg"/>
-                  I am a slide ４
-                </div>
-              </div>
-
-              <nav class="">
-                  <ul>
-                      <li><a href="#">徳島の風土と日本酒</a></li>
-                      <li><a href="#">徳島の地酒</a></li>
-                      <li><a href="#">徳島の酒蔵</a></li>
-                      <li><a href="#">読みもの</a></li>
-                  </ul>
-              </nav>
-
-              <div class="">
-                  <h1>徳島の風土と日本酒</h1>
-              </div>
+            徳島の地酒
+            <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #000000;">
+                <p>味わい<br>
+                    キーワード<br>
+                    価格<br>
+                </p>
+            </div>
+            <div class="dummy_card">
+                <img src="img/card.280x444.png" alt="">
+                <img src="img/card.280x444.png" alt="">
+                <img src="img/card.280x444.png" alt="">
+                <img src="img/card.280x444.png" alt="">
+                <img src="img/card.280x444.png" alt="">
+                <img src="img/card.280x444.png" alt="">
+                <img src="img/card.280x444.png" alt="">
+                <img src="img/card.280x444.png" alt="">
+            </div>
         </article>
 
     </main>
