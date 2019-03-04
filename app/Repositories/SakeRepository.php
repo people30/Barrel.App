@@ -75,7 +75,7 @@ namespace App\Repositories
             return $query;
         }
         
-        public function getRange(array $ids) : Collection
+        public function getIn(array $ids) : Collection
         {
             $items =
                 $this->select()
@@ -90,13 +90,13 @@ namespace App\Repositories
         protected function factory(Collection $items) : Collection
         {
             $brewerIds = $items->map(function($i) { return $i->brewerId; })->toArray();
-            $brewers = $this->brewerRepository->getRange($brewerIds);
+            $brewers = $this->brewerRepository->getIn($brewerIds);
             
             $tasteIds = $items->map(function($i) { return $i->tasteId; })->toArray();
-            $tastes = $this->tasteRepository->getRange($tasteIds);
+            $tastes = $this->tasteRepository->getIn($tasteIds);
             
             $designationIds = $items->map(function($i) { return $i->designationId; })->toArray();
-            $designations = $this->designationRepository->getRange($designationIds);
+            $designations = $this->designationRepository->getIn($designationIds);
             
             $items = $items->map(function($i) use ($brewers, $tastes, $designations)
             {

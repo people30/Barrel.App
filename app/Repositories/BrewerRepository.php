@@ -78,7 +78,7 @@ namespace App\Repositories
             return $items;
         }
         
-        public function getRange(array $ids) : Collection
+        public function getIn(array $ids) : Collection
         {
             $items =
                 $this->select()
@@ -106,7 +106,7 @@ namespace App\Repositories
         protected function factory(Collection $items) : Collection
         {
             $areaIds = $items->map(function($i) { return $i->areaId; })->unique()->toArray();
-            $areas = $this->areaRepository->getRange($areaIds);
+            $areas = $this->areaRepository->getIn($areaIds);
             $items = $items->map(function($i) use ($areas)
             {
                 $i->area = $areas->first(function($a) use ($i) { return $a->id == $i->areaId; });

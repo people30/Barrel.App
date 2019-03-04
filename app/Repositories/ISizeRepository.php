@@ -9,7 +9,7 @@ namespace App\Repositories
     {
         public function find(array $params = []) : ?Models\Size;
         public function findAll(array $params = []) : Collection;
-        public function getRange(array $ids) : Collection;
+        public function getIn(array $ids) : Collection;
         public function getVariation(Models\Sake $sake) : Collection;
     }
 }

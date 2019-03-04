@@ -65,7 +65,7 @@ namespace App\Repositories
             return $query;
         }
         
-        public function getRange(array $ids) : Collection
+        public function getIn(array $ids) : Collection
         {
             $items =
                 $this->select()
