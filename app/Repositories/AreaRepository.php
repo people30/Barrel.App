@@ -8,37 +8,57 @@ namespace App\Repositories
 
     class AreaRepository implements IAreaRepository
     {
-        public function get(string $key, string $value) : Models\Area
+        public function find(array $params = []) : Models\Area
         {
-            if(!($key == 'id' || $key == 'slug')) throw new \InvalidArgumentException('key');
+            $params['limit'] = 1;
 
-            $items =
-                $this->select()
-                ->where($key, $value)
-               ->get()
+            return
+                $this->findInternal($params)
+                ->get()
                ->map(function($i) { return Factory::factory(Models\Area::class, $i); })
                 ->first();
-
-            return $items;
         }
-        
-        public function getRange(string $key, array $values) : Collection
-        {
-            if(!($key == 'id' || $key == 'slug')) throw new \InvalidArgumentException('key');
 
-            $items =
-                $this->select()
-                ->whereIn($key, $values)
+        public function findAll(array $params = []) : Collection
+        {
+            return
+                $this->findInternal($params)
                 ->get()
                 ->map(function($i) { return Factory::factory(Models\Area::class, $i); });
-
-            return $items;
         }
 
-        public function getAll() : Collection
+        protected function findInternal(array $params)
+        {
+            $query = $this->select();
+
+            if(array_key_exists('id', $params) && is_int($params['id']))
+            {
+                $query = $query->where('id', $params['id']);
+            }
+
+            if(array_key_exists('slug', $params) && is_int($params['slug']))
+            {
+                $query = $query->where('slug', $params['slug']);
+            }
+
+            if(array_key_exists('limit', $params) && is_int($params['limit']))
+            {
+                $query = $query->limit($params['limit']);
+            }
+
+            if(array_key_exists('offset', $params) && is_int($params['offset']))
+            {
+                $query = $query->limit($params['offset']);
+            }
+
+            return $query;
+        }
+        
+        public function getRange(array $ids) : Collection
         {
             $items =
                 $this->select()
+                ->whereIn('id', $ids)
                 ->get()
                 ->map(function($i) { return Factory::factory(Models\Area::class, $i); });
 

@@ -7,8 +7,8 @@ namespace App\Repositories
 
     interface IDesignationRepository
     {
-        public function get(string $key, string $value) : Models\Designation;
-        public function getRange(string $key, array $values) : Collection;
-        public function getAll() : Collection;
+        public function find(array $params = []) : Models\Designation;
+        public function findAll(array $params = []) : Collection;
+        public function getRange(array $ids) : Collection;
     }
 }

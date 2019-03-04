@@ -7,10 +7,9 @@ namespace App\Repositories
 
     interface ISakeRepository
     {
-        public function find(array $where) : Models\Sake;
-        public function findAll(array $where) : Collection;
-        public function getRange(string $key, array $values) : Collection;
+        public function find(array $params = []) : Models\Sake;
+        public function findAll(array $params = []) : Collection;
+        public function getRange(array $ids) : Collection;
         public function getProducts(Models\Brewer $brewer) : Collection;
-        public function getAll() : Collection;
     }
 }

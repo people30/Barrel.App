@@ -8,45 +8,68 @@ namespace App\Repositories
 
     class SizeRepository implements ISizeRepository
     {
-        public function find(array $where) : Models\Size
+        public function find(array $params = []) : Models\Size
         {
-            return $this->findAll($where)->first();
+            $params['limit'] = 1;
+
+            return
+                $this->findInternal($params)
+                ->get()
+               ->map(function($i) { return Factory::factory(Models\Size::class, $i); })
+                ->first();
         }
 
-        public function findAll(array $where) : Collection
+        public function findAll(array $params = []) : Collection
+        {
+            return
+                $this->findInternal($params)
+                ->get()
+                ->map(function($i) { return Factory::factory(Models\Size::class, $i); });
+        }
+
+        protected function findInternal(array $params)
         {
             $query = $this->select();
 
-            if(array_key_exists('id') && is_int($where['id']))
+            if(array_key_exists('id', $params) && is_int($params['id']))
             {
-                $this->where('id', $where['id']);
+                $query = $query->where('id', $params['id']);
+            }
+
+            if(array_key_exists('slug', $params) && is_int($params['slug']))
+            {
+                $query = $query->where('slug', $params['slug']);
+            }
+
+            if(array_key_exists('limit', $params) && is_int($params['limit']))
+            {
+                $query = $query->limit($params['limit']);
+            }
+
+            if(array_key_exists('offset', $params) && is_int($params['offset']))
+            {
+                $query = $query->limit($params['offset']);
             }
 
             if(
-                array_key_exists('priceMax', $where) &&
-                array_key_exists('priceMin', $where) &&
-                is_int($where['priceMax']) &&
-                is_int($where['priceMin'])
+                array_key_exists('priceMax', $params) &&
+                array_key_exists('priceMin', $params) &&
+                is_int($params['priceMax']) &&
+                is_int($params['priceMin'])
             )
             {
-                $query->where('price', '<=', $where['priceMax']);
-                $query->where('price', '>=', $where['priceMin']);
+                $query->where('price', '<=', $params['priceMax']);
+                $query->where('price', '>=', $params['priceMin']);
             }
 
-            $items =
-                $query->get()
-                ->map(function($i) { return Factory::factory(Models\Size::class, $i); });
-
-            return $items;
+            return $query;
         }
         
-        public function getRange(string $key, array $values) : Collection
+        public function getRange(array $ids) : Collection
         {
-            if(!($key == 'id' || $key == 'slug')) throw new \InvalidArgumentException('key');
-            
             $items =
                 $this->select()
-                ->whereIn($key, $values)
+                ->whereIn('id', $ids)
                 ->get()
                 ->map(function($i) { return Factory::factory(Models\Size::class, $i); });
 

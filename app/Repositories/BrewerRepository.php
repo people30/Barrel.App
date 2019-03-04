@@ -15,24 +15,55 @@ namespace App\Repositories
             $this->areaRepository = $ara;
         }
 
-        public function find(array $where) : Models\Brewer
+        public function find(array $params = []) : Models\Brewer
         {
-            return $this->findAll($where)->first();
+            $params['limit'] = 1;
+
+            $items =
+                $this->findInternal($params)
+                ->get();
+            $items =
+                $this->factory($items)
+                ->first();
+
+            return $items;
         }
 
-        public function findAll(array $where) : Collection
+        public function findAll(array $params = []) : Collection
         {
-            $query = $this->select();
-
-            if(array_key_exists('id') && is_int($where['id']))
-            {
-                $this->where('id', $where['id']);
-            }
-
-            $items = $query->get();
+            $items =
+                $this->findInternal($params)
+                ->get();
             $items = $this->factory($items);
 
             return $items;
+        }
+        
+        protected function findInternal(array $params)
+        {
+            $query = $this->select();
+
+            if(array_key_exists('id', $params) && is_int($params['id']))
+            {
+                $query = $query->where('id', $params['id']);
+            }
+
+            if(array_key_exists('slug', $params) && is_int($params['slug']))
+            {
+                $query = $query->where('slug', $params['slug']);
+            }
+
+            if(array_key_exists('limit', $params) && is_int($params['limit']))
+            {
+                $query = $query->limit($params['limit']);
+            }
+
+            if(array_key_exists('offset', $params) && is_int($params['offset']))
+            {
+                $query = $query->limit($params['offset']);
+            }
+
+            return $query;
         }
         
         public function getAreal(Models\Area $area) : Collection
@@ -47,13 +78,11 @@ namespace App\Repositories
             return $items;
         }
         
-        public function getRange(string $key, array $values) : Collection
+        public function getRange(array $ids) : Collection
         {
-            if(!($key == 'id' || $key == 'slug')) throw new \InvalidArgumentException('key');
-            
             $items =
                 $this->select()
-                ->whereIn($key, $values)
+                ->whereIn('id', $ids)
                 ->get();
 
             $items = $this->factory($items);
@@ -73,22 +102,11 @@ namespace App\Repositories
 
             return $item;
         }
-        
-        public function getAll() : Collection
-        {
-            $items =
-                $this->select()
-                ->get();
-
-            $items = $this->factory($items);
-
-            return $items;
-        }
 
         protected function factory(Collection $items) : Collection
         {
             $areaIds = $items->map(function($i) { return $i->areaId; })->unique()->toArray();
-            $areas = $this->areaRepository->getRange('id', $areaIds);
+            $areas = $this->areaRepository->getRange($areaIds);
             $items = $items->map(function($i) use ($areas)
             {
                 $i->area = $areas->first(function($a) use ($i) { return $a->id == $i->areaId; });

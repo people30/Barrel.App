@@ -13,9 +13,11 @@ use App\Repositories;
 |
 */
 
-Route::get('/', function (Repositories\IAreaRepository $ara, Repositories\IBrewerRepository $repos) {
-    $northan = $ara->get('id', 1);
-    $items = $repos->getAreal($northan);
+Route::get('/', function (Repositories\IAreaRepository $ara, Repositories\IBrewerRepository $repos, Repositories\ISizeRepository $siz, Repositories\ITasteRepository $tst) {
+    // $northan = $ara->find(['id', 1]);
+    // $items = $repos->find();
+    // $items = $siz->findAll();
+    $items = $tst->findAll();
 
     return view('welcome', ['items' => $items]);
 });

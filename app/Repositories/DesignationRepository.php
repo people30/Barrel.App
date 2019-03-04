@@ -8,45 +8,59 @@ namespace App\Repositories
 
     class DesignationRepository implements IDesignationRepository
     {
-        public function get(string $key, string $value) : Models\Designation
+        public function find(array $params = []) : Models\Designation
         {
-            if(!($key == 'id' || $key == 'slug')) throw new \InvalidArgumentException('key');
+            $params['limit'] = 1;
 
-            $items =
-                $this->select()
-                ->where($key, $value)
-                ->get();
-
-            $item =
-                $items->map(function($i) { return Factory::factory(Models\Designation::class, $i); })
+            return
+                $this->findInternal($params)
+                ->get()
+               ->map(function($i) { return Factory::factory(Models\Designation::class, $i); })
                 ->first();
-
-            return $item;
         }
 
-        public function getRange(string $key, array $values) : Collection
+        public function findAll(array $params = []) : Collection
         {
-            if(!($key == 'id' || $key == 'slug')) throw new \InvalidArgumentException('key');
-
-            $items =
-                $this->select()
-                ->whereIn($key, $values)
-                ->get();
-
-            $items =
-                $items->map(function($i) { return Factory::factory(Models\Designation::class, $i); });
-
-            return $items;
+            return
+                $this->findInternal($params)
+                ->get()
+                ->map(function($i) { return Factory::factory(Models\Designation::class, $i); });
         }
 
-        public function getAll() : Collection
+        protected function findInternal(array $params)
+        {
+            $query = $this->select();
+
+            if(array_key_exists('id', $params) && is_int($params['id']))
+            {
+                $query = $query->where('id', $params['id']);
+            }
+
+            if(array_key_exists('slug', $params) && is_int($params['slug']))
+            {
+                $query = $query->where('slug', $params['slug']);
+            }
+
+            if(array_key_exists('limit', $params) && is_int($params['limit']))
+            {
+                $query = $query->limit($params['limit']);
+            }
+
+            if(array_key_exists('offset', $params) && is_int($params['offset']))
+            {
+                $query = $query->limit($params['offset']);
+            }
+
+            return $query;
+        }
+        
+        public function getRange(array $ids) : Collection
         {
             $items =
                 $this->select()
-                ->get();
-
-            $items =
-                $items->map(function($i) { return Factory::factory(Models\Designation::class, $i); });
+                ->whereIn('id', $ids)
+                ->get()
+                ->map(function($i) { return Factory::factory(Models\Designation::class, $i); });
 
             return $items;
         }

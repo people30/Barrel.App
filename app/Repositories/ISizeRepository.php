@@ -7,10 +7,9 @@ namespace App\Repositories
 
     interface ISizeRepository
     {
-        public function find(array $where) : Models\Size;
-        public function findAll(array $where) : Collection;
-        public function getRange(string $key, array $values) : Collection;
+        public function find(array $params = []) : Models\Size;
+        public function findAll(array $params = []) : Collection;
+        public function getRange(array $ids) : Collection;
         public function getVariation(Models\Sake $sake) : Collection;
-        public function getAll() : Collection;
     }
 }

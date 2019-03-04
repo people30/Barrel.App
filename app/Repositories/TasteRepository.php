@@ -8,45 +8,59 @@ namespace App\Repositories
 
     class TasteRepository implements ITasteRepository
     {
-        public function get(string $key, string $value) : Models\Taste
+        public function find(array $params = []) : Models\Taste
         {
-            if(!($key == 'id' || $key == 'slug')) throw new \InvalidArgumentException('key');
+            $params['limit'] = 1;
 
-            $items =
-                $this->select()
-                ->where($key, $value)
-                ->get();
-
-            $items =
-                $items->map(function($i) { return Factory::factory(Models\Taste::class, $i); })
+            return
+                $this->findInternal($params)
+                ->get()
+               ->map(function($i) { return Factory::factory(Models\Taste::class, $i); })
                 ->first();
-
-            return $items;
         }
 
-        public function getRange(string $key, array $values) : Collection
+        public function findAll(array $params = []) : Collection
         {
-            if(!($key == 'id' || $key == 'slug')) throw new \InvalidArgumentException('key');
+            return
+                $this->findInternal($params)
+                ->get()
+                ->map(function($i) { return Factory::factory(Models\Taste::class, $i); });
+        }
 
-            $items =
-                $this->select()
-                ->whereIn($key, $values)
-                ->get();
+        protected function findInternal(array $params)
+        {
+            $query = $this->select();
 
-            $items =
-                $items->map(function($i) { return Factory::factory(Models\Taste::class, $i); });
+            if(array_key_exists('id', $params) && is_int($params['id']))
+            {
+                $query = $query->where('id', $params['id']);
+            }
 
-            return $items;
+            if(array_key_exists('slug', $params) && is_int($params['slug']))
+            {
+                $query = $query->where('slug', $params['slug']);
+            }
+
+            if(array_key_exists('limit', $params) && is_int($params['limit']))
+            {
+                $query = $query->limit($params['limit']);
+            }
+
+            if(array_key_exists('offset', $params) && is_int($params['offset']))
+            {
+                $query = $query->limit($params['offset']);
+            }
+
+            return $query;
         }
         
-        public function getAll() : Collection
+        public function getRange(array $ids) : Collection
         {
             $items =
                 $this->select()
-                ->get();
-
-            $items =
-                $items->map(function($i) { return Factory::factory(Models\Taste::class, $i); });
+                ->whereIn('id', $ids)
+                ->get()
+                ->map(function($i) { return Factory::factory(Models\Taste::class, $i); });
 
             return $items;
         }
