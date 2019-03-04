@@ -13,11 +13,13 @@ use App\Repositories;
 |
 */
 
-Route::get('/', function (Repositories\IAreaRepository $ara, Repositories\IBrewerRepository $repos, Repositories\ISizeRepository $siz, Repositories\ITasteRepository $tst) {
+Route::get('/', function (Repositories\IAreaRepository $ara, Repositories\IBrewerRepository $brw, Repositories\ISizeRepository $siz, Repositories\ITasteRepository $tst, Repositories\ISakeRepository $sak) {
     // $northan = $ara->find(['id', 1]);
-    // $items = $repos->find();
+    // $items = $brw->find();
     // $items = $siz->findAll();
-    $items = $tst->findAll();
+    // $items = $tst->findAll();
+    $brewer = $brw->find();
+    $items = $sak->getProducts($brewer);
 
     return view('welcome', ['items' => $items]);
 });
