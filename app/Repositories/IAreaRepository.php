@@ -7,7 +7,7 @@ namespace App\Repositories
 
     interface IAreaRepository
     {
-        public function find(array $params = []) : Models\Area;
+        public function find(array $params = []) : ?Models\Area;
         public function findAll(array $params = []) : Collection;
         public function getRange(array $ids) : Collection;
     }

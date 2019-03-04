@@ -8,7 +8,7 @@ namespace App\Repositories
 
     class DesignationRepository implements IDesignationRepository
     {
-        public function find(array $params = []) : Models\Designation
+        public function find(array $params = []) : ?Models\Designation
         {
             $params['limit'] = 1;
 

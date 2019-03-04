@@ -15,7 +15,7 @@ namespace App\Repositories
             $this->areaRepository = $ara;
         }
 
-        public function find(array $params = []) : Models\Brewer
+        public function find(array $params = []) : ?Models\Brewer
         {
             $params['limit'] = 1;
 

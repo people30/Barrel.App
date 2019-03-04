@@ -8,7 +8,7 @@ namespace App\Repositories
 
     class SizeRepository implements ISizeRepository
     {
-        public function find(array $params = []) : Models\Size
+        public function find(array $params = []) : ?Models\Size
         {
             $params['limit'] = 1;
 

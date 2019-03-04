@@ -19,7 +19,7 @@ namespace App\Repositories
             $this->designationRepository = $dsn;
         }
 
-        public function find(array $params = []) : Models\Sake
+        public function find(array $params = []) : ?Models\Sake
         {
             $params['limit'] = 1;
 
@@ -65,6 +65,11 @@ namespace App\Repositories
             if(array_key_exists('offset', $params) && is_int($params['offset']))
             {
                 $query = $query->limit($params['offset']);
+            }
+
+            if(array_key_exists('keyword', $params) && is_string($params['keyword']))
+            {
+                $query = $query->where('name', 'like', '%' . $params['keyword'] . '%');
             }
 
             return $query;

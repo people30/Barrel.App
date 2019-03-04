@@ -8,7 +8,7 @@ namespace App\Repositories
 
     class AreaRepository implements IAreaRepository
     {
-        public function find(array $params = []) : Models\Area
+        public function find(array $params = []) : ?Models\Area
         {
             $params['limit'] = 1;
 

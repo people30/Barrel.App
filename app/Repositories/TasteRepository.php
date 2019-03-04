@@ -8,7 +8,7 @@ namespace App\Repositories
 
     class TasteRepository implements ITasteRepository
     {
-        public function find(array $params = []) : Models\Taste
+        public function find(array $params = []) : ?Models\Taste
         {
             $params['limit'] = 1;
 

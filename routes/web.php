@@ -18,8 +18,9 @@ Route::get('/', function (Repositories\IAreaRepository $ara, Repositories\IBrewe
     // $items = $brw->find();
     // $items = $siz->findAll();
     // $items = $tst->findAll();
-    $brewer = $brw->find();
-    $items = $sak->getProducts($brewer);
+    // $brewer = $brw->find();
+    // $items = $sak->getProducts($brewer);
+    $items = $sak->find(['keyword' => 'ちょままままま']);
 
     return view('welcome', ['items' => $items]);
 });
