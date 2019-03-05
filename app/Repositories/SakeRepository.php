@@ -72,6 +72,16 @@ namespace App\Repositories
                 $query = $query->where('name', 'like', '%' . $params['keyword'] . '%');
             }
 
+            if(array_key_exists('priceMax', $params) && is_int($params['priceMax']))
+            {
+                
+            }
+
+            if(array_key_exists('priceMin', $params) && is_int($params['priceMin']))
+            {
+                
+            }
+
             return $query;
         }
         

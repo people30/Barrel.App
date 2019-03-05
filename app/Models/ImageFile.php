@@ -2,7 +2,7 @@
 
 namespace App\Models
 {
-    class Photo
+    class ImageFile
     {
         public $filepath;
         public $width;

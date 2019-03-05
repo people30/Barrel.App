@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(Repositories\IDesignationRepository::class, Repositories\DesignationRepository::class);
         $this->app->singleton(Repositories\IAreaRepository::class, Repositories\AreaRepository::class);
         $this->app->singleton(Repositories\ISizeRepository::class, Repositories\SizeRepository::class);
+        $this->app->singleton(Repositories\IPhotoRepository::class, Repositories\PhotoRepository::class);
         $this->app->singleton(Repositories\IBrewerRepository::class, Repositories\BrewerRepository::class);
         $this->app->singleton(Repositories\ISakeRepository::class, Repositories\SakeRepository::class);
     }

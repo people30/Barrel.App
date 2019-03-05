@@ -4,7 +4,7 @@ namespace App\Models
 {
     class Photo
     {
-        public $id;
+        public $filename;
         public $title;
         public $parmalink;
         public $files;

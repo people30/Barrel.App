@@ -8,10 +8,12 @@ namespace App\Repositories
 
     class BrewerRepository implements IBrewerRepository
     {
+        protected $photoRepository;
         protected $areaRepository;
 
-        public function __construct(IAreaRepository $ara)
+        public function __construct(IPhotoRepository $pht, IAreaRepository $ara)
         {
+            $this->photoRepository = $pht;
             $this->areaRepository = $ara;
         }
 
@@ -112,7 +114,12 @@ namespace App\Repositories
                 $i->area = $areas->first(function($a) use ($i) { return $a->id == $i->areaId; });
                 $i->address = $i->prefecture . $i->city . $i->town;
 
-                return Factory::factory(Models\Brewer::class, $i);
+                $brewer = Factory::factory(Models\Brewer::class, $i);
+
+                if($i->keyVisualFilename != null)
+                    $brewer->keyVisual = $this->photoRepository->getByBrewer($brewer, $i->keyVisualFilename);
+
+                return $brewer;
             });
 
             return $items;
