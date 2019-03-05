@@ -72,6 +72,22 @@ namespace App\Repositories
                 $query = $query->where('name', 'like', '%' . $params['keyword'] . '%');
             }
 
+            if(array_key_exists('tastes', $params) && is_array($params['tastes']))
+            {
+                foreach($params['tastes'] as $tasteId)
+                {
+                    $query = $query->orWhere('taste_id', $tasteId);
+                }
+            }
+
+            if(array_key_exists('designations', $params) && is_array($params['designations']))
+            {
+                foreach($params['designations'] as $designationId)
+                {
+                    $query = $query->orWhere('designation_id', $designationId);
+                }
+            }
+
             if(array_key_exists('priceMax', $params) && is_int($params['priceMax']))
             {
                 

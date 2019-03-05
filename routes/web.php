@@ -19,15 +19,17 @@ Route::get('/', function (Repositories\IAreaRepository $ara, Repositories\IBrewe
     // $items = $siz->findAll();
     // $items = $tst->findAll();
     $brewer = $brw->findAll();
-    $items = $brewer;
+    // $items = $brewer;
     // $items = $sak->getProducts($brewer);
-    // $items = $sak->find(['keyword' => 'カ']);
+    $items = $sak->find([
+        'designations' => [1, 2, 3]
+    ]);
     // $items = $pht->getAllByBrewer($brewer);
 
 
     return view('welcome', ['items' => $items]);
 });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
