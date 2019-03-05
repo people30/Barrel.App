@@ -113,6 +113,7 @@ namespace App\Repositories
             {
                 $i->area = $areas->first(function($a) use ($i) { return $a->id == $i->areaId; });
                 $i->address = $i->prefecture . $i->city . $i->town;
+                $i->isBackstageSeeable = (bool)$i->isBackstageSeeable;
 
                 $brewer = Factory::factory(Models\Brewer::class, $i);
 
