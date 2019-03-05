@@ -120,7 +120,7 @@ namespace App\Repositories
                 $i->area = $areas->first(function($a) use ($i) { return $a->id == $i->areaId; });
                 $i->address = $i->prefecture . $i->city . $i->town;
                 $i->isBackstageSeeable = (bool)$i->isBackstageSeeable;
-                $i->links = $links->filter(function($l) use ($i) { return $l->brewerId === $i->id; });
+                $i->links = $links->filter(function($l) use ($i) { return $l->brewerId === $i->id; })->keyBy('service');
 
                 $brewer = Factory::factory(Models\Brewer::class, $i);
 
