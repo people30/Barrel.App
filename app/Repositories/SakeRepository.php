@@ -11,12 +11,14 @@ namespace App\Repositories
         protected $brewerRepository;
         protected $tasteRepository;
         protected $designationRepository;
+        protected $sizeRepository;
 
-        public function __construct(IBrewerRepository $brw, ITasteRepository $tst, IDesignationRepository $dsn)
+        public function __construct(IBrewerRepository $brw, ITasteRepository $tst, IDesignationRepository $dsn, ISizeRepository $siz)
         {
             $this->brewerRepository = $brw;
             $this->tasteRepository = $tst;
             $this->designationRepository = $dsn;
+            $this->sizeRepository = $siz;
         }
 
         public function find(array $params = []) : ?Models\Sake
@@ -123,12 +125,16 @@ namespace App\Repositories
             
             $designationIds = $items->map(function($i) { return $i->designationId; })->toArray();
             $designations = $this->designationRepository->getIn($designationIds);
+
+            $sakeIds = $items->map(function($i) { return $i->id; })->toArray();
+            $sizes = $this->sizeRepository->getValiationsIn($sakeIds);
             
-            $items = $items->map(function($i) use ($brewers, $tastes, $designations)
+            $items = $items->map(function($i) use ($brewers, $tastes, $designations, $sizes)
             {
                 $i->brewer = $brewers->first(function($b) use ($i) { return $b->id == $i->brewerId; });
                 $i->taste = $tastes->first(function($b) use ($i) { return $b->id == $i->tasteId; });
                 $i->designation = $designations->first(function($b) use ($i) { return $b->id == $i->designationId; });
+                $i->sizes = $sizes->filter(function($s) use($i) { return $s->sakeId == $i->id; });
 
                 return Factory::factory(Models\Sake::class, $i);
             });

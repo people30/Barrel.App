@@ -15,7 +15,7 @@ namespace App\Repositories
             return
                 $this->findInternal($params)
                 ->get()
-               ->map(function($i) { return Factory::factory(Models\Size::class, $i); })
+                ->map(function($i) { return Factory::factory(Models\Size::class, $i); })
                 ->first();
         }
 
@@ -87,6 +87,17 @@ namespace App\Repositories
             return $items;
         }
         
+        public function getValiationsIn(array $sakeIds) : Collection
+        {
+            $items =
+                $this->select()
+                ->whereIn('sake_id', $sakeIds)
+                ->get()
+                ->map(function($i) { return Factory::factory(Models\Size::class, $i); });
+
+            return $items;
+        }
+
         public function getAll() : Collection
         {
             $items =
