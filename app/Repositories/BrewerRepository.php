@@ -10,11 +10,13 @@ namespace App\Repositories
     {
         protected $photoRepository;
         protected $areaRepository;
+        protected $linkRepository;
 
-        public function __construct(IPhotoRepository $pht, IAreaRepository $ara)
+        public function __construct(IPhotoRepository $pht, IAreaRepository $ara, ILinkRepository $lnk)
         {
             $this->photoRepository = $pht;
             $this->areaRepository = $ara;
+            $this->linkRepository = $lnk;
         }
 
         public function find(array $params = []) : ?Models\Brewer
@@ -107,13 +109,18 @@ namespace App\Repositories
 
         protected function factory(Collection $items) : Collection
         {
+            $brewerIds = $items->map(function($i) { return $i->id; })->unique()->toArray();
             $areaIds = $items->map(function($i) { return $i->areaId; })->unique()->toArray();
+
+            $links = $this->linkRepository->getRelatedLinksIn($brewerIds);
             $areas = $this->areaRepository->getIn($areaIds);
-            $items = $items->map(function($i) use ($areas)
+
+            $items = $items->map(function($i) use ($areas, $links)
             {
                 $i->area = $areas->first(function($a) use ($i) { return $a->id == $i->areaId; });
                 $i->address = $i->prefecture . $i->city . $i->town;
                 $i->isBackstageSeeable = (bool)$i->isBackstageSeeable;
+                $i->links = $links->filter(function($l) use ($i) { return $l->brewerId === $i->id; });
 
                 $brewer = Factory::factory(Models\Brewer::class, $i);
 
