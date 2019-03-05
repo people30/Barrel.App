@@ -25,7 +25,7 @@
         crossorigin="anonymous"></script>
     <!-- ベーススクリプト -->
     <script src="js/base.js"></script>
-    <title>徳島の地酒と酒蔵 「ぐびっと」</title>
+    <title>ぐびっと:徳島の酒蔵</title>
 
     <!--キービジュアル-->
     <link
@@ -34,7 +34,6 @@
   />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
     <script>
       $(document).ready(function() {
         $('.slider').bxSlider({
@@ -47,6 +46,9 @@
       })
     </script>
 
+    <!--メインCSSリンク-->
+    <link rel="stylesheet" href="css/regionality_page.css">
+
 </head>
 
 <body>
@@ -55,7 +57,7 @@
         <header class="header_area">
             <!-- ヘッダーロゴ -->
             <h1 class="header_logo pagetop">
-                <a href="/barrel_app/public/"><img src="img/logo.40x40.jpg" alt="徳島の地酒と酒蔵 「ぐびっと」"></a>
+                <a href="/barrel_app/public/"><img src="img/logo.40x40.jpg" alt="ぐびっと:徳島の地酒と酒蔵"></a>
             </h1>
             <!-- ／ヘッダーロゴ -->
             <!-- トグルボタン -->
@@ -82,14 +84,15 @@
     <!-- ################################################################### -->
     <!-- メインエリア -->
     <main class="main_area">
+        <div class="content_fluid">
+        </div>
         <article class="content">
-            <!-- ここに各コンテンツが入ります -->
+            <!--キービジュアル-->
             <div class="slider">
                 <div>
                   <img src="./img/蔵１.jpg"/>
                   I am a slide 1
                 </div>
-          
                 <div>
                   <img src="./img/蔵２.jpg"/>
                   I am a slide ２
@@ -102,20 +105,91 @@
                   <img src="./img/蔵４.jpg"/>
                   I am a slide ４
                 </div>
-              </div>
+            </div> 
 
-              <nav class="">
-                  <ul>
-                      <li><a href="#">徳島の風土と日本酒</a></li>
-                      <li><a href="#">徳島の地酒</a></li>
-                      <li><a href="#">徳島の酒蔵</a></li>
-                      <li><a href="#">読みもの</a></li>
-                  </ul>
-              </nav>
+            <div><img class="top_logo" src="./img/x.40x40.png"></div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">徳島の風土と日本酒</a></li>
+                    <li><a href="#">徳島の地酒</a></li>
+                    <li><a href="#">徳島の酒蔵</a></li>
+                    <li><a href="#">読みもの</a></li>
+                </ul>
+            </nav>
+            <!--/キービジュアル-->
 
-              <div class="">
-                  <h1>徳島の風土と日本酒</h1>
-              </div>
+
+            <!--contents01-->
+            <div class="title_box">
+                <img class="title_logo" src="./img/bar.8x48.png">
+                <h1 class="contents_title">徳島の風土と日本酒</h1>
+            </div>
+
+            <div class="contents01">
+                <ul class="text_logo">
+                    <li><img src="./img/navylogo01.svg"></li>
+                    <li><img src="./img/navylogo02.svg"></li>
+                    <li><img src="./img/navylogo03.svg"></li>
+                    <li><img src="./img/navylogo04.svg"></li>
+                </ul>
+                <dl class="top_text">
+                    <div class="text01">
+                    <dt>県土で生まれた味わい</dt>
+                         <dd>徳島の風土と蔵元それぞれの持つ伝統、日々の営みが響きあい、大人が楽しめる豊かな<br>
+                            味が作り出されています。このサイトでは、徳島での酒蔵の活動と想いを紹介します。
+                        </dd>
+                    </div>
+                    <div class="text02">
+                    <dt>豊かな自然に育まれた「お米」</dt>
+                        <dd>徳島県の醸造に使われるお米は、「山田錦」や「美山錦」などの全国的にも有名な酒造<br>
+                            好適米をはじめ、その地域独自の酒米など多種多様なものがあります。
+                        </dd>
+                    </div>
+                    <div class="text03">
+                    <dt>「清流」の収束する吉野川</dt>
+                        <dd>そして、お米同様に重要な「水」にも恵まれています。徳島県では、剣山山系や讃岐山<br>
+                            脈からの伏流水が豊富な水源となり、酒造りに好んで使われています。そのため、吉野<br>
+                            川などの河川沿いに多くの蔵元が存在しております。
+                        </dd>
+                    </div>
+                    <div class="text04">
+                    <dt>判断と、試行錯誤の日々</dt>
+                        <dd>一見、このように生産資源に恵まれた徳島県ですが、自然すべてが味方というわけでは<br>
+                            ありません。醸造には通常、十分な寒さが必要ですが、徳島県は温暖な地域なので温度<br>
+                            管理に徹底した醸造が行われています。そこには日々、上質な徳島酒を生み出すために<br>
+                            気候環境と戦う職人たちの試行錯誤重ねられています。
+                        </dd>
+                    </div>
+                 </dl>
+            </div>
+            <!--/contents01-->
+
+            <!--contents02-->
+            <div class="title_box">
+                    <img class="title_logo" src="./img/bar.8x48.png">
+                    <h1 class="contents_title">Instagramギャラリー</h1>
+                </div>
+
+            <div class="contents02">
+                <div class="photo_box">
+                    <div class="photos">
+                        <a href="https://www.instagram.com/gubittotokushima/?utm_source=ig_embed&amp;utm_medium=loading">
+                            <img class="test01" src="./img/test01.jpg" alt="">
+                        </a>
+                        <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                            <img class="test02" src="./img/test02.jpg" alt="">
+                        </a>
+                        <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                             <img class="test03" src="./img/test02.jpg" alt="">
+                        </a>
+                        <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                             <img class="test04" src="./img/test02.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="photo_back"></div>
+                </div>
+            </div>
+            <!--/contents02-->
         </article>
 
     </main>

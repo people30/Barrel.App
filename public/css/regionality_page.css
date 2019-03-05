@@ -1,2 +1,134 @@
 @charset "utf-8";
+/*body{
+    width: 1180px;
+    margin: 0 auto;
+}
+/*keyvisual*/
 
+/*navmenu*/
+.menu nav{
+    position: absolute;
+}
+.menu li{
+    margin: 20px auto;
+    font-size: 24px;
+}
+.menu a{
+    text-decoration: none;
+}
+
+/*titles*/
+.title_box{
+    width: 300px;
+    height: 48px;
+    margin: 80px 0 0;
+}
+.title_logo{
+    float: left;
+}
+.contents_title{
+    margin: 14px;
+    font-size: 24px;
+    float: left;
+}
+
+/*contents01*/
+.contents01{
+    display: flex;
+    margin: 20px 0 40px 0;
+}
+.text_logo ul{
+    margin: 40px 0;
+}
+.text_logo img{
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    margin: 40px 20px 40px 80px;
+}
+.top_text{
+    width: 780px;
+    float: left;
+}
+.top_text dl{
+    width: 780px;
+    margin: 0 20px 0 0;
+}
+.top_text dt{
+    width: 504px;
+    margin: 80px 0 30px 0;
+    font-size: 36px;
+    color: #FF6347;
+}
+.top_text dd{
+    width: 780px;
+    margin: 0;
+    font-size: 20px;
+}
+.text01{
+    margin: 77px 0 77px 20px; 
+}
+.text02{
+    margin: 140px 0 77px 20px;
+}
+.text03{
+    margin: 130px 0 77px 20px;
+}
+.text04{
+    margin: 115px 0 77px 20px;
+}
+
+/*contents02*/
+.contents02{
+    margin: 60px 0 40px 0;
+}
+
+/*Instagramギャラリー*/
+.photo_box{
+    z-index: 2;
+    width: 1120px;
+    height: px;
+    margin: 0 auto;
+    float: left;
+}
+.photos{
+    z-index: 2;
+    height: 250px;
+    margin: 0 auto;
+}
+.test01{
+    width: 250px;
+    height: 250px;
+    padding: 0px 10px 0px 20px;
+    margin: 0;
+    background-color: #ff0000;
+}
+.test02{
+    width: 250px;
+    height: 250px;
+    padding: 0 10px 0 10px;
+    margin: 0;
+    background-color: #0000ff;
+}
+.test03{
+    width: 250px;
+    height: 250px;
+    padding: 0 10px 0 10px;
+    margin: 0;
+    background-color: #00ff00;
+}
+.test04{
+    width: 250px;
+    height: 250px;
+    padding: 0 20px 0 10px;
+    margin: 0;
+    background-color: #fff000;
+}
+.photo_back{
+    z-index: 1;
+    width: 1180px;
+    height: 80px;
+    padding: 0;
+    margin: 0px auto;
+    background-color: #F9F9F9;
+}

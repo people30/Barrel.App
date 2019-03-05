@@ -5,14 +5,15 @@
 .bx-wrapper {
     position: relative;
     /* margin-bottom: 60px; */
+    margin: 80px 0;
     padding: 0;
     *zoom: 1;
     -ms-touch-action: pan-y;
     touch-action: pan-y;
   }
   .bx-wrapper img {
-    width: 100vw;
-    height: 100vh;
+    width: 380px;
+    height: 252px;
     display: block;
   }
   .bxslider {
@@ -28,13 +29,13 @@
   }
   /** THEME
   ===================================*/
-  .bx-wrapper {
+  /* .bx-wrapper {
     -moz-box-shadow: 0 0 5px #ccc;
     -webkit-box-shadow: 0 0 5px #ccc;
     box-shadow: 0 0 5px #ccc;
     border: 5px solid #fff;
     background: #fff;
-  }
+  } */
   .bx-wrapper .bx-pager,
   .bx-wrapper .bx-controls-auto {
     position: absolute;
@@ -44,7 +45,7 @@
   /* LOADER */
   .bx-wrapper .bx-loading {
     min-height: 50px;
-    background: url('images/bx_loader.gif') center center no-repeat #ffffff;
+    background: url('../img/bx_loader.gif') center center no-repeat #ffffff;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -91,16 +92,16 @@
   }
   /* DIRECTION CONTROLS (NEXT / PREV) */
   .bx-wrapper .bx-prev {
-    left: 10px;
-    background: url('images/controls.png') no-repeat 0 -32px;
+    left: -50px;
+    background: url('../img/controls.png') no-repeat 0 -32px;
   }
   .bx-wrapper .bx-prev:hover,
   .bx-wrapper .bx-prev:focus {
     background-position: 0 0;
   }
   .bx-wrapper .bx-next {
-    right: 10px;
-    background: url('images/controls.png') no-repeat -43px -32px;
+    right: -50px;
+    background: url('../img/controls.png') no-repeat -43px -32px;
   }
   .bx-wrapper .bx-next:hover,
   .bx-wrapper .bx-next:focus {
@@ -129,7 +130,7 @@
     width: 10px;
     height: 11px;
     outline: 0;
-    background: url('images/controls.png') -86px -11px no-repeat;
+    background: url('../img/controls.png') -86px -11px no-repeat;
     margin: 0 3px;
   }
   .bx-wrapper .bx-controls-auto .bx-start:hover,
@@ -143,7 +144,7 @@
     width: 9px;
     height: 11px;
     outline: 0;
-    background: url('images/controls.png') -86px -44px no-repeat;
+    background: url('../img/controls.png') -86px -44px no-repeat;
     margin: 0 3px;
   }
   .bx-wrapper .bx-controls-auto .bx-stop:hover,

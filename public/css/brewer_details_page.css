@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+.kura_info {
+    display: grid;
+    grid-template-rows: 520px;
+    grid-template-columns: 780px 1fr;
+    background-color: #ff6347;
+}
+
+.about_kura {
+    padding: 40px;
+    color: #fff;
+}
+
+.about_kura_kengaku {
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.about_kura_open table {
+    font-size: 12px;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+.about_kura_open td {
+    padding: 0 0 0 20px;
+}
+.kura_details{
+    display: grid;
+    grid-template-rows: 755px;
+    grid-template-columns: 760px 1fr;
+ 
+}
+
+.kura_stories {
+    border: solid 1px #ff6347;
+    padding: 39px 19px;
+}
+.kura_stories li{
+padding: 
+}
+.story_title{
+    color: #ff6347;
+}
+
+
+
+
+
+.company_gaiyou {
+    padding: 0 0 0 60px;
+    text-align: left;
+
+}
+.company_gaiyou table{
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+.company_gaiyou td {
+    padding: 0 0 0 35px;
+}
+
+#map_canvas{
+    margin-top: 40px;
+}
