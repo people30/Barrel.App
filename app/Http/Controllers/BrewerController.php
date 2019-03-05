@@ -9,15 +9,24 @@ class BrewerController extends Controller
 {
     protected $brewerRepository;
     protected $areaRepository;
+    protected $photoRepository;
+    protected $sakeRepository;
 
-    public function __construct(Repositories\IBrewerRepository $brw, Repositories\IAreaRepository $ara)
+    public function __construct(Repositories\IBrewerRepository $brw, Repositories\IAreaRepository $ara, Repositories\IPhotoRepository $pht, Repositories\ISakeRepository $sak)
     {
         $this->brewerRepository = $brw;
         $this->areaRepository = $ara;
+        $this->photoRepository = $pht;
+        $this->sakeRepository = $sak;
     }
 
     public function index(Request $request)
     {
+        $request->validate([
+            'selectedArea' => 'integer',
+            'backstageSeeableStatus' => 'in:seeable,unseeable'
+        ]);
+
         $params = $request->all();
         $areas = $this->areaRepository->findAll();
         $allBrewers = $this->brewerRepository->findAll();
@@ -47,7 +56,10 @@ class BrewerController extends Controller
     {
         $allBrewers = $this->brewerRepository->findAll();
         $brewer = $allBrewers->first(function($b) use($slug) { return $b->slug == $slug; });
+        $photos = $this->photoRepository->getAllByBrewer($brewer);
+        $stories = collect([]);
+        $products = $this->sakeRepository->getProducts($brewer);
 
-        return view('App.BrewerDetailsPage', compact('allBrewers', 'brewer'));
+        return view('App.BrewerDetailsPage', compact('allBrewers', 'brewer', 'photos', 'stories', 'products'));
     }
 }
