@@ -1,12 +1,22 @@
 @charset "UTF-8";
 
+ul {
+    list-style: none;
+}
+
+/* ################## 蔵の写真、基本情報 ################## */
 .kura_info {
+    margin-top: 20px;
     display: grid;
     grid-template-rows: 520px;
     grid-template-columns: 780px 1fr;
     background-color: #ff6347;
 }
 
+.kura_info img{
+    width:780px; 
+    height:520px;
+}
 .about_kura {
     padding: 40px;
     color: #fff;
@@ -26,41 +36,174 @@
 .about_kura_open td {
     padding: 0 0 0 20px;
 }
-.kura_details{
+
+/* 1239px以下 */
+
+@media (max-width: 1239px){
+    .kura_info {
+        margin-top: 20px;
+        display: block;
+        background-color: #ff6347;
+    }
+    .kura_info img{
+        width:580px; 
+        height:384px;
+    }
+}
+/* 800px以下 */
+
+/* @media (max-width: 800px) */
+
+
+/* ###############その蔵や製造品に関する記事、詳細情報 ################*/
+.kura_details {
     display: grid;
     grid-template-rows: 755px;
     grid-template-columns: 760px 1fr;
- 
 }
 
 .kura_stories {
     border: solid 1px #ff6347;
-    padding: 39px 19px;
+    padding: 39px 29px 0 19px;
+    margin-top: 40px;
 }
-.kura_stories li{
-padding: 
+
+.kura_stories p {
+    margin: 20px 0 40px 0;
 }
-.story_title{
+
+.blog_head {
+    display: flex;
+}
+
+.category {
+    margin-right: 20px;
+    padding: 0 10px;
+    background-color: #d6d6d6;
+}
+
+.story_title {
     color: #ff6347;
 }
-
-
-
-
 
 .company_gaiyou {
     padding: 0 0 0 60px;
     text-align: left;
-
 }
-.company_gaiyou table{
+
+.company_gaiyou table {
     border-collapse: separate;
     border-spacing: 0 20px;
+    margin-top: 20px;
 }
+
 .company_gaiyou td {
     padding: 0 0 0 35px;
 }
 
-#map_canvas{
+#map_canvas {
+    margin-top: 20px;
+}
+
+
+
+
+/* 製造品一覧 */
+.products {
+    margin-top: 80px;
+}
+
+.items {
+    margin-top: 40px;
+    display: flex;
+    /* grid-template-rows: 525px;
+    grid-template-columns: 380px 1fr 380; */
+}
+
+.item1 {
+    margin: 0 20px;
+}
+
+.spec {
+    display: flex;
+}
+
+.spec img {
+    margin-right: 20px;
+}
+
+.products_info li {
+    margin: 10px 0;
+}
+
+.meigara {
+    font-size: 24px;
+}
+
+.product_alc {
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: 56px;
+    grid-template-columns: 40px 1fr;
+}
+
+.product_seimai {
+    display: grid;
+    grid-template-rows: 56px;
+    grid-template-columns: 40px 1fr;
+}
+
+.grid_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.rice ul {
+    display: flex;
+}
+
+.rice li {
+    margin-right: 10px;
+}
+
+.product_point {
     margin-top: 40px;
 }
+
+.price_list {
+    margin-top: 40px;
+}
+
+.price_list th {
+    padding: 10px 20px;
+    background-color: #58e4ff;
+    border: none;
+    border-bottom: 1px solid #fff;
+}
+
+.price_list td {
+    border: none;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.price {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.tax {
+    padding-right: 130px;
+}
+
+
+/* ############################# 1239px以下 ################################# */
+
+@media (max-width: 1239px)
+
+
+
+/* ############################## 800px ################################ */
+
+/* @media (max-width: 800px) */

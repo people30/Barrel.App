@@ -16,6 +16,14 @@
     height: 252px;
     display: block;
   }
+
+  @media(max-width: 1239px){
+    .bx-wrapper img {
+      width: 280px;
+      height: 184px;
+      display: block;
+    }
+  }
   .bxslider {
     margin: 0;
     padding: 0;
@@ -63,7 +71,7 @@
     padding-top: 20px;
   }
   .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #666;
+    background: rgb(255, 10, 10);
     text-indent: -9999px;
     display: block;
     width: 10px;

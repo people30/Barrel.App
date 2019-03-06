@@ -27,7 +27,8 @@
   .flex-item:nth-child(4n) {
         margin-right: -2px;
    }
-      
+
+   /* 日本酒リスト画像部分 */
   div.bottle{
     width: 240px;
     height: 240px;
@@ -36,43 +37,86 @@
     margin: 20px auto;
    }
 
+   /* 日本酒リストテキスト部分 */
   div.sake{
     width: 240px;
+    height: 196px;
     margin: 20px auto;
    }
 
+  /* div.sakedata1 {
+    width: 240px;
+  } */
+
   div.specific{
+    width: 100px;
     font-size:12px;
-   }
+    display: table-cell;
+    vertical-align: middle;
+    width: inherit;
+    height: inherit;
+    /* text-align: left; */
+    float: left;
+
+  }
+
+  div.taste{
+    width: 100px;
+    font-size:12px;
+    display: table-cell;
+    vertical-align: middle;
+    width: inherit;
+    height: inherit;
+    /* text-align: right; */
+    float: right;
+
+  }
+  .under {
+    border-bottom: solid 3px #87CEFA;
+  }
 
   div.brand{
     font-size:24px;
     padding: 5px 0 0 0;
+    text-align: left;
+    /* float: left; */
+
   }
 
-  div.taste{
-    text-align:end;
-    vertical-align: text-top;
-    font-size:12px;
+  div.sakedata2 {
+    float: left;
+    margin: 20px 0 0 0;
   }
 
-  div.alcohol{
+  div.alcohol1{
+    display: table-cell;
+  }
+    div.alcohol2{
     font-size:12px;
+    display: table-cell;
   }
   span.alcohol{
     font-size:20px;
   }
 
-  div.seimai{
+  div.seimai1{
+    display: table-cell;
+  }
+  div.seimai2{
     font-size:12px;
+    display: table-cell;
   }
   span.seimai{
     font-size:20px;
   }
 
+  div.sakedata3 {
+    float: left;
+  }
+
   div.price{
     font-size:20px;
-    padding: 23px 0 0 0;
+    padding: 23px 0 6px 0;
   }
   span.capacity{
     font-size:12px;
@@ -80,4 +124,8 @@
 
   span.tax{
     font-size:12px;
+  }
+
+  div.company{
+    color: #FF6347
   }

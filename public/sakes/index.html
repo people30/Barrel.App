@@ -12,19 +12,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
         crossorigin="anonymous">
     <!-- リセットcss -->
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="../css/reset.css">
     <!-- ベースcss -->
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="../css/base.css">
     <!-- sakes_page css -->
-    <link rel="stylesheet" href="css/sakes_page.css">
+    <link rel="stylesheet" href="../css/sakes_page.css">
     <!-- ファビコン -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
-    <link rel="icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <!-- ベーススクリプト -->
-    <script src="js/base.js"></script>
+    <script src="../js/base.js"></script>
     <title>ぐびっと:徳島の酒蔵</title>
 
 </head>
@@ -35,13 +35,13 @@
         <header class="header_area">
             <!-- ヘッダーロゴ -->
             <h1 class="header_logo pagetop">
-                <a href="/barrel_app/public/"><img src="img/logo.40x40.jpg" alt="ぐびっと:徳島の地酒と酒蔵"></a>
+                <a href="/barrel_app/public/"><img src="../img/logo.40x40.jpg" alt="ぐびっと:徳島の地酒と酒蔵"></a>
             </h1>
             <!-- ／ヘッダーロゴ -->
             <!-- トグルボタン -->
             <button class="header_btn" onclick="navFunc()">
-                <span><img src="img/x.40x40.png" alt="" class="fa-times"></span>
-                <span><img src="img/3.40x40.png" alt="" class="fa-bars"></span>
+                <span><img src="../img/x.40x40.png" alt="" class="fa-times"></span>
+                <span><img src="../img/3.40x40.png" alt="" class="fa-bars"></span>
             </button>
             <!-- ／トグルボタン -->
             <!-- メニュー -->
@@ -102,55 +102,60 @@
                         </a>
                     </div>
                     <div class="sake">
-                        <div class>
+                        <div class="sakedata1">
                             <div class="specific">
                                 純米大吟醸
                             </div>
                             <div class="taste">
-                                軽快でなめらか
+                                <p><span class="under">軽快でなめらか</span></p>
                             </div>
                             <div class="brand">
                                 御殿桜
                             </div>
                         </div>
-                        <div class>
-                            <div class="alcohol">
-                                    <img  src="/public/svg/al5%.svg"> 
+
+                        <div class="sakedata2">
+                            <div class="alcohol1">
+                                <img src="../svg/al15%.svg"> 
+                            </div>
+                            <div class="alcohol2">
                                 <p><span class="alcohol">17％</span><br>アルコール度</p>
                             </div>
-                            <div class="seimai">
+                            <div class="seimai1">
+                                <img src="../svg/seimai40%.svg"> 
+                            </div>
+                            <div class="seimai2">
                                 <p><span class="seimai">40％</span><br>精米歩合</p>
                             </div>
                         </div>
-                        <div class>
+
+                        <div class="sakedata3">
                             <div class="price">
-                                <p><span class="capacity">720ｍｌ</span>12,500円<span class="tax">（税抜）</span></p>
+                                <p><span class="capacity">720ｍｌ </span>12,500円<span class="tax">（税抜）</span></p>
                             </div>
-                                <p>製造：有限会社齋藤酒造場</p>
+                            <div class="company">
+                                製造：有限会社齋藤酒造場
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
 
                 <div class="flex-item">
                 <p>２</p>
-                <img src="image/　" alt="">
                 </div>
                 <div class="flex-item">
                 <p>３</p>
-                <img src="image/　" alt="">
                 </div>
                 <div class="flex-item">
                 <p>４</p>
-                <img src="image/　" alt="">
                 </div>
                 <div class="flex-item">
                 <p>５</p>
-                <img src="image/　" alt="">
                 </div>
                 <div class="flex-item">
                 <p>６</p>
-                <img src="image/　" alt="">
                 </div>
             </div>
         </article>
