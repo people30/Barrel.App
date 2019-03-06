@@ -1,9 +1,4 @@
 @charset "UTF-8";
-/* リセットCSS */
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -25,7 +20,6 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -55,7 +49,31 @@ table {
 アクセントカラー２（オレンジ）　→ #FF6347 
 薄水色 #B1D3E2
 グレー #808080
-*/
+
+リンクテキストの基本色、ホバーの色
+/* 黒
+#000000
+#333333
+
+灰色
+#808080
+#999999
+
+青
+#4A6F95
+#5796C6
+
+オレンジ
+#FF6347
+#FB7861
+
+白
+#FFFFFF
+#CCCCCC
+
+灰色濃
+#4C5861
+#374149 */
 
 /* Noto Sans JP bodyフォント */
 body {
@@ -421,7 +439,6 @@ body,
                 }
 }
 
-
 /* ########################ヘッダー設定################################### */
 
 /*  ヘッダーの背景カラー */
@@ -481,10 +498,16 @@ body.open .fa-bars {
     color: #fff;
     text-decoration: none;
 }
+/* 酒倉リストタイトルホバー */
+.footer_brewery li a:hover {
+    color: #cccccc;
+}
+
 /*  酒蔵リストタイトル */
 .footer_brewery_title {
     color: #fff;
 }
+
 /*  注意書き */
 .footer_note p {
     color: #B1D3E2;
@@ -498,10 +521,17 @@ body.open .fa-bars {
     color: #000;
     text-decoration: none;
 }
+/* SNSアイコンホバー */
+.sns a:hover {
+    color:#333333;
+}
 /*  フッターメニュー */
-.footer_menu a{
-    color: #fff;
+.footer_menu a {
+    color: #ffffff;
     text-decoration: none;
+}
+.footer_menu a:hover {
+    color: #CCCCCC;
 }
 /* ######################その他の設定######################################### */
 

@@ -1,26 +1,20 @@
 @charset "UTF-8";
 /* ###################共通プロパティ################################## */
 
-/* フィルター選択外のテキストカラー */
-.map_filter a{
-    color: #808080;
-}
-/*  フィルターメニューのアクティブフォントカラー */
-.map_filter p.selected > a{
-    color: #000 ;
-}
-
-
-
 @media(min-width: 1px) {
 
+    /* フィルター選択外のテキストカラー */
+    .map_filter a{
+        color: #808080;
+    }
+    /*  フィルターメニューのアクティブフォントカラー */
+    .map_filter p.selected > a{
+        color: #000 ;
+    }
     /* ページタイトルを非表示 */
     .content_fluid h1{
         display: none;
     }
-
-
-
     /* リンクテキスト設定 */
     a {
         text-decoration: none;
@@ -44,6 +38,10 @@
     .card_body_seeable p{
         color: #FF6347
     }
+    /* 見学不可の文字色 */
+    .card_body_not_seeable p{
+        color: #D6D6D6;
+    }
     /* カードの灰色の部分 */
     .card_body_time_header,
     .card_body_time_opening,
@@ -51,9 +49,14 @@
     .card_body_time_buisiness {
         color: #808080;
     }
-}
+    .card_body_email a:hover {
+        color: #333333;
+    }
+    .card_body_name a:hover {
+        color:#333333;
+    }
 
-/* ################フィルター####################################### */
+}
 
 /* ##########フィルターレイアウト############ */
 @media (min-width: 1240px) {
@@ -254,9 +257,9 @@
         grid-template-columns: repeat(auto-fit, 280px);
         grid-template-rows: auto;
         grid-column-gap: 20px;
-        grid-row-gap: 20px; }
-    
+        grid-row-gap: 20px; 
     }
+}
     @media (max-width: 1239px) {
         /* カードを均等に並べる */
     .card_list {
@@ -329,7 +332,6 @@
         width: auto;
         height: auto;
     }
-
 }
 /* ##########カード内部のレイアウト############ */
 @media (min-width: 1240px) {
