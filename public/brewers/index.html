@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -14,14 +14,14 @@
     <!-- ベースcss -->
     <link rel="stylesheet" href="../css/base.css">
     <!-- brewerscss -->
-    <link rel="stylesheet" href="../css/brewers.css">
+    <link rel="stylesheet" href="../css/brewers_page.css">
     <!-- ファビコン -->
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
     <link rel="icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap" type="text/javascript"></script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap" type="text/javascript"></script> -->
     <script type="text/javascript">
         var map;
         var marker_ary = new Array();
@@ -216,7 +216,6 @@
             </div>
         </div>
         <!-- ／地図コンテンツ -->
-        
         <!-- 記事コンテンツ -->
         <article class="content">
             <!-- フィルター -->
@@ -226,10 +225,8 @@
                     <p class="filter_north"><a href="">北部</a></p>
                     <p class="filter_south"><a href="">南部</a></p>
                     <p class="filter_west"><a href="">西部</a></p>
-                    <p class="filter_available_img"><img src="../svg\mapicon1.28ｘ64.svg" alt="見学可"></p>
-                    <p class="filter_available"><a href="">見学可</a></p>
-                    <p class="filter_not_available_img"><img src="../svg\mapicon2.28ｘ64.svg" alt="見学不可"></p>
-                    <p class="filter_not_available"><a href="">見学不可</a></p>
+                    <p class="filter_available"><img src="../svg/mapicon1.svg" alt=""><a href="">見学可</a></p>
+                    <p class="filter_not_available"><img src="../svg/mapicon2.svg" alt=""><a href="">見学不可</a></p>
                 </div>
             </div>
             <!-- ／フィルター -->
@@ -246,7 +243,7 @@
                         <!-- ／ピンナンバー -->
                         <!-- ピン画像 -->
                         <div class="card_pin_figure">
-                            <a href="#"><img src="../svg\mapicon1.28ｘ64.svg" alt="有限会社斉藤酒造場"></a>
+                            <a href="#"><img src="../svg/mapicon1.svg" alt=""></a>
                         </div>
                         <!-- ／ピン画像 -->
                     </div>
@@ -263,7 +260,7 @@
                             <a href="#">有限会社斉藤酒造場</a>
                         </div>
                         <!-- ／酒蔵タイトル -->
-                        <!-- 見学可不可 -->
+                        <!-- 見学可不可 ※不可の場合は .card_body_not_seeable -->
                         <div class="card_body_seeable">
                             <p>酒蔵見学可</p>
                         </div>
@@ -300,8 +297,8 @@
                     <!-- ／カードテキスト -->
                 </div>
                 <!-- ／カード1 -->
-                <!-- カード1 -->
-                <div class="card">
+                                <!-- カード1 -->
+                                <div class="card">
                                     <!-- ピン -->
                                     <div class="card_pin">
                                         <!-- ピンナンバー -->
@@ -311,7 +308,7 @@
                                         <!-- ／ピンナンバー -->
                                         <!-- ピン画像 -->
                                         <div class="card_pin_figure">
-                                            <a href="#"><img src="../svg\mapicon1.28ｘ64.svg" alt="有限会社斉藤酒造場"></a>
+                                            <a href="#"><img src="../svg/mapicon1.svg" alt=""></a>
                                         </div>
                                         <!-- ／ピン画像 -->
                                     </div>
@@ -328,9 +325,9 @@
                                             <a href="#">有限会社斉藤酒造場</a>
                                         </div>
                                         <!-- ／酒蔵タイトル -->
-                                        <!-- 見学可不可 -->
-                                        <div class="card_body_seeable">
-                                            <p>酒蔵見学可</p>
+                                        <!-- 見学可不可 ※不可の場合は .card_body_not_seeable -->
+                                        <div class="card_body_not_seeable">
+                                            <p>酒蔵見学不可</p>
                                         </div>
                                         <!-- ／見学可不可 -->
                                         <!-- 営業時間 -->
@@ -363,398 +360,8 @@
                                         <!-- ／アドレス -->
                                     </div>
                                     <!-- ／カードテキスト -->
-                </div>
-                <!-- ／カード1 -->
-                <!-- カード1 -->
-                <div class="card">
-                    <!-- ピン -->
-                    <div class="card_pin">
-                        <!-- ピンナンバー -->
-                        <div class="card_pin_number">
-                            <p>1</p>
-                        </div>
-                        <!-- ／ピンナンバー -->
-                        <!-- ピン画像 -->
-                        <div class="card_pin_figure">
-                            <a href="#"><img src="../svg\mapicon1.28ｘ64.svg" alt="有限会社斉藤酒造場"></a>
-                        </div>
-                        <!-- ／ピン画像 -->
-                    </div>
-                    <!-- ／ピン -->
-                    <!-- 写真 -->
-                    <div class="card_figure">
-                        <a href="#"><img src="brewers_img/brewer.780x520.jpg" alt="有限会社斉藤酒造場"></a>
-                    </div>
-                    <!-- ／写真 -->
-                    <!-- カードテキスト -->
-                    <div class="card_body">
-                        <!-- 酒蔵タイトル -->
-                        <div class="card_body_name">
-                            <a href="#">有限会社斉藤酒造場</a>
-                        </div>
-                        <!-- ／酒蔵タイトル -->
-                        <!-- 見学可不可 -->
-                        <div class="card_body_seeable">
-                            <p>酒蔵見学可</p>
-                        </div>
-                        <!-- ／見学可不可 -->
-                        <!-- 営業時間 -->
-                        <div class="card_body_time caption_text">
-                            <!-- 営業時間ヘッダ固定 -->
-                            <div class="card_body_time_header">
-                                <p>営業時間</p>
-                            </div>
-                            <!-- ／営業時間ヘッダ固定 -->
-                            <!-- 時間 -->
-                            <div class="card_body_time_hour">
-                                <p>
-                                    <span class="card_body_time_opening">8:00</span>
-                                    <span> - </span>
-                                    <span class="card_body_time_closing">20:00</span>
-                                </p>
-                            </div>
-                            <!-- ／時間 -->
-                            <!-- 曜日 -->
-                            <div class="card_body_time_buisiness">
-                                <p>月 - 土曜日(日・祝日休み)</p>
-                            </div>
-                            <!-- ／曜日 -->
-                            <!-- ／営業時間 -->
-                        </div>
-                        <!-- アドレス -->
-                        <div class="card_body_email">
-                            <a href="#">www.sekinoi.co.jp</a>
-                        </div>
-                        <!-- ／アドレス -->
-                    </div>
-                    <!-- ／カードテキスト -->
-                </div>
-                <!-- ／カード1 -->
-                <!-- カード1 -->
-                <div class="card">
-                                    <!-- ピン -->
-                                    <div class="card_pin">
-                                        <!-- ピンナンバー -->
-                                        <div class="card_pin_number">
-                                            <p>1</p>
-                                        </div>
-                                        <!-- ／ピンナンバー -->
-                                        <!-- ピン画像 -->
-                                        <div class="card_pin_figure">
-                                            <a href="#"><img src="../svg\mapicon1.28ｘ64.svg" alt="有限会社斉藤酒造場"></a>
-                                        </div>
-                                        <!-- ／ピン画像 -->
-                                    </div>
-                                    <!-- ／ピン -->
-                                    <!-- 写真 -->
-                                    <div class="card_figure">
-                                        <a href="#"><img src="brewers_img/brewer.780x520.jpg" alt="有限会社斉藤酒造場"></a>
-                                    </div>
-                                    <!-- ／写真 -->
-                                    <!-- カードテキスト -->
-                                    <div class="card_body">
-                                        <!-- 酒蔵タイトル -->
-                                        <div class="card_body_name">
-                                            <a href="#">有限会社斉藤酒造場</a>
-                                        </div>
-                                        <!-- ／酒蔵タイトル -->
-                                        <!-- 見学可不可 -->
-                                        <div class="card_body_seeable">
-                                            <p>酒蔵見学可</p>
-                                        </div>
-                                        <!-- ／見学可不可 -->
-                                        <!-- 営業時間 -->
-                                        <div class="card_body_time caption_text">
-                                            <!-- 営業時間ヘッダ固定 -->
-                                            <div class="card_body_time_header">
-                                                <p>営業時間</p>
-                                            </div>
-                                            <!-- ／営業時間ヘッダ固定 -->
-                                            <!-- 時間 -->
-                                            <div class="card_body_time_hour">
-                                                <p>
-                                                    <span class="card_body_time_opening">8:00</span>
-                                                    <span> - </span>
-                                                    <span class="card_body_time_closing">20:00</span>
-                                                </p>
-                                            </div>
-                                            <!-- ／時間 -->
-                                            <!-- 曜日 -->
-                                            <div class="card_body_time_buisiness">
-                                                <p>月 - 土曜日(日・祝日休み)</p>
-                                            </div>
-                                            <!-- ／曜日 -->
-                                            <!-- ／営業時間 -->
-                                        </div>
-                                        <!-- アドレス -->
-                                        <div class="card_body_email">
-                                            <a href="#">www.sekinoi.co.jp</a>
-                                        </div>
-                                        <!-- ／アドレス -->
-                                    </div>
-                                    <!-- ／カードテキスト -->
-                </div>
-                <!-- ／カード1 -->
-                <!-- カード1 -->
-                <div class="card">
-                    <!-- ピン -->
-                    <div class="card_pin">
-                        <!-- ピンナンバー -->
-                        <div class="card_pin_number">
-                            <p>1</p>
-                        </div>
-                        <!-- ／ピンナンバー -->
-                        <!-- ピン画像 -->
-                        <div class="card_pin_figure">
-                            <a href="#"><img src="../svg\mapicon1.28ｘ64.svg" alt="有限会社斉藤酒造場"></a>
-                        </div>
-                        <!-- ／ピン画像 -->
-                    </div>
-                    <!-- ／ピン -->
-                    <!-- 写真 -->
-                    <div class="card_figure">
-                        <a href="#"><img src="brewers_img/brewer.780x520.jpg" alt="有限会社斉藤酒造場"></a>
-                    </div>
-                    <!-- ／写真 -->
-                    <!-- カードテキスト -->
-                    <div class="card_body">
-                        <!-- 酒蔵タイトル -->
-                        <div class="card_body_name">
-                            <a href="#">有限会社斉藤酒造場</a>
-                        </div>
-                        <!-- ／酒蔵タイトル -->
-                        <!-- 見学可不可 -->
-                        <div class="card_body_seeable">
-                            <p>酒蔵見学可</p>
-                        </div>
-                        <!-- ／見学可不可 -->
-                        <!-- 営業時間 -->
-                        <div class="card_body_time caption_text">
-                            <!-- 営業時間ヘッダ固定 -->
-                            <div class="card_body_time_header">
-                                <p>営業時間</p>
-                            </div>
-                            <!-- ／営業時間ヘッダ固定 -->
-                            <!-- 時間 -->
-                            <div class="card_body_time_hour">
-                                <p>
-                                    <span class="card_body_time_opening">8:00</span>
-                                    <span> - </span>
-                                    <span class="card_body_time_closing">20:00</span>
-                                </p>
-                            </div>
-                            <!-- ／時間 -->
-                            <!-- 曜日 -->
-                            <div class="card_body_time_buisiness">
-                                <p>月 - 土曜日(日・祝日休み)</p>
-                            </div>
-                            <!-- ／曜日 -->
-                            <!-- ／営業時間 -->
-                        </div>
-                        <!-- アドレス -->
-                        <div class="card_body_email">
-                            <a href="#">www.sekinoi.co.jp</a>
-                        </div>
-                        <!-- ／アドレス -->
-                    </div>
-                    <!-- ／カードテキスト -->
-                </div>
-                <!-- ／カード1 -->
-                <!-- カード1 -->
-                <div class="card">
-                    <!-- ピン -->
-                    <div class="card_pin">
-                        <!-- ピンナンバー -->
-                        <div class="card_pin_number">
-                            <p>1</p>
-                        </div>
-                        <!-- ／ピンナンバー -->
-                        <!-- ピン画像 -->
-                        <div class="card_pin_figure">
-                            <a href="#"><img src="../svg\mapicon1.28ｘ64.svg" alt="有限会社斉藤酒造場"></a>
-                        </div>
-                        <!-- ／ピン画像 -->
-                    </div>
-                    <!-- ／ピン -->
-                    <!-- 写真 -->
-                    <div class="card_figure">
-                        <a href="#"><img src="brewers_img/brewer.780x520.jpg" alt="有限会社斉藤酒造場"></a>
-                    </div>
-                    <!-- ／写真 -->
-                    <!-- カードテキスト -->
-                    <div class="card_body">
-                        <!-- 酒蔵タイトル -->
-                        <div class="card_body_name">
-                            <a href="#">有限会社斉藤酒造場</a>
-                        </div>
-                        <!-- ／酒蔵タイトル -->
-                        <!-- 見学可不可 -->
-                        <div class="card_body_seeable">
-                            <p>酒蔵見学可</p>
-                        </div>
-                        <!-- ／見学可不可 -->
-                        <!-- 営業時間 -->
-                        <div class="card_body_time caption_text">
-                            <!-- 営業時間ヘッダ固定 -->
-                            <div class="card_body_time_header">
-                                <p>営業時間</p>
-                            </div>
-                            <!-- ／営業時間ヘッダ固定 -->
-                            <!-- 時間 -->
-                            <div class="card_body_time_hour">
-                                <p>
-                                    <span class="card_body_time_opening">8:00</span>
-                                    <span> - </span>
-                                    <span class="card_body_time_closing">20:00</span>
-                                </p>
-                            </div>
-                            <!-- ／時間 -->
-                            <!-- 曜日 -->
-                            <div class="card_body_time_buisiness">
-                                <p>月 - 土曜日(日・祝日休み)</p>
-                            </div>
-                            <!-- ／曜日 -->
-                            <!-- ／営業時間 -->
-                        </div>
-                        <!-- アドレス -->
-                        <div class="card_body_email">
-                            <a href="#">www.sekinoi.co.jp</a>
-                        </div>
-                        <!-- ／アドレス -->
-                    </div>
-                    <!-- ／カードテキスト -->
-                </div>
-                <!-- ／カード1 -->
-                <!-- カード1 -->
-                <div class="card">
-                    <!-- ピン -->
-                    <div class="card_pin">
-                        <!-- ピンナンバー -->
-                        <div class="card_pin_number">
-                            <p>1</p>
-                        </div>
-                        <!-- ／ピンナンバー -->
-                        <!-- ピン画像 -->
-                        <div class="card_pin_figure">
-                            <a href="#"><img src="../svg\mapicon1.28ｘ64.svg" alt="有限会社斉藤酒造場"></a>
-                        </div>
-                        <!-- ／ピン画像 -->
-                    </div>
-                    <!-- ／ピン -->
-                    <!-- 写真 -->
-                    <div class="card_figure">
-                        <a href="#"><img src="brewers_img/brewer.780x520.jpg" alt="有限会社斉藤酒造場"></a>
-                    </div>
-                    <!-- ／写真 -->
-                    <!-- カードテキスト -->
-                    <div class="card_body">
-                        <!-- 酒蔵タイトル -->
-                        <div class="card_body_name">
-                            <a href="#">有限会社斉藤酒造場</a>
-                        </div>
-                        <!-- ／酒蔵タイトル -->
-                        <!-- 見学可不可 -->
-                        <div class="card_body_seeable">
-                            <p>酒蔵見学可</p>
-                        </div>
-                        <!-- ／見学可不可 -->
-                        <!-- 営業時間 -->
-                        <div class="card_body_time caption_text">
-                            <!-- 営業時間ヘッダ固定 -->
-                            <div class="card_body_time_header">
-                                <p>営業時間</p>
-                            </div>
-                            <!-- ／営業時間ヘッダ固定 -->
-                            <!-- 時間 -->
-                            <div class="card_body_time_hour">
-                                <p>
-                                    <span class="card_body_time_opening">8:00</span>
-                                    <span> - </span>
-                                    <span class="card_body_time_closing">20:00</span>
-                                </p>
-                            </div>
-                            <!-- ／時間 -->
-                            <!-- 曜日 -->
-                            <div class="card_body_time_buisiness">
-                                <p>月 - 土曜日(日・祝日休み)</p>
-                            </div>
-                            <!-- ／曜日 -->
-                            <!-- ／営業時間 -->
-                        </div>
-                        <!-- アドレス -->
-                        <div class="card_body_email">
-                            <a href="#">www.sekinoi.co.jp</a>
-                        </div>
-                        <!-- ／アドレス -->
-                    </div>
-                    <!-- ／カードテキスト -->
-                </div>
-                <!-- ／カード1 -->
-                <!-- カード1 -->
-                <div class="card">
-                    <!-- ピン -->
-                    <div class="card_pin">
-                        <!-- ピンナンバー -->
-                        <div class="card_pin_number">
-                            <p>1</p>
-                        </div>
-                        <!-- ／ピンナンバー -->
-                        <!-- ピン画像 -->
-                        <div class="card_pin_figure">
-                            <a href="#"><img src="../svg\mapicon1.28ｘ64.svg" alt="有限会社斉藤酒造場"></a>
-                        </div>
-                        <!-- ／ピン画像 -->
-                    </div>
-                    <!-- ／ピン -->
-                    <!-- 写真 -->
-                    <div class="card_figure">
-                        <a href="#"><img src="brewers_img/brewer.780x520.jpg" alt="有限会社斉藤酒造場"></a>
-                    </div>
-                    <!-- ／写真 -->
-                    <!-- カードテキスト -->
-                    <div class="card_body">
-                        <!-- 酒蔵タイトル -->
-                        <div class="card_body_name">
-                            <a href="#">有限会社斉藤酒造場</a>
-                        </div>
-                        <!-- ／酒蔵タイトル -->
-                        <!-- 見学可不可 -->
-                        <div class="card_body_seeable">
-                            <p>酒蔵見学可</p>
-                        </div>
-                        <!-- ／見学可不可 -->
-                        <!-- 営業時間 -->
-                        <div class="card_body_time caption_text">
-                            <!-- 営業時間ヘッダ固定 -->
-                            <div class="card_body_time_header">
-                                <p>営業時間</p>
-                            </div>
-                            <!-- ／営業時間ヘッダ固定 -->
-                            <!-- 時間 -->
-                            <div class="card_body_time_hour">
-                                <p>
-                                    <span class="card_body_time_opening">8:00</span>
-                                    <span> - </span>
-                                    <span class="card_body_time_closing">20:00</span>
-                                </p>
-                            </div>
-                            <!-- ／時間 -->
-                            <!-- 曜日 -->
-                            <div class="card_body_time_buisiness">
-                                <p>月 - 土曜日(日・祝日休み)</p>
-                            </div>
-                            <!-- ／曜日 -->
-                            <!-- ／営業時間 -->
-                        </div>
-                        <!-- アドレス -->
-                        <div class="card_body_email">
-                            <a href="#">www.sekinoi.co.jp</a>
-                        </div>
-                        <!-- ／アドレス -->
-                    </div>
-                    <!-- ／カードテキスト -->
-                </div>
-                <!-- ／カード1 -->
+                                </div>
+                                <!-- ／カード1 -->
             </div>
             <!-- ／カードリスト -->
         </article>
@@ -781,12 +388,6 @@
                     <li><a href="#">吉田酒造㈱</a></li>
                     <li><a href="#">津乃峰酒造㈱</a></li>
                     <li><a href="#">近清酒造</a></li>
-                    <!-- <li><a href="#">那賀酒造㈲</a></li>
-                    <li><a href="#">花乃春酒造㈱</a></li>
-                    <li><a href="#">三拍子酒造㈱</a></li> -->
-                    <!-- <li><a href="#">鳴門酒造㈱</a></li>
-                    <li><a href="#">㈱本家松浦酒造場</a></li>
-                    <li><a href="#">㈱木内本店</a></li> -->
                 </ul>
             </div>
             <!-- ／酒蔵リスト -->
@@ -825,5 +426,4 @@
     <!-- ／フッター外枠 -->
 
 </body>
-
-</html>
+!</html>
