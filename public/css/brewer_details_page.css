@@ -186,11 +186,11 @@ ul {
     border-bottom: 1px solid #fff;
 }
 
-.price_list td {
+.price_list tr {
     border: none;
     border-bottom: 1px solid #d6d6d6;
 }
-.price:nth-child(3n) {
+.price_list tr:nth-child(3n) {
     border: none;
     border-bottom: 1px solid #fff;
 }

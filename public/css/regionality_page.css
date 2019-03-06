@@ -17,11 +17,12 @@
     text-decoration: none;
 }
 
+
 /*titles*/
 .title_box{
     width: 300px;
     height: 48px;
-    margin: 80px 0 0;
+
 }
 .title_logo{
     float: left;
@@ -32,28 +33,36 @@
     float: left;
 }
 
-/*contents01*/
+/*section01*/
+.box01{
+    margin: 80px 0 0;
+}
 .contents01{
     /* display: flex; */
     margin: 20px 0 40px 0;
 }
 .poem{
     display: flex;
-    width: 900px;
+    width: 1000px;
     margin: 80px auto;
+    align-content: center;
 }
 .poem img{
     width: 150px;
     height: 150px;
+    margin: 30px;
+    align-content: center;   
 }
 .poem_title{
-    width: 504px;
+    width: 550px;
     margin: 20px 0;
     font-size: 36px;
     color: #FF6347;
 }
-.poem li{
-    
+.text_box{
+    width: 750px;
+    line-height: 35px; 
+    letter-spacing: 3px;
     margin-left: 20px; 
     font-size: 20px;
 }
@@ -114,6 +123,9 @@
 } */
 
 /*contents02*/
+.section02{
+    margin: 80px 0 0;
+}
 .contents02{
     width: 1180px;
     height: 450px;
@@ -163,7 +175,7 @@
     margin: 0px auto;
     background-color: #F9F9F9;
     position: absolute;
-    top: 2565px;
+    top: 2640px;
 }
 .insta_icon{
     width: 300px;

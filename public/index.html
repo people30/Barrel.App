@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -67,9 +67,9 @@
             <!-- 現在のページは li にクラス selected を指定して表します -->
             <div class="header_menu">
                 <ul class="header_list">
-                    <li><a href="/barrel_app/public/#regionality">徳島の風土と日本酒</a></li>
+                    <li class="selected"><a href="/barrel_app/public/#regionality">徳島の風土と日本酒</a></li>
                     <li><a href="/barrel_app/public/sakes/">徳島の地酒</a></li>
-                    <li class="selected"><a href="/barrel_app/public/brewers/">徳島の酒蔵</a></li>
+                    <li><a href="/barrel_app/public/brewers/">徳島の酒蔵</a></li>
                     <li><a href="/barrel_stories/">読みもの</a></li>
                 </ul>
             </div>
@@ -119,59 +119,97 @@
 
         <article class="content">
             <!--contents01-->
-            <section>
+            <section class="box01">
                 <div class="title_box">
                     <img class="title_logo" src="./img/bar.8x48.png">
                     <h1 class="contents_title">徳島の風土と日本酒</h1>
                 </div>
 
                 <div class="contents01">
-                    
-                        <ul class="text_logo">
-                                <li><ul class="poem">
-                                    <li><img src="./img/navylogo01.svg"></li>
-                                    <li><p class="poem_title">県土で生まれた味わい</p>
-                                        徳島の風土と蔵元それぞれの持つ伝統、日々の営みが響きあい、大人が楽しめ<br>
-                                        る豊かな味が作り出されています。このサイトでは、徳島での酒蔵の活動と想<br>
-                                        いを紹介します。
-                                    </li>
-                                </ul></li>
+
+                    <ul class="text_logo">
+                        <li>
+                            <div class="poem">
+                                <div><img src="./img/navylogo01.svg"></div>
+                                <div class="text_box">
+                                    <p class="poem_title">県土で生まれた味わい</p>
+                                    徳島の風土と蔵元それぞれの持つ伝統、日々の営みが響きあい、大
+                                    人が楽しめる豊かな味が作り出されています。このサイトでは、徳
+                                    島での酒蔵の活動と想いを紹介します。
+                                </div>
+                            </div>
+                        <li>
+                            <div class="poem">
+                                <div><img src="./img/navylogo02.svg"></div>
+                                <div class="text_box">
+                                    <p class="poem_title">豊かな自然に育まれた「お米」</p>
+                                    徳島県の醸造に使われるお米は、「山田錦」や「美山錦」などの全
+                                    国的にも有名な酒造好適米をはじめ、その地域独自の酒米など
+                                    多種多様なものがあります。
+                                </div>
+                            </div>
+                        <li>
+                            <div class="poem">
+                                <div><img src="./img/navylogo03.svg"></div>
+                                <div class="text_box">
+                                    <p class="poem_title">「清流」の収束する吉野川</p>
+                                        そして、お米同様に重要な「水」にも恵まれています。徳島県では、
+                                        剣山山系や讃岐山脈からの伏流水が豊富な水源となり、酒造りに好
+                                        んで使われています。そのため、吉野川などの河川沿いに多くの
+                                        蔵元が存在しております。
+                                </div>
+                            </div>
+                        <li>
+                            <div class="poem">
+                                <div><img src="./img/navylogo04.svg"></div>
+                                <div class="text_box">
+                                    <p class="poem_title">判断と、試行錯誤の日々</p>
+                                        一見、このように生産資源に恵まれた徳島県ですが、自然すべてが
+                                        味方というわけではありません。醸造には通常、十分な寒さが
+                                        必要ですが、徳島県は温暖な地域なので温度管理に徹底した醸造が
+                                        行われています。そこには日々、上質な徳島酒を生み出すために
+                                        気候環境と戦う職人たちの試行錯誤重ねられています。
+                                </div>
+                            </div>
+                            <!-- </li>
                                 <li><ul class="poem">
                                     <li><img src="./img/navylogo02.svg"></li>
-                                    <li><p class="poem_title">豊かな自然に育まれた「お米」</p>
-                                        徳島県の醸造に使われるお米は、「山田錦」や「美山錦」などの全国的にも有<br>
-                                        名な酒造好適米をはじめ、その地域独自の酒米など<br>
+                                    <li class="text_box"><p class="poem_title">豊かな自然に育まれた「お米」</p>
+                                        徳島県の醸造に使われるお米は、「山田錦」や「美山錦」などの全<br>
+                                        国的にも有名な酒造好適米をはじめ、その地域独自の酒米など<br>
                                         多種多様なものがあります。
                                     </li>
                                 </ul></li>
                                 <li><ul class="poem">
                                         <li><img src="./img/navylogo03.svg"></li>
-                                        <li><p class="poem_title">「清流」の収束する吉野川</p>
-                                        そして、お米同様に重要な「水」にも恵まれています。徳島県では、剣山山系<br>
-                                        や讃岐山脈からの伏流水が豊富な水源となり、酒造りに好んで<br>
-                                        使われています。そのため、吉野川などの河川沿いに多くの蔵元が存在しております。
+                                        <li class="text_box"><p class="poem_title">「清流」の収束する吉野川</p>
+                                        そして、お米同様に重要な「水」にも恵まれています。徳島県では、<br>
+                                        剣山山系や讃岐山脈からの伏流水が豊富な水源となり、酒造りに好<br>
+                                        んで使われています。そのため、吉野川などの河川沿いに多くの<br>
+                                        蔵元が存在しております。
                                         </li>
                                 </ul></li>
                                 <li><ul class="poem">
                                         <li><img src="./img/navylogo04.svg"></li>
-                                        <li><p class="poem_title">判断と、試行錯誤の日々</p>
-                                        一見、このように生産資源に恵まれた徳島県ですが、自然すべてが味方というわけでは<br>
-                                        ありません。醸造には通常、十分な寒さが必要ですが、徳島県は温暖な地域なので温度<br>
-                                        管理に徹底した醸造が行われています。そこには日々、上質な徳島酒を生み出すために<br>
+                                        <li class="text_box"><p class="poem_title">判断と、試行錯誤の日々</p>
+                                        一見、このように生産資源に恵まれた徳島県ですが、自然すべてが<br>
+                                        味方というわけではありません。醸造には通常、十分な寒さが<br>
+                                        必要ですが、徳島県は温暖な地域なので温度管理に徹底した醸造が<br>
+                                        行われています。そこには日々、上質な徳島酒を生み出すために<br>
                                         気候環境と戦う職人たちの試行錯誤重ねられています。
                                         </li>
-                                </ul></li>
-                            </ul>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                                </ul></li> -->
+                    </ul>
+
+
+
+
+
+
+
+
+
+
                     <!-- 
                     <ul class="text_logo">
                         <li><img src="./img/navylogo01.svg"></li>
@@ -214,7 +252,7 @@
             <!--/contents01-->
 
             <!--contents02-->
-            <section>
+            <section class="box02">
                 <div class="title_box">
                     <img class="title_logo" src="./img/bar.8x48.png">
                     <h1 class="contents_title">Instagramギャラリー</h1>

@@ -44,67 +44,59 @@
     margin: 20px auto;
    }
 
-  /* div.sakedata1 {
-    width: 240px;
-  } */
+  div.sakedata1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+  } 
 
-  div.specific{
-    width: 100px;
+  p.specific{
     font-size:12px;
-    display: table-cell;
-    vertical-align: middle;
-    width: inherit;
-    height: inherit;
-    /* text-align: left; */
-    float: left;
-
+    flex:1;
   }
 
-  div.taste{
-    width: 100px;
+  p.taste{
     font-size:12px;
-    display: table-cell;
-    vertical-align: middle;
-    width: inherit;
-    height: inherit;
-    /* text-align: right; */
-    float: right;
-
+    flex:1;
+    text-align: right; 
   }
+
   .under {
-    border-bottom: solid 3px #87CEFA;
+    /* border-bottom: solid 3px #87CEFA; */
+    background: linear-gradient(transparent 50%, #78CFE5 50%);
   }
 
   div.brand{
     font-size:24px;
-    padding: 5px 0 0 0;
     text-align: left;
-    /* float: left; */
-
+    margin-bottom: 20px;
   }
 
   div.sakedata2 {
-    float: left;
-    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    margin: 40px atuo;
   }
 
   div.alcohol1{
-    display: table-cell;
+    margin-right: 8px;
   }
     div.alcohol2{
     font-size:12px;
-    display: table-cell;
+    flex:1;
+    margin-right: 21px;
   }
   span.alcohol{
     font-size:20px;
   }
 
   div.seimai1{
-    display: table-cell;
+    margin-right: 8px;
   }
   div.seimai2{
     font-size:12px;
-    display: table-cell;
+    /* display: table-cell; */
+    flex:1;
   }
   span.seimai{
     font-size:20px;
@@ -116,14 +108,16 @@
 
   div.price{
     font-size:20px;
-    padding: 23px 0 6px 0;
+    margin: 23px 0 6px 0;
   }
   span.capacity{
     font-size:12px;
+    margin-right: 8px;
   }
 
   span.tax{
     font-size:12px;
+    margin-left: 8px;
   }
 
   div.company{
