@@ -135,6 +135,9 @@ ul {
 .products_info li {
     margin: 10px 0;
 }
+.taste{
+    background: linear-gradient(transparent 50%, #78CFE5 50%);
+}
 
 .meigara {
     font-size: 24px;
@@ -187,7 +190,10 @@ ul {
     border: none;
     border-bottom: 1px solid #d6d6d6;
 }
-
+.price:nth-child(3n) {
+    border: none;
+    border-bottom: 1px solid #fff;
+}
 .price {
     font-size: 20px;
     padding-left: 20px;
