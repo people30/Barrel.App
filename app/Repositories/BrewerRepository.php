@@ -125,7 +125,12 @@ namespace App\Repositories
                 $brewer = Factory::factory(Models\Brewer::class, $i);
 
                 if($i->keyVisualFilename != null)
-                    $brewer->keyVisual = $this->photoRepository->getByBrewer($brewer, $i->keyVisualFilename);
+                {
+                    $brewer->keyVisual = $this->photoRepository->getBrewerAlbum($brewer)->first(function($p) use($i)
+                    {
+                        return $p->filename == $i->keyVisualFilename;
+                    });
+                }
 
                 return $brewer;
             });

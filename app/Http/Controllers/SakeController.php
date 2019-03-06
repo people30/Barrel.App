@@ -32,10 +32,10 @@ class SakeController extends Controller
         ]);
 
         $allBrewers = $this->brewerRepository->findAll();
-        $sakes = $this->sakeRepository->findAll();
+        $sakes = $this->sakeRepository->findAll($request->all());
         $tastes = $this->tasteRepository->findAll();
-        $designation = $this->designationRepository->findAll();
+        $designations = $this->designationRepository->findAll();
 
-        return view('App.Sakespage', compact('allBrewers', 'sakes', 'tastes', 'designation'));
+        return view('App.Sakespage', compact('allBrewers', 'sakes', 'tastes', 'designations'));
     }
 }

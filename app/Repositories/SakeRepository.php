@@ -12,13 +12,15 @@ namespace App\Repositories
         protected $tasteRepository;
         protected $designationRepository;
         protected $sizeRepository;
+        protected $photoRepository;
 
-        public function __construct(IBrewerRepository $brw, ITasteRepository $tst, IDesignationRepository $dsn, ISizeRepository $siz)
+        public function __construct(IBrewerRepository $brw, ITasteRepository $tst, IDesignationRepository $dsn, ISizeRepository $siz, IPhotoRepository $pht)
         {
             $this->brewerRepository = $brw;
             $this->tasteRepository = $tst;
             $this->designationRepository = $dsn;
             $this->sizeRepository = $siz;
+            $this->photoRepository = $pht;
         }
 
         public function find(array $params = []) : ?Models\Sake
@@ -125,10 +127,9 @@ namespace App\Repositories
             
             $designationIds = $items->map(function($i) { return $i->designationId; })->toArray();
             $designations = $this->designationRepository->getIn($designationIds);
-
             $sakeIds = $items->map(function($i) { return $i->id; })->toArray();
             $sizes = $this->sizeRepository->getValiationsIn($sakeIds);
-            
+
             $items = $items->map(function($i) use ($brewers, $tastes, $designations, $sizes)
             {
                 $i->brewer = $brewers->first(function($b) use ($i) { return $b->id == $i->brewerId; });
@@ -136,7 +137,17 @@ namespace App\Repositories
                 $i->designation = $designations->first(function($b) use ($i) { return $b->id == $i->designationId; });
                 $i->sizes = $sizes->filter(function($s) use($i) { return $s->sakeId == $i->id; });
 
-                return Factory::factory(Models\Sake::class, $i);
+                $sake = Factory::factory(Models\Sake::class, $i);
+
+                if($i->bottleFilename != null)
+                {
+                    $sake->bottle = $this->photoRepository->getSakeAlbum($sake)->first(function($p) use($i)
+                    {
+                        return $p->filename == $i->bottleFilename;
+                    });
+                }
+
+                return $sake;
             });
 
             return $items;

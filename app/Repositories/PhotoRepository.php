@@ -7,27 +7,32 @@ namespace App\Repositories
 
     class PhotoRepository implements IPhotoRepository
     {
-        public function getByBrewer(Models\Brewer $brewer, string $filename) : ?Models\Photo
-        {
-            return
-                $this->getAllByBrewer($brewer)
-                ->first(function($item) use($filename) { return $item->filename == $filename; });
-        }
-
-        public function getAllByBrewer(Models\Brewer $brewer) : Collection
+        public function getBrewerAlbum(Models\Brewer $brewer) : Collection
         {
             $files = $this->getFiles('/brewer/' . $brewer->slug);
             return $this->factory($files);
         }
-        
-        public function getBySake(Models\Sake $sake, string $filename) : ?Models\Photo
-        {
 
+        public function getBrewerAlbumsIn(Collection $brewers) : Collection
+        {
+            return $brewers->map(function($b)
+            {
+                return $this->getBrewerAlbum($b);
+            });
         }
         
-        public function getAllBySake(Models\Sake $sake) : Collection
+        public function getSakeAlbum(Models\Sake $sake) : Collection
         {
-
+            $files = $this->getFiles('/sake/' . $sake->slug . '/' . $sake->designation->slug);
+            return $this->factory($files);
+        }
+        
+        public function getSakeAlbumsIn(Collection $sakes) : Collection
+        {
+            return $sakes->map(function($s)
+            {
+                return $this->getSakeAlbum($s);
+            });
         }
 
         protected function factory(array $files) : Collection
