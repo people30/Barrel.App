@@ -16,6 +16,7 @@ namespace App\Models
         public $alcoholicity;
         public $rawRice;
         public $ricePollishingRatio;
+        public $content;
         public $text;
     }
 }

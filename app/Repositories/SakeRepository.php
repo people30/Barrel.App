@@ -53,12 +53,17 @@ namespace App\Repositories
 
             if(array_key_exists('id', $params) && is_int($params['id']))
             {
-                $query = $query->where('id', $params['id']);
+                $query = $query->where('sakes.id', $params['id']);
             }
 
             if(array_key_exists('slug', $params) && is_int($params['slug']))
             {
-                $query = $query->where('slug', $params['slug']);
+                $query = $query->where('sakes.slug', $params['slug']);
+
+                if(array_key_exists('designationSlug', $params) && is_int($params['designationSlug']))
+                {
+                    $query = $query->where('sakes.designation_slug', $params['designationSlug']);
+                }
             }
 
             if(array_key_exists('limit', $params) && is_int($params['limit']))
@@ -73,33 +78,33 @@ namespace App\Repositories
 
             if(array_key_exists('keyword', $params) && is_string($params['keyword']))
             {
-                $query = $query->where('name', 'like', '%' . $params['keyword'] . '%');
+                $query = $query->where('sakes.name', 'like', '%' . $params['keyword'] . '%');
             }
 
-            if(array_key_exists('tastes', $params) && is_array($params['tastes']))
+            if(array_key_exists('selectedPriceMax', $params) && is_int($params['selectedPriceMax']))
             {
-                foreach($params['tastes'] as $tasteId)
+                $query = $query->where('sizes.price', '<=', $params['selectedPriceMax']);
+            }
+
+            if(array_key_exists('selectedPriceMin', $params) && is_int($params['selectedPriceMin']))
+            {
+                $query = $query->where('sizes.price', '>=', $params['selectedPriceMin']);
+            }
+
+            if(array_key_exists('selectedDesignations', $params) && is_array($params['selectedDesignations']))
+            {
+                foreach($params['selectedDesignations'] as $designationId)
                 {
-                    $query = $query->orWhere('taste_id', $tasteId);
+                    $query = $query->orWhere('sakes.designation_id', $designationId);
                 }
             }
 
-            if(array_key_exists('designations', $params) && is_array($params['designations']))
+            if(array_key_exists('selectedTastes', $params) && is_array($params['selectedTastes']))
             {
-                foreach($params['designations'] as $designationId)
+                foreach($params['selectedTastes'] as $tasteId)
                 {
-                    $query = $query->orWhere('designation_id', $designationId);
+                    $query = $query->orWhere('sakes.taste_id', $tasteId);
                 }
-            }
-
-            if(array_key_exists('priceMax', $params) && is_int($params['priceMax']))
-            {
-                
-            }
-
-            if(array_key_exists('priceMin', $params) && is_int($params['priceMin']))
-            {
-                
             }
 
             return $query;
@@ -130,22 +135,27 @@ namespace App\Repositories
             $sakeIds = $items->map(function($i) { return $i->id; })->toArray();
             $sizes = $this->sizeRepository->getValiationsIn($sakeIds);
 
-            $items = $items->map(function($i) use ($brewers, $tastes, $designations, $sizes)
+            $grouped = $items->map(function($i) use ($brewers, $tastes, $designations, $sizes)
             {
                 $i->brewer = $brewers->first(function($b) use ($i) { return $b->id == $i->brewerId; });
                 $i->taste = $tastes->first(function($b) use ($i) { return $b->id == $i->tasteId; });
                 $i->designation = $designations->first(function($b) use ($i) { return $b->id == $i->designationId; });
-                $i->sizes = $sizes->filter(function($s) use($i) { return $s->sakeId == $i->id; });
 
-                $sake = Factory::factory(Models\Sake::class, $i);
+                return $i;
+            })
+            ->groupBy(function($i)
+            {
+                return $i->id;
+            });
 
-                if($i->bottleFilename != null)
+            $items = $grouped->map(function($group)
+            {
+                $sake = Factory::factory(Models\Sake::class, $group->first());
+
+                $sake->sizes = $group->map(function($i)
                 {
-                    $sake->bottle = $this->photoRepository->getSakeAlbum($sake)->first(function($p) use($i)
-                    {
-                        return $p->filename == $i->bottleFilename;
-                    });
-                }
+                    return Factory::factory(Models\Size::class, $i);
+                });
 
                 return $sake;
             });
@@ -168,20 +178,26 @@ namespace App\Repositories
         protected function select()
         {
             $query = \DB::table('sakes')
+                ->join('designations', 'designations.id', '=', 'sakes.designation_id')
+                ->join('sizes', 'sizes.sake_id', '=', 'sakes.id')
                 ->select(
-                    'id',
-                    'slug',
-                    'name',
-                    'order',
-                    'bottle_filename as bottleFilename',
-                    'brewer_id as brewerId',
-                    'designation_id as designationId',
-                    'taste_id as tasteId',
-                    'alcoholicity',
-                    'raw_rice as rawRice',
-                    'text'
+                    'sakes.id',
+                    'sakes.slug',
+                    'sakes.name',
+                    'sakes.order',
+                    'sakes.bottle_filename as bottleFilename',
+                    'sakes.brewer_id as brewerId',
+                    'sakes.designation_id as designationId',
+                    'designations.slug as designationSlug',
+                    'sakes.taste_id as tasteId',
+                    'sakes.alcoholicity',
+                    'sakes.raw_rice as rawRice',
+                    'sizes.content',
+                    'sizes.price',
+                    'sakes.text'
                 )
-                ->orderBy('order');
+                ->orderBy('order')
+                ->orderBy('content');
             
             return $query;
         }
