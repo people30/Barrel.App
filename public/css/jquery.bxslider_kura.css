@@ -24,6 +24,13 @@
       display: block;
     }
   }
+  @media(max-width: 800px){
+    .bx-wrapper img {
+      width: 130px;
+      height:130px;
+      display: block;
+    }
+  }
   .bxslider {
     margin: 0;
     padding: 0;

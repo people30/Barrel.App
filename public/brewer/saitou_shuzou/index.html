@@ -572,48 +572,37 @@
 
         <script>
             $(document).ready(function() {
-                var settings = function () {
-                    
-             
-                var settings1 = {
-                    moveSlides: 1,
-                    maxSlides: 3,
-                    minSlides: 1,
-                    touchEnabled: true,
-                    slideWidth: 380,
-                    slideMargin: 20,
-                    pager:false
-                };
-                var settings2 = {
-                    moveSlides: 1,
-                    maxSlides: 2,
-                    minSlides: 1,
-                    touchEnabled: true,
-                    slideWidth: 280,
-                    slideMargin: 20,
-                    pager:false
-                };
-                var settings3 = {
-                    moveSlides: 1,
-                    maxSlides: 1,
-                    minSlides: 1,
-                    touchEnabled: true,
-                    slideWidth: 130,
-                    slideMargin: 20,
-                    pager:false
-                };
-                return ($(window).width()>1240) ? settings1 : settings2;
-    }
+                var settings = function() {
+                    var settings1 = {
+                        moveSlides: 1,
+                        maxSlides: 3,
+                        minSlides: 1,
+                        touchEnabled: true,
+                        slideWidth: 380,
+                        slideMargin: 20,
+                        pager: false
+                    }
+                    var settings2 = {
+                        moveSlides: 1,
+                        maxSlides: 2,
+                        minSlides: 1,
+                        touchEnabled: true,
+                        slideWidth: 280,
+                        slideMargin: 20,
+                        pager: false
+                    }
+                    return $(window).width() > 1240 ? settings1 : settings2
+                }
 
-    var mySlider;
+                var mySlider
 
-    function slideSetting() {
-      mySlider.reloadSlider(settings());
-    }
+                function slideSetting() {
+                    mySlider.reloadSlider(settings())
+                }
 
-    mySlider = $('.slider').bxSlider(settings());
-    $(window).resize(slideSetting);
-  });
+                mySlider = $('.slider').bxSlider(settings())
+                $(window).resize(slideSetting)
+            })
         </script>
 
         <script
