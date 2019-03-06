@@ -1,85 +1,67 @@
 @charset "UTF-8";
 /* ###################共通プロパティ################################## */
-/* カードリストのマージントップボトム */
-.map_filter_area {
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-/* リンクテキスト設定 */
-a {
-    text-decoration: none;
-    color: #000;
-}
-.card_body_name {
-  font-size: 24px;
-}
-/* カードピンの層関係 */
-.card_pin {
-    width: 28px;
-    height: 64px;
-    z-index: 10;
-}
-/* カードピンの数字 */
-.card_pin_number {
-    z-index: 20;
-    color: #fff;
-}
-/* 見学可の文字色 */
-.card_body_seeable p{
-    color: #FF6347
-}
-/* カードの灰色の部分 */
-.card_body_time_header,
-.card_body_time_opening,
-.card_body_time_closing,
-.card_body_time_buisiness {
+
+/* フィルター選択外のテキストカラー */
+.map_filter a{
     color: #808080;
 }
-/* ####################レイアウト########################### */
+/*  フィルターメニューのアクティブフォントカラー */
+.map_filter p.selected > a{
+    color: #000 ;
+}
 
-@media (min-width: 1240px) {
-    /* カードを均等に並べる */
-.card_list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 280px);
-    grid-template-rows: auto;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px; }
-  
-}
-@media (max-width: 1239px) {
-    /* カードを均等に並べる */
-.card_list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 280px);
-    grid-template-rows: auto;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px; }
-  
-}
-@media (max-width: 800px) {
-    .card_list {
-        display: grid;
-        grid-template-columns: minmax(240px, 800px);
+
+
+@media(min-width: 1px) {
+
+    /* ページタイトルを非表示 */
+    .content_fluid h1{
+        display: none;
     }
-    .card {
-        grid-column: 1/-1;
+
+
+
+    /* リンクテキスト設定 */
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    .card_body_name {
+    font-size: 24px;
+    }
+    /* カードピンの層関係 */
+    .card_pin {
+        width: 28px;
+        height: 64px;
+        z-index: 10;
+    }
+    /* カードピンの数字 */
+    .card_pin_number {
+        z-index: 20;
+        color: #fff;
+    }
+    /* 見学可の文字色 */
+    .card_body_seeable p{
+        color: #FF6347
+    }
+    /* カードの灰色の部分 */
+    .card_body_time_header,
+    .card_body_time_opening,
+    .card_body_time_closing,
+    .card_body_time_buisiness {
+        color: #808080;
     }
 }
+
 /* ################フィルター####################################### */
 
-/* ###########プロパティ############### */
-
-@media (min-width: 1240px) {
- 
-}
-@media (max-width: 1239px) {
-
-}
- @media (max-width: 800px) {
-}
 /* ##########フィルターレイアウト############ */
 @media (min-width: 1240px) {
+        /* フィルターリストのマージントップボトム */
+        .map_filter_area {
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
     /* フィルター最大サイズ */
     .map_filter {
         width: 580px;
@@ -96,7 +78,7 @@ a {
             grid-column: 1/2;
             grid-row: auto;            
             display: grid;
-            grid-template-rows: auto 20px auto;
+            grid-template-rows: 6px 20px 6px;
             grid-column: repeat(8, auto);
         }
             .filter_all {
@@ -115,9 +97,12 @@ a {
                 grid-row: 2/3;
                 grid-column: 4;
             }
+            /* 中央寄せ */
             .filter_available_img {
                 grid-row: 1/-1;
                 grid-column: 5;
+                display: grid;
+                justify-content: center;
             }
             .filter_available {
                 grid-row: 2/3;
@@ -126,6 +111,8 @@ a {
             .filter_not_available_img {
                 grid-row: 1/-1;
                 grid-column: 7;
+                display: grid;
+                justify-content: center;
             }
             .filter_not_available {
                 grid-row: 2/3;
@@ -133,6 +120,11 @@ a {
             }
 }
 @media (max-width: 1239px) {
+    /* フィルターリストのマージントップボトム */
+    .map_filter_area {
+        margin-top: 20px;
+        margin-bottom: 60px;
+    }
     /* フィルター全体サイズ */
     .map.filter {
         max-width: 400px;
@@ -150,7 +142,7 @@ a {
             grid-row: 2/3;
             display: grid;
             grid-column: repeat(8, auto);
-            grid-template-rows: auto 20px auto;
+            grid-template-rows: 6px 20px 6px;
         }
             .filter_all {
                 grid-column: 1;
@@ -186,10 +178,14 @@ a {
             }
 }
  @media (max-width: 800px) {
+    /* フィルターリストのマージントップボトム */
+    .map_filter_area {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
      .map_filter_area {
          margin-left: 20px;
      }
-
     .map_filter_area {
         grid-column: 2/3;
         grid-row: 2/3;
@@ -199,8 +195,8 @@ a {
             grid-column: 1/-1;
             grid-row: 2/3;
             display: grid;
-            grid-template-columns: 2fr 2fr 2fr 1fr 2fr 3fr 2fr;
-            grid-template-rows: repeat(5, 1fr)
+            grid-template-columns: 2fr 2fr 2fr 2fr 3fr 2fr;
+            grid-template-rows: 1fr 1fr 6px 20px 38px 
         }
             .filter_all {
                 grid-column: 1;
@@ -220,7 +216,7 @@ a {
             }
             /* 右寄せ */
             .filter_west {
-                grid-column: 5;
+                grid-column: 4;
                 grid-row: 1;
                 text-align: right;
             }
@@ -238,19 +234,19 @@ a {
             }
             /* 右寄せ */
             .filter_not_available_img {
-                grid-column: 5;
+                grid-column: 4;
                 grid-row: 3/-1;
                 text-align: right;
             }
             /* 右寄せ */
             .filter_not_available {
-                grid-column: 6/7;
+                grid-column: 5/6;
                 grid-row: 4;
                 text-align: center;
             }
 }
+/* ####################カードリストレイアウト########################### */
 
-/* #################カードリストのレイアウト########################## */
 @media (min-width: 1240px) {
     /* カードを均等に並べる */
     .card_list {
@@ -259,7 +255,37 @@ a {
         grid-template-rows: auto;
         grid-column-gap: 20px;
         grid-row-gap: 20px; }
-
+    
+    }
+    @media (max-width: 1239px) {
+        /* カードを均等に並べる */
+    .card_list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 280px);
+        grid-template-rows: auto;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px; }
+    
+    }
+    @media (max-width: 800px) {
+        .card_list {
+            display: grid;
+            grid-template-columns: minmax(240px, 800px);
+        }
+        .card {
+            grid-column: 1/-1;
+        }
+}
+/* #################カードリストのレイアウト########################## */
+@media (min-width: 1240px) {
+    /* カードを均等に並べる */
+    .card_list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 280px);
+        grid-template-rows: auto;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px; 
+    }
         /* カードサイズ */
     .card {
         width: 280px;
@@ -268,10 +294,9 @@ a {
     .card_figure img{
         widows: 240px;
         height: 240px;
-        object-fit: contain;
+        object-fit: cover;
+        overflow: hidden;
     }
-    
-  
 }
 @media (max-width: 1239px) {
     /* カードを均等に並べる */
@@ -289,11 +314,9 @@ a {
     .card_figure img{
         widows: 240px;
         height: 240px;
-        object-fit: contain;
+        object-fit: cover;
+        overflow: hidden;
     }
-        
-    
-  
 }
 @media (max-width: 800px) {
     .card_list {
@@ -307,13 +330,13 @@ a {
         height: auto;
     }
 
-    }
+}
 /* ##########カード内部のレイアウト############ */
 @media (min-width: 1240px) {
     
 /* カードボーダー色 スマホサイズはいらない*/ 
 .card { 
-    border: 1px solid #808080;
+    border: 1px solid #D6D6D6;
     }
 .card {
     display: grid;
@@ -329,7 +352,7 @@ a {
         .card_pin_number {
             position: absolute;
             left: 10px;
-            top: 0;
+            top: -15px;
         }
         .card_pin_figure {
            position: absolute;
@@ -340,6 +363,12 @@ a {
     .card_figure {
         grid-column: 2/3;
         grid-row: 2/3;
+        width: 240px;
+        height: 240px;
+        overflow: hidden;
+    }
+    .card_figure img {
+        transform: translateX(-60px);
     }
     .card_body {
         grid-column: 2/3;
@@ -382,7 +411,7 @@ a {
     
 /* カードボーダー色 スマホサイズはいらない*/ 
 .card { 
-    border: 1px solid #808080;
+    border: 1px solid #D6D6D6;
     }
 .card {
     display: grid;
@@ -398,7 +427,7 @@ a {
         .card_pin_number {
             position: absolute;
             left: 10px;
-            top: 0;
+            top: -15px;
         }
         .card_pin_figure {
            position: absolute;
@@ -409,13 +438,19 @@ a {
     .card_figure {
         grid-column: 2/3;
         grid-row: 2/3;
+    width: 240px;
+    height: 240px;
+    overflow: hidden;
+    }
+    .card_figure img {
+        transform: translateX(-60px);
     }
     .card_body {
-        grid-column: 2/3;
-        grid-row: -2/-3;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: repeat(4, 1fr);
+    grid-column: 2/3;
+    grid-row: -2/-3;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, 1fr);
     }
         .card_body_name {
             grid-row: 1/2;
@@ -457,6 +492,18 @@ a {
         width: 100%;
         height: auto;
     }
+
+    /* 蔵写真 */
+    .card_figure {
+    width: auto;
+    height: auto;
+    overflow: visible;
+    }
+    .card_figure img {
+    transform: translateX(0px);
+}
+
+
     /* カードボーダーなし */
     .card { 
         border: none;
@@ -476,7 +523,7 @@ a {
         .card_pin_number {
             position: absolute;
             left: 10px;
-            top: 0;
+            top: -15px;
         }
         .card_pin_figure {
            position: absolute;
