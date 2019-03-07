@@ -73,14 +73,14 @@ namespace App\Repositories
             $grouped = [];
             $files = [];
 
-            if(($cache = \Cache::get($directory)) !== null)
+            if(!env('APP_DEBUG') && ($cache = \Cache::get($directory)) !== null)
             {
                 $files = explode("\n", $cache);
             }
             else
             {
                 $files = \Storage::disk('public')->files($directory);
-                \Cache::put($directory, implode("\n", $files,), now()->addSeconds(3600 * 5));
+                if(count($files) > 0 ) \Cache::put($directory, implode("\n", $files), now()->addSeconds(3600 * 5));
             }
 
             foreach($files as $filepath)
