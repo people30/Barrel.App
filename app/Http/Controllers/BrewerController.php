@@ -11,13 +11,15 @@ class BrewerController extends Controller
     protected $areaRepository;
     protected $photoRepository;
     protected $sakeRepository;
+    protected $articleRepository;
 
-    public function __construct(Repositories\IBrewerRepository $brw, Repositories\IAreaRepository $ara, Repositories\IPhotoRepository $pht, Repositories\ISakeRepository $sak)
+    public function __construct(Repositories\IBrewerRepository $brw, Repositories\IAreaRepository $ara, Repositories\IPhotoRepository $pht, Repositories\ISakeRepository $sak, Repositories\IArticleRepository $art)
     {
         $this->brewerRepository = $brw;
         $this->areaRepository = $ara;
         $this->photoRepository = $pht;
         $this->sakeRepository = $sak;
+        $this->articleRepository = $art;
     }
 
     public function index(Request $request)
@@ -78,7 +80,7 @@ class BrewerController extends Controller
         $brewer = $allBrewers->first(function($b) use($slug) { return $b->slug == $slug; });
         $photos = $this->photoRepository->getBrewerAlbum($brewer);
         $products = $this->sakeRepository->getProducts($brewer);
-        $stories = collect([]);
+        $stories = $this->articleRepository->getStories($brewer);
 
         return view('App.BrewerDetailsPage', compact('allBrewers', 'brewer', 'photos', 'stories', 'products'));
     }
