@@ -1,85 +1,110 @@
 @charset "utf-8";
-/*body{
-    width: 1180px;
-    margin: 0 auto;
-}
+
 /*keyvisual*/
+.body {
+    display: block;
+    /* grid-template-columns: minmax(20px, 1fr) 1180px minmax(20px,1fr);
+        grid-template-rows: minmax(80px, auto) auto 400px; */
+
+    position: relative;
+}
+.content_fluid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 
 /*navmenu*/
-.menu nav{
-    position: absolute;
+.top_logo{
+    width: 300px;
+    height: 300px;
 }
-.menu li{
-    margin: 20px auto;
+.first_menu {
+    position: absolute;
+    top: 0;
+    left: 160px;
+}
+.menu {
+    background-color: rgba(0, 0, 0, 0.329);
+    /* padding-bottom: 79%; */
+}
+.menu ul{
+margin-top:60px;
+padding-bottom: 79%;
+}
+.menu li {
+    margin: 40px auto;
+    
     font-size: 24px;
 }
-.menu a{
+.menu a {
     text-decoration: none;
+    color: #fff;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 /*titles*/
-.title_box{
+.title_box {
     width: 300px;
     height: 48px;
-
 }
-.title_logo{
+.title_logo {
     float: left;
 }
-.contents_title{
+.contents_title {
     margin: 14px;
     font-size: 24px;
     float: left;
 }
 
 /*section01*/
-.box01{
+.box01 {
     margin: 80px 0 0;
 }
-.contents01{
+.contents01 {
     /* display: flex; */
     margin: 20px 0 40px 0;
 }
-.poem{
+.poem {
     display: flex;
     width: 1000px;
     margin: 80px auto;
     align-content: center;
 }
-.poem img{
+.poem img {
     width: 150px;
     height: 150px;
     margin: 30px;
-    align-content: center;   
+    align-content: center;
 }
-.poem_title{
+.poem_title {
     width: 550px;
     margin: 20px 0;
     font-size: 36px;
-    color: #FF6347;
+    color: #ff6347;
 }
-.text_box{
+.text_box {
     width: 750px;
-    line-height: 35px; 
+    line-height: 35px;
     letter-spacing: 3px;
-    margin-left: 20px; 
+    margin-left: 20px;
     font-size: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* .text_logo ul{
     margin: 40px 0;
@@ -123,61 +148,57 @@
 } */
 
 /*contents02*/
-.section02{
+.section02 {
     margin: 80px 0 0;
 }
-.contents02{
+.contents02 {
     width: 1180px;
     height: 450px;
     margin: 60px 0 40px 0;
 }
 
 /*Instagramギャラリー*/
-.photo_box{
- z-index: 2;
+.photo_box {
+    z-index: 2;
     width: 1115px;
     height: 250px;
     margin: 0 auto;
 }
-.test01{
+.test01 {
     width: 250px;
     height: 250px;
     z-index: 5;
     margin: 0 10px 0 20px;
-
 }
-.test02{
+.test02 {
     width: 250px;
     height: 250px;
     z-index: 5;
     margin: 0 10px 0 10px;
-
 }
-.test03{
+.test03 {
     width: 250px;
     height: 250px;
     z-index: 5;
     margin: 0 10px 0 10px;
-
 }
-.test04{
+.test04 {
     width: 250px;
     height: 250px;
     z-index: 5;
     margin: 0 20px 0 10px;
-
 }
-.photo_back{
+.photo_back {
     z-index: -1;
     width: 1180px;
     height: 80px;
     padding: 0;
     margin: 0px auto;
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
     position: absolute;
     top: 2640px;
 }
-.insta_icon{
+.insta_icon {
     width: 300px;
     height: 70px;
     margin: 90px 0;

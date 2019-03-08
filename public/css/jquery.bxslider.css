@@ -9,15 +9,20 @@
     *zoom: 1;
     -ms-touch-action: pan-y;
     touch-action: pan-y;
+    margin: 0;
   }
   .bx-wrapper img {
     width: 100vw;
     height: 100vh;
     display: block;
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
   }
   .bxslider {
     margin: 0;
     padding: 0;
+
   }
   ul.bxslider {
     list-style: none;
@@ -25,21 +30,25 @@
   .bx-viewport {
     /*fix other elements on the page moving (on Chrome)*/
     -webkit-transform: translatez(0);
+    left: 0;
+    box-shadow: none;
+    border: none;
   }
   /** THEME
   ===================================*/
-  .bx-wrapper {
+  /* .bx-wrapper {
     -moz-box-shadow: 0 0 5px #ccc;
     -webkit-box-shadow: 0 0 5px #ccc;
     box-shadow: 0 0 5px #ccc;
     border: 5px solid #fff;
     background: #fff;
-  }
+  } */
   .bx-wrapper .bx-pager,
   .bx-wrapper .bx-controls-auto {
     position: absolute;
     bottom: -30px;
-    width: 100%;
+    width: auto;
+    /* width: 100%; */
   }
   /* LOADER */
   .bx-wrapper .bx-loading {
@@ -67,7 +76,7 @@
     display: block;
     width: 10px;
     height: 10px;
-    margin: 0 5px;
+    margin: 0 0;
     outline: 0;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -130,7 +139,7 @@
     height: 11px;
     outline: 0;
     background: url('images/controls.png') -86px -11px no-repeat;
-    margin: 0 3px;
+    margin: 0 0;
   }
   .bx-wrapper .bx-controls-auto .bx-start:hover,
   .bx-wrapper .bx-controls-auto .bx-start.active,
@@ -144,7 +153,7 @@
     height: 11px;
     outline: 0;
     background: url('images/controls.png') -86px -44px no-repeat;
-    margin: 0 3px;
+    margin: 0 0;
   }
   .bx-wrapper .bx-controls-auto .bx-stop:hover,
   .bx-wrapper .bx-controls-auto .bx-stop.active,

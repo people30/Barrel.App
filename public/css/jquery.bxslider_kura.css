@@ -24,13 +24,15 @@
       display: block;
     }
   }
-  @media(max-width: 800px){
+
+  @media(min-width: 1239px){
     .bx-wrapper img {
-      width: 130px;
-      height:130px;
+      width: 280px;
+      height: 184px;
       display: block;
     }
   }
+
   .bxslider {
     margin: 0;
     padding: 0;
