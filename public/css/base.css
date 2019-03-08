@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+/* #######################resetCSS########################## */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -43,12 +43,13 @@ table {
 	border-spacing: 0;
 }
 /* ###########################カラー設定################################ */
-/* ベースカラー（白）　→ #ffffff
-メインカラー（藍色）　→ #4A6F95
-アクセントカラー１（水色）　→ #58E4FF
-アクセントカラー２（オレンジ）　→ #FF6347 
-薄水色 #B1D3E2
-グレー #808080
+/*  
+ベースカラー（白）　                #ffffff
+メインカラー（藍色）　→             #4A6F95
+アクセントカラー１（水色）  →       #58E4FF
+アクセントカラー２（オレンジ）　→   #FF6347 
+薄水色                          #B1D3E2
+グレー                          #808080
 
 リンクテキストの基本色、ホバーの色
 /* 黒
@@ -94,6 +95,7 @@ body {
     margin-left: -7px;
 }
 
+/* タイトル装飾バー */
 .title_text::before {
     content: url(../img/bar.8x48.png);
     position: relative;
@@ -114,8 +116,6 @@ body,
     font-size: 12px;
     line-height: 16px;
 }
-
-/* ###########################グリッドレイアウト###################### */
 
 /* ####################### 1240px以上 ############################# */
 
@@ -226,7 +226,7 @@ body,
                 }
 }
 
-/* ############################# 1239px以下 ################################# */
+/* ####################### 1239px以下 ################################# */
 
 @media (max-width: 1239px) {
 
@@ -334,7 +334,7 @@ body,
                 }
 }
 
-/* ############################## 800px ################################ */
+/* ######################## 800px ################################ */
 
 @media (max-width: 800px) {
 
@@ -502,12 +502,10 @@ body.open .fa-bars {
 .footer_brewery li a:hover {
     color: #cccccc;
 }
-
 /*  酒蔵リストタイトル */
 .footer_brewery_title {
     color: #fff;
 }
-
 /*  注意書き */
 .footer_note p {
     color: #B1D3E2;
@@ -534,14 +532,19 @@ body.open .fa-bars {
     color: #CCCCCC;
 }
 /* ######################その他の設定######################################### */
-
 /*  サイズ別その他の設定
 
 /* メインコンテンツの上下のマージン設定 */
-.main_area {
-    margin-top: 60px;
-    margin-bottom: 80px;
+@media (max-width: 800px) {
+
 }
+@media (max-width: 1239px) {
+
+}
+@media (min-width: 1240px) {
+
+}
+
 /* ############################## 800px以下 ################################ */
 
 @media (max-width: 800px) {
@@ -565,10 +568,14 @@ body.open .fa-bars {
     .header_menu {
         width: auto;
     }
-
     /*  SNSのテキスト幅調整 */
     .sns a{
         margin-right: 20px;
+    }
+    /* メインのマージン */
+    .main_area {
+        margin-top: 60px;
+        margin-bottom: 20px;
     }
 }
 
@@ -628,6 +635,10 @@ body.open .fa-bars {
         display: flex;
         align-items: flex-end;
     }
+    .main_area {
+        margin-top: 60px;
+        margin-bottom: 80px;
+    }
 }
 
 /* ####################### 1240px以上 ############################# */
@@ -666,5 +677,9 @@ body.open .fa-bars {
     .footer_note {
         display: flex;
         align-items: flex-end;
+    }
+    .main_area {
+        margin-top: 60px;
+        margin-bottom: 80px;
     }
 }
