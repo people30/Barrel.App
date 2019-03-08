@@ -78,6 +78,9 @@ class BrewerController extends Controller
     {
         $allBrewers = $this->brewerRepository->findAll();
         $brewer = $allBrewers->first(function($b) use($slug) { return $b->slug == $slug; });
+
+        if($brewer == null) abort(404);
+
         $photos = $this->photoRepository->getBrewerAlbum($brewer);
         $products = $this->sakeRepository->getProducts($brewer);
         $stories = $this->articleRepository->getStories($brewer);
