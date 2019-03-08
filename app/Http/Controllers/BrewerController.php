@@ -24,32 +24,52 @@ class BrewerController extends Controller
     {
         $request->validate([
             'selectedArea' => 'integer',
-            'backstageSeeableStatus' => 'in:seeable,unseeable'
+            'backstageTour' => 'in:available,unavailable'
         ]);
 
-        $params = $request->all();
         $areas = $this->areaRepository->findAll();
         $allBrewers = $this->brewerRepository->findAll();
-        $brewers = $allBrewers->filter(function($b) use($params) {
-            // エリアに一致
-            $areaMatched = true;
-            
-            if(array_key_exists('selectedAreaId', $params))
-                $areaMatched = $b->area->id == (int)$params['selectedAreaId'];
 
-            // 蔵の見学ができるかどうか
-            $backstageSeeableStatusMatched = true;
-
-            if(array_key_exists('backstageSeeableStatus', $params))
-            {
-                $check = $params['backstageSeeableStatus'] == 'seeable';
-                $backstageSeeableStatusMatched = $b->isBackstageSeeable == $check;
-            }
-            
-            return $areaMatched && $backstageSeeableStatusMatched;
+        $selectedAreaId = 
+            $request->has('selectedArea')
+            ? (int)$request->input('selectedArea', null)
+            : null;
+        $selectedArea = $areas->first(function($a) use($selectedAreaId)
+        {
+            return $a->id == $selectedAreaId;
         });
 
-        return view('App.BrewersPage', compact('allBrewers', 'areas', 'brewers'));
+        $backstageTour = $request->input('backstageTour', null);
+
+        $brewers = $allBrewers->filter(function($b) use($selectedArea, $backstageTour)
+        {
+            // エリアが選択された時
+            if($selectedArea !== null)
+            {
+                $areaMatched = $b->area->id == $selectedArea->id;
+            }
+            // エリアが未指定の時
+            else
+            {
+                $areaMatched = true;
+            }
+
+            // 蔵見学の指定がある時
+            if($backstageTour !== null)
+            {
+                $check = $backstageTour == 'available';
+                $backstageTourMatched = $b->isBackstageSeeable == $check;
+            }
+            // 蔵見学の指定がない時
+            else
+            {
+                $backstageTourMatched = true;
+            }
+            
+            return $areaMatched && $backstageTourMatched;
+        });
+
+        return view('App.BrewersPage', compact('allBrewers', 'areas', 'brewers', 'selectedArea', 'backstageTour'));
     }
 
     public function show(Request $request, string $slug)
