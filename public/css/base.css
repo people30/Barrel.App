@@ -1,0 +1,685 @@
+@charset "UTF-8";
+/* #######################resetCSS########################## */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* ###########################カラー設定################################ */
+/*  
+ベースカラー（白）　                #ffffff
+メインカラー（藍色）　→             #4A6F95
+アクセントカラー１（水色）  →       #58E4FF
+アクセントカラー２（オレンジ）　→   #FF6347 
+薄水色                          #B1D3E2
+グレー                          #808080
+
+リンクテキストの基本色、ホバーの色
+/* 黒
+#000000
+#333333
+
+灰色
+#808080
+#999999
+
+青
+#4A6F95
+#5796C6
+
+オレンジ
+#FF6347
+#FB7861
+
+白
+#FFFFFF
+#CCCCCC
+
+灰色濃
+#4C5861
+#374149 */
+
+/* Noto Sans JP bodyフォント */
+body {
+    font-family: "Noto Sans JP";
+}
+/* フォントサイズ設定 */
+.header_text {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+/* タイトルテキスト */
+/* マージンレフトで力業 */
+.title_text {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    margin-left: -7px;
+}
+
+/* タイトル装飾バー */
+.title_text::before {
+    content: url(../img/bar.8x48.png);
+    position: relative;
+    top: 0;
+    left: -13px;
+}
+
+.subtitle_text {
+    font-size: 20px;
+    line-height: 24px;
+}
+body,
+.body_text {
+    font-size: 15px;
+    line-height: 20px;
+}
+.caption_text {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+/* ####################### 1240px以上 ############################# */
+
+@media (min-width: 1240px) {
+
+    /* 全体のグリッドレイアウト */
+    body {
+        display: grid;
+        grid-template-columns: minmax(20px, 1fr) 1180px minmax(20px,1fr);
+        grid-template-rows: minmax(80px, auto) auto 400px;
+    }
+        /*  スティッキーヘッダー */
+        .sticky {
+            grid-column: 1/-1;
+            grid-row: 1/2;
+            display: grid;
+            grid-template-columns: minmax(20px, 1fr) 1180px minmax(20px,1fr); 
+            grid-template-rows: minmax(80px, auto);
+        }
+            /*  ヘッダーエリア */
+            .header_area {
+                grid-column: 2/-2;
+                grid-row: 1/2;
+                display: grid;
+                grid-template-columns: 40px 40px auto;
+                grid-template-rows: 20px 40px 20px;
+            }
+                /*  ヘッダーロゴ */
+                .header_logo {
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+                /*  ヘッダーメニュー */
+                .header_menu {
+                    grid-column: 3/4;
+                    grid-row: 2/3;
+                }
+                /*  ヘッダートグルボタン(PCタブレットでは非表示) */
+                .header_btn {
+                    display: none;
+                    grid-column: 4/5;
+                    grid-row: 2/3;
+                }
+        /*  メインエリア */
+        .main_area {
+            grid-column: 1/-1;
+            grid-row: 2/-2;
+            display: grid;
+            grid-template-columns: minmax(20px, 1fr) 1180px minmax(20px,1fr);
+            grid-template-rows: auto auto;
+        }
+            /* フルイドコンテンツ */
+            .content_fluid {
+                grid-column: 1/-1;
+                grid-row: 1/2;
+            }
+            /*  メインコンテンツ */
+            .content {
+                grid-column: 2/3;
+                grid-row: 2/3;
+            }
+        /*  フッターエリア */
+        .footer_area {
+            grid-column: 1/-1;
+            grid-row: -2/-1;
+            display: grid;
+            grid-template-columns: minmax(20px, 1fr) 1180px minmax(20px,1fr);
+            grid-template-rows: 400px;
+        }
+
+            /*  フッター内枠 */
+            .footer_list {
+                grid-column: 2/-2;
+                grid-row: -1/-2;
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr;
+                grid-template-rows: 80px auto auto auto auto 40px;
+            }
+                /*  酒蔵タイトル */
+                .footer_brewery_title {
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+                /*  酒蔵リスト */
+                .footer_brewery {
+                    grid-column: 1/2;
+                    grid-row: 3/5;
+                }
+                /*  フッターメニュー */
+                .footer_menu {
+                    grid-column: 3/4;
+                    grid-row: 2/4;
+                }
+                /*  SNSアイコン */
+                .sns {
+                    grid-column: 3/4;
+                    grid-row: 4/5;
+                }
+                /*  注意書き */
+                .footer_note {
+                    grid-column: 1/2;
+                    grid-row: 5/6;
+                }
+                /*  コピーライト */
+                .copyright {
+                    grid-column: 3/4;
+                    grid-row: 5/6;
+                }
+}
+
+/* ####################### 1239px以下 ################################# */
+
+@media (max-width: 1239px) {
+
+    /* 全体のグリッドレイアウト */
+    body {
+        display: grid;
+        grid-template-columns: minmax(20px, 1fr) 580px minmax(20px,1fr);
+        grid-template-rows: minmax(80px,auto) auto 600px;
+    }
+        /*  スティッキーヘッダー */
+        .sticky {
+            grid-column: 1/-1;
+            grid-row: 1/2;
+            display: grid;
+            grid-template-columns: minmax(20px, 1fr) 580px minmax(20px,1fr); 
+            grid-template-rows: minmax(80px, auto);
+        }
+            /*  ヘッダーエリア */
+            .header_area {
+                grid-column: 2/-2;
+                grid-row: 1/2;
+                display: grid;
+                grid-template-columns: 40px 40px auto;
+                grid-template-rows: 20px 40px 20px;
+            }
+                /*  ヘッダーロゴ */
+                .header_logo {
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+                /*  ヘッダーメニュー */
+                .header_menu {
+                    grid-column: 3/4;
+                    grid-row: 2/3;
+                }
+                /*  ヘッダートグルボタン(非表示) */
+                .header_btn {
+                    display: none;
+                    grid-column: 4/5;
+                    grid-row: 2/3;
+                }
+        /*  メインエリア */
+        .main_area {
+            grid-column: 1/-1;
+            grid-row: 2/-2;
+            display: grid;
+            grid-template-columns: minmax(20px, 1fr) 580px minmax(20px,1fr); 
+            grid-template-rows: auto auto;
+        }
+            /* 横幅いっぱいのコンテンツ */
+            .content_fluid {
+                grid-column: 1/-1;
+                grid-row: 1/2;
+            }
+            /*  メインコンテンツ */
+            .content {
+                grid-column: 2/3;
+                grid-row: 2/3;
+            }
+        /*  フッターエリア */
+        .footer_area {
+            grid-column: 1/-1;
+            grid-row: -2/-1;
+            display: grid;
+            grid-template-columns: minmax(20px, 1fr) 580px minmax(20px,1fr);
+            grid-template-rows: 600px;
+        }
+            /*  フッター内側 */
+            .footer_list {
+                grid-column: 2/3;
+                grid-row: 1/-1;
+                display: grid;
+                grid-template-columns: 1fr 20px 1fr;
+                grid-template-rows: 80px auto auto auto auto auto auto 40px;
+            }
+                /*  酒蔵タイトル */
+                .footer_brewery_title {
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+                /*  酒蔵リスト */
+                .footer_brewery {
+                    grid-column: 1/2;
+                    grid-row: 3/6;
+                }
+                /*  フッターメニュー */
+                .footer_menu {
+                    grid-column: 3/4;
+                    grid-row: 2/4;
+                }
+                /*  SNSアイコン */
+                .sns {
+                    grid-column: 3/4;
+                    grid-row: 4/5;
+                }
+                /*  注意書き */
+                .footer_note {
+                    grid-column: 1/-1;
+                    grid-row: 6/7;
+                }
+                /*  コピーライト */
+                .copyright {
+                    grid-column: 1/2;
+                    grid-row: 7/8;
+                }
+}
+
+/* ######################## 800px ################################ */
+
+@media (max-width: 800px) {
+
+    /* 全体のグリッドレイアウト */
+    body {
+        display: grid;
+        grid-template-columns: 20px auto 20px;
+        grid-template-rows: minmax(80px, auto) auto 260px;
+    }
+        /*  スティッキーヘッダー */
+        .sticky {
+            grid-column: 1/-1;
+            grid-row: 1/2;
+            display: grid;
+            grid-template-columns: 20px auto 20px;
+            grid-template-rows: minmax(80px, auto);
+        }
+            /*  ヘッダーエリア */
+            .header_area {
+                grid-column: 2/-2;
+                grid-row: 1/2;
+                display: grid;
+                grid-template-columns: 40px 1fr 40px;
+                grid-template-rows: 20px 40px 20px auto;
+            }
+                /*  ヘッダーロゴ */
+                .header_logo {
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+                /*  ヘッダートグルボタン */
+                .header_btn {
+                    display: block;
+                    grid-column: -1/-2;
+                    grid-row: 2/3;
+                }
+                /*  ヘッダーメニュー */
+                .header_menu {
+                    grid-column: 1/-1;
+                    grid-row: -1/-2;
+                }
+        /*  メインエリア */
+        .main_area {
+            grid-column: 1/-1;
+            grid-row: 2/3;
+            display: grid;
+            grid-template-columns: 20px auto 20px;
+            grid-template-rows: auto auto;
+        }
+            /* 横幅いっぱいのコンテンツ */
+            .content_fluid {
+                grid-column: 1/-1;
+                grid-row: 1/2;
+            }
+            /*  メインコンテンツ */
+            .content {
+                grid-column: 2/3;
+                grid-row: 2/3;
+            }
+        /*  フッターエリア */
+        .footer_area {
+            grid-column: 1/-1;
+            grid-row: -2/-1;
+            display: grid;
+            grid-template-columns: minmax(20px, 1fr) auto minmax(20px,1fr);
+            grid-template-rows: 260px; 
+        }
+            /*  フッター内側 */
+            .footer_list {
+                grid-column: 2/3;
+                grid-row: 1/-1;
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: 40px 40px 1fr 3fr 20px 1fr 20px;
+            }
+                /*  酒蔵リストタイトル */
+                .footer_brewery_title {
+                    display: none;
+                }
+                /*  酒蔵リスト */
+                .footer_brewery {
+                    display: none;
+                }
+                /*  フッターメニュー */
+                .footer_menu {
+                    display: none;
+                }
+                /*  SNSアイコン */
+                .sns {
+                    grid-column: 1/-1;
+                    grid-row: 2/3;
+                }
+                /*  注意書き */
+                .footer_note {
+                    grid-column: 1/-1;
+                    grid-row: 4/5;
+                }
+                /*  コピーライト */
+                .copyright {
+                    grid-column: 1/-1;
+                    grid-row: 6/7;
+                }
+}
+
+/* ########################ヘッダー設定################################### */
+
+/*  ヘッダーの背景カラー */
+.sticky {
+    background-color: #fff;
+    z-index: 100;
+
+}
+/*  ヘッダーメニューの文字色 */
+.header_list a{
+    color: #808080;
+    text-decoration: none;
+}
+/*  ヘッダーメニューのアクティブページナビフォントカラー */
+.header_list li.selected > a{
+    color: #4A6F95 ;
+}
+/*  スティッキーヘッダー設定 */
+.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+/*    メニューボタンのデザイン */
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+button:focus {
+    outline: none;
+}
+/*  トグルボタン開閉で入れ替え */
+body:not(.open) .fa-times {
+    display: none;
+}
+body.open .fa-bars {
+    display: none;
+}
+/*  トグルボタン中央寄せ */
+.header_btn {
+    justify-self: end;
+    align-self: center;
+}
+/* #######################フッター設定###################################### */
+
+/*  フッターエリアのバックグラウンドカラー */
+.footer_area {
+    background-color: #4A6F95;
+}
+/*  酒蔵リストの行間 */
+.footer_brewery {
+    line-height: 24px;
+}
+/*  酒蔵リスト */
+.footer_brewery li a{
+    color: #fff;
+    text-decoration: none;
+}
+/* 酒倉リストタイトルホバー */
+.footer_brewery li a:hover {
+    color: #cccccc;
+}
+/*  酒蔵リストタイトル */
+.footer_brewery_title {
+    color: #fff;
+}
+/*  注意書き */
+.footer_note p {
+    color: #B1D3E2;
+}
+/*  コピーライト */
+.copyright {
+    color: #B1D3E2;
+}
+/*  SNSアイコン */
+.sns a {
+    color: #000;
+    text-decoration: none;
+}
+/* SNSアイコンホバー */
+.sns a:hover {
+    color:#333333;
+}
+/*  フッターメニュー */
+.footer_menu a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.footer_menu a:hover {
+    color: #CCCCCC;
+}
+/* ######################その他の設定######################################### */
+/*  サイズ別その他の設定
+
+/* メインコンテンツの上下のマージン設定 */
+@media (max-width: 800px) {
+
+}
+@media (max-width: 1239px) {
+
+}
+@media (min-width: 1240px) {
+
+}
+
+/* ############################## 800px以下 ################################ */
+
+@media (max-width: 800px) {
+    /*  スマホ用ヘッダーメニュー設定 */
+    .header_menu {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s ease-out;
+    }
+    .header_menu ul{
+        flex-direction: column;
+        margin-top: 40px;
+    }
+    .header_menu li {
+        line-height: 40px;
+    }
+    .header_menu  li a {
+        font-size: 24px;
+    }
+    /*  ヘッダーメニュー高さ設定 */
+    .header_menu {
+        width: auto;
+    }
+    /*  SNSのテキスト幅調整 */
+    .sns a{
+        margin-right: 20px;
+    }
+    /* メインのマージン */
+    .main_area {
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+}
+
+/* ############################# 800px以上 ################################# */
+
+@media (min-width: 800px) {
+    /*  その他の設定 */
+
+    /*  ヘッダーの下部マージン・・・特になし */
+
+    /*  ヘッダーメニューのテキスト設定 */
+    .header_menu ul {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+    }
+
+    .header_menu li a {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .header_menu li a:link,
+    .header_menu li a:visited {
+        color: #808080;
+    }
+
+    .header_menu li a:hover,
+    .header_menu li a:active {
+        color: #999999;
+    }
+
+    .header_menu li.selected a:link,
+    .header_menu li.selected a:visited {
+        color: #4A6F95;
+    }
+
+    .header_menu li.selected a:hover,
+    .header_menu li.selected a:active {
+        color: #5796C6;
+    }
+
+    .header_menu li:last-child a {
+        margin-right: 0px;
+    }
+
+    /*  フッターリンクメニューの行間 */
+    .footer_menu {
+        line-height: 40px;
+    }
+    /*  SNSのテキスト幅調整 */
+    .sns a{
+        margin-right: 20px;
+    }
+    /*  コピーライト下揃え */
+    .copyright {
+        display: flex;
+        align-items: flex-end;
+    }
+    .main_area {
+        margin-top: 60px;
+        margin-bottom: 80px;
+    }
+}
+
+/* ####################### 1240px以上 ############################# */
+
+@media (min-width: 1240px) {
+    /*   その他の設定            */
+
+    /*  酒蔵リストカラム調整 */
+    .footer_brewery {
+        column-count: 2;
+    }
+    /*  リンクメニューの行間 */
+    .footer_menu {
+        line-height: 40px;
+    }
+    /*  SNSのテキスト幅調整 */
+    .sns a{
+        margin-right: 20px;
+    }
+    /*  マージンレフトで行頭そろえ */
+    .footer_menu{
+        margin-left: 20px;
+    }
+    /*  SNSアイコン位置調整 */
+    .sns {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    /*  コピーライト下揃え */
+    .copyright {
+        margin-left: 20px;
+        display: flex;
+        align-items: flex-end;
+    }
+    /*  注意書き下揃え */
+    .footer_note {
+        display: flex;
+        align-items: flex-end;
+    }
+    .main_area {
+        margin-top: 60px;
+        margin-bottom: 80px;
+    }
+}
