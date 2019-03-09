@@ -39,7 +39,7 @@
                 <!-- トグルボタン -->
                 <button class="header_btn" onclick="navFunc()">
                     <span><img src="{{ asset('/svg/hamburger_menu02.svg') }}" width="40" height="40" alt="" class="fa-times"></span>
-                    <span><img src="{{ asset('/svg/hamburger_menu01.svg') }}" alt="" width="40" height="40" class="fa-bars"></span>
+                    <span><img src="{{ asset('/svg/hamburger_menu01.svg') }}" width="40" height="40" alt="" class="fa-bars"></span>
                 </button>
                 <!-- ／トグルボタン -->
                 <!-- メニュー -->
@@ -49,7 +49,7 @@
                         <li><a href="{{ route('RegionalityPage') }}/#regionality">徳島の風土と日本酒</a></li>
                         <li><a href="{{ route('SakesPage') }}/">徳島の地酒</a></li>
                         <li class="selected"><a href="{{ route('BrewersPage') }}/">徳島の酒蔵</a></li>
-                        <li><a href="{{ env('WP_URL') }}/">読みもの</a></li>
+                        <li><a href="{{ env('WP_URL') }}">読みもの</a></li>
                     </ul>
                 </div>
                 <!-- ／メニュー -->
@@ -197,10 +197,10 @@
                 <!-- フッターリンクメニュー -->
                 <div class="footer_menu subtitle_text">
                     <ul>
-                        <li><a href="../index.html#regionality">徳島の風土と日本酒</a></li>
-                        <li><a href="../sakes/index.html">徳島の地酒</a></li>
-                        <li><a href="../brewers/index.html">徳島の酒蔵</a></li>
-                        <li><a href="../../../barrel-stories/index.html">読みもの</a></li>
+                        <li><a href="{{ route('RegionalityPage') }}/#regionality">徳島の風土と日本酒</a></li>
+                        <li><a href="{{ route('SakesPage') }}/">徳島の地酒</a></li>
+                        <li><a href="{{ route('BrewersPage') }}/">徳島の酒蔵</a></li>
+                        <li><a href="{{ env('WP_URL') }}">読みもの</a></li>
                     </ul>
                 </div>
                 <!-- ／フッターリンクメニュー -->
