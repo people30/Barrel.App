@@ -78,12 +78,21 @@ class BrewerController extends Controller
     {
         $allBrewers = $this->brewerRepository->findAll();
         $brewer = $allBrewers->first(function($b) use($slug) { return $b->slug == $slug; });
+        $errors = collect([]);
 
         if($brewer == null) abort(404);
 
         $photos = $this->photoRepository->getBrewerAlbum($brewer);
         $products = $this->sakeRepository->getProducts($brewer);
-        $stories = $this->articleRepository->getStories($brewer);
+
+        try
+        {
+            $stories = $this->articleRepository->getStories($brewer);
+        }
+        catch(\Throwable $th)
+        {
+            $stories = collect([]);
+        }
 
         return view('App.BrewerDetailsPage', compact('allBrewers', 'brewer', 'photos', 'stories', 'products'));
     }

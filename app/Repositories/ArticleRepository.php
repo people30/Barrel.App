@@ -2,6 +2,7 @@
 
 namespace App\Repositories
 {
+    use App\Exceptions;
     use App\Models;
     use App\Factories\Factory;
     use Illuminate\Support\Collection;
@@ -9,17 +10,32 @@ namespace App\Repositories
 
     class ArticleRepository implements IArticleRepository
     {
+        protected $wpUrl;
+
+        public function __construct()
+        {
+            $this->wpUrl = env('WP_URL');
+
+            if(empty($this->wpUrl)) throw new Exceptions\WpUrlUnregisterdException();
+        }
+
         public function getStories(Models\Brewer $brewer) : Collection
         {
-            $catId = $this->getCategoryId($brewer);
+            try
+            {
+                $catId = $this->getCategoryId($brewer);
+                $client = new Client();
 
-            $client = new Client();
+                $res = $client->request('GET', $this->wpUrl . '/wp-json/wp/v2/posts', ['categories' => $catId]);
+                $body = (string)$res->getBody();
+                $body = json_decode($body);
 
-            $res = $client->request('GET', env('WP_URL') . '/wp-json/wp/v2/posts', ['categories' => $catId]);
-            $body = (string)$res->getBody();
-            $body = json_decode($body);
-
-            return collect($body);
+                return collect($body);
+            }
+            catch(\Throwable $th)
+            {
+                return collect([]);
+            }
         }
 
         protected function getCategoryId(Models\Brewer $brewer) : int
@@ -32,6 +48,8 @@ namespace App\Repositories
             ->where('brewer_id', $brewer->id)
             ->get()
             ->first();
+
+            if($row === null) throw new Exceptions\BrewerPostCategoryUnregisteredException($brewer);
 
             return $row->postCategoryId;
         }
