@@ -25,21 +25,16 @@ namespace App\Repositories
             try
             {
                 $catId = $this->getCategoryId($brewer);
-                $client = new Client();
+                $posts = collect($this->getPostsCacheByCategory($catId));
 
-                $res = $client->request(
-                    'GET',
-                    $this->wpUrl . '/wp-json/wp/v2/posts',
-                    [
-                        'query' => ['categories' => $catId]
-                    ]
-                );
-                $body = (string)$res->getBody();
-                $posts = collect(json_decode($body));
+                if(count($posts) < 1)
+                {
+                    $posts = collect($this->getPostsByCategory($catId));
+                }
 
                 $postIds = $posts->map(function($post) { return $post->id; })->toArray();
-                $categories = $this->getPostCategoriesIn($postIds);
-                $tags = $this->getPostTagsIn($postIds);
+                $categories = $this->getCategoriesInPosts($postIds);
+                $tags = $this->getTagsInPosts($postIds);
 
                 $posts = $posts->map(function($raw) use($categories, $tags)
                 {
@@ -65,11 +60,65 @@ namespace App\Repositories
                 // return collect([]);
             }
         }
+
+        protected function putPostsCacheByCategory(int $catId, string $raw) : void
+        {
+            \Cache::put('stories.category.' . $catId . '.posts', $raw, now()->addSeconds(300));
+        }
+
+        protected function getPostsCacheByCategory(int $catId) : array
+        {
+            $cache = \Cache::get('stories.category.' . $catId . '.posts');
+
+            if($cache == null) return [];
+
+            return json_decode($cache);
+        }
+
+        protected function getPostsByCategory(int $catId) : array
+        {
+            $client = new Client();
+
+            $res = $client->request(
+                'GET',
+                $this->wpUrl . '/wp-json/wp/v2/posts',
+                [
+                    'query' => [
+                        'categories' => $catId,
+                        'per_page' => 3
+                    ]
+                ]
+            );
+
+            $body = $res->getBody();
+            $this->putPostsCacheByCategory($catId, $body);
+            $body = json_decode($body);
+
+            return $body;
+        }
+
+        protected function getCategoryId(Models\Brewer $brewer) : int
+        {
+            $row = \DB::table('brewer_post_categories')
+            ->select(
+                'brewer_id as brewerId',
+                'post_category_id as postCategoryId'
+            )
+            ->where('brewer_id', $brewer->id)
+            ->get()
+            ->first();
+
+            if($row === null) throw new Exceptions\BrewerPostCategoryUnregisteredException($brewer);
+
+            return $row->postCategoryId;
+        }
+
+        #region category
         
-        protected function getPostCategoriesIn(array $postIds) : Collection
+        protected function getCategoriesInPosts(array $postIds) : Collection
         {
             $promises = [];
-            $caches = $this->getPostCategoryCaches($postIds);
+            $caches = $this->getCategoriesCacheInPosts($postIds);
             
             // キャッシュが存在すれば新規取得をしないために投稿 ID リストから削除する
             foreach($caches as $postId => $cache)
@@ -78,7 +127,7 @@ namespace App\Repositories
                 unset($postIds[$postId]);
             }
 
-            $postRaw = collect($caches + $this->getPostCategoryRaws($postIds));
+            $postRaw = collect($caches + $this->getCategoryRawsInPosts($postIds));
             $grouped = collect([]);
 
             foreach($postRaw as $postId => $catsRaw)
@@ -102,7 +151,7 @@ namespace App\Repositories
             return $grouped;
         }
 
-        protected function getPostCategoryRaws(array $postIds) : array
+        protected function getCategoryRawsInPosts(array $postIds) : array
         {
             $client = new Client();
             $promises = [];
@@ -125,7 +174,7 @@ namespace App\Repositories
                 $raw = $response['value']->getBody();
 
                 if(!env('APP_DEBUG'))
-                    $this->putPostCategoryCache($postId, $raw);
+                    $this->putCategoriesCacheByPost($postId, $raw);
 
                 return [ $postId => json_decode($raw) ];
             })
@@ -134,18 +183,18 @@ namespace App\Repositories
             return $raws;
         }
 
-        protected function putPostCategoryCache(int $postId, string $raw) : void
+        protected function putCategoriesCacheByPost(int $postId, string $raw) : void
         {
-            \Cache::put('stories.' . $postId . '.categories', $raw, now()->addSeconds(300));
+            \Cache::put('stories.post.' . $postId . '.categories', $raw, now()->addSeconds(300));
         }
 
-        protected function getPostCategoryCaches(array $postIds) : array
+        protected function getCategoriesCacheInPosts(array $postIds) : array
         {
             $caches = [];
 
             foreach($postIds as $postId)
             {
-                $cache = json_decode(\Cache::get('stories.' . $postId . '.categories'));
+                $cache = json_decode(\Cache::get('stories.post.' . $postId . '.categories'));
 
                 if($cache != null)
                 {
@@ -155,13 +204,15 @@ namespace App\Repositories
 
             return $caches;
         }
+        
+        #endregion
 
         #region Tags
         
-        protected function getPostTagsIn(array $postIds) : Collection
+        protected function getTagsInPosts(array $postIds) : Collection
         {
             $promises = [];
-            $caches = $this->getPostTagCaches($postIds);
+            $caches = $this->getTagsCacheInPosts($postIds);
             
             // キャッシュが存在すれば新規取得をしないために投稿 ID リストから削除する
             foreach($caches as $postId => $cache)
@@ -170,7 +221,7 @@ namespace App\Repositories
                 unset($postIds[$postId]);
             }
 
-            $postRaw = collect($caches + $this->getPostTagRaws($postIds));
+            $postRaw = collect($caches + $this->getTagsRawInPosts($postIds));
             $grouped = collect([]);
 
             foreach($postRaw as $postId => $catsRaw)
@@ -194,7 +245,7 @@ namespace App\Repositories
             return $grouped;
         }
 
-        protected function getPostTagRaws(array $postIds) : array
+        protected function getTagsRawInPosts(array $postIds) : array
         {
             $client = new Client();
             $promises = [];
@@ -217,7 +268,7 @@ namespace App\Repositories
                 $raw = $response['value']->getBody();
 
                 if(!env('APP_DEBUG'))
-                    $this->putPostTagCache($postId, $raw);
+                    $this->putTagsCahceInPost($postId, $raw);
 
                 return [ $postId => json_decode($raw) ];
             })
@@ -226,18 +277,18 @@ namespace App\Repositories
             return $raws;
         }
 
-        protected function putPostTagCache(int $postId, string $raw) : void
+        protected function putTagsCahceInPost(int $postId, string $raw) : void
         {
-            \Cache::put('stories.' . $postId . '.tags', $raw, now()->addSeconds(300));
+            \Cache::put('stories.post.' . $postId . '.tags', $raw, now()->addSeconds(300));
         }
 
-        protected function getPostTagCaches(array $postIds) : array
+        protected function getTagsCacheInPosts(array $postIds) : array
         {
             $caches = [];
 
             foreach($postIds as $postId)
             {
-                $cache = json_decode(\Cache::get('stories.' . $postId . '.tags'));
+                $cache = json_decode(\Cache::get('stories.post.' . $postId . '.tags'));
 
                 if($cache != null)
                 {
@@ -249,21 +300,5 @@ namespace App\Repositories
         }
 
         #endregion
-        
-        protected function getCategoryId(Models\Brewer $brewer) : int
-        {
-            $row = \DB::table('brewer_post_categories')
-            ->select(
-                'brewer_id as brewerId',
-                'post_category_id as postCategoryId'
-            )
-            ->where('brewer_id', $brewer->id)
-            ->get()
-            ->first();
-
-            if($row === null) throw new Exceptions\BrewerPostCategoryUnregisteredException($brewer);
-
-            return $row->postCategoryId;
-        }
     }
 }
