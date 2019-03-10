@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories;
+use App\Exceptions;
 use Illuminate\Http\Request;
 
 class BrewerController extends Controller
@@ -89,9 +90,21 @@ class BrewerController extends Controller
         {
             $stories = $this->articleRepository->getStories($brewer);
         }
-        catch(\Throwable $th)
+        catch(Exceptions\BrewerPostCategoryUnregisteredException $th)
         {
             $stories = collect([]);
+        }
+        catch(\Throwable $th)
+        {
+            if(env('APP_DEBUG'))
+            {
+                throw $th;
+            }
+            else
+            {
+                \Log::error($th->getMessage());
+                $stories = collect([]);
+            }
         }
 
         return view('App.BrewerDetailsPage', compact('allBrewers', 'brewer', 'photos', 'stories', 'products'));
