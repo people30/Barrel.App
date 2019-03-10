@@ -1,52 +1,112 @@
 @charset "utf-8";
+/*feid in*/
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 /*keyvisual*/
-.body {
-    display: block;
-    /* grid-template-columns: minmax(20px, 1fr) 1180px minmax(20px,1fr);
-        grid-template-rows: minmax(80px, auto) auto 400px; */
 
+.top_sticky {
+    position: sticky;
+    height: 80px;
+}
+
+.header_menu {
+    background: #fff;
+}
+.slider{
     position: relative;
 }
-.content_fluid {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
 
 /*navmenu*/
-.top_logo{
-    width: 300px;
-    height: 300px;
+.top_logo {
+    margin-top: 80px;
+    width: 400px;
+    height: 400px;
 }
+
 .first_menu {
     position: absolute;
     top: 0;
     left: 160px;
+    z-index: 3;
 }
+
 .menu {
-    background-color: rgba(0, 0, 0, 0.329);
-    /* padding-bottom: 79%; */
+    background-color: rgba(0, 0, 0, 0.596);
+    height: 100vh;
+    position: relative;
 }
-.menu ul{
-margin-top:60px;
-padding-bottom: 79%;
+
+.menu ul {
+    margin-top: 60px;
+
 }
+
 .menu li {
-    margin: 40px auto;
-    
+    margin: 0 40px 20px;
     font-size: 24px;
+    color: #fff
 }
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+}
+.brewer_info {
+    position: absolute;
+    bottom: 40px;
+
+}
+
+
+@media (max-width: 1240px){
+
+.top_logo {
+    width: 240px;
+    height: 240px;
+}
+
+.first_menu {
+
+    left: 270px;
+}
+
+.menu ul {
+    margin-top: 40px;
+
+}
+
+.menu li {
+    margin: 0 40px 20px;
+    font-size: 15px;
+    color: #fff
+}
+
 .menu a {
     text-decoration: none;
     color: #fff;
 }
 
+.brewer_info {
+    position: absolute;
+    bottom: 40px;
+
+}
+.brewer_info li {
+    margin-bottom: 0;
+}
+
+
+
+} 
 
 
 
@@ -54,18 +114,69 @@ padding-bottom: 79%;
 
 
 
+@media (max-width: 800px) {
+
+
+
+
+
+    .content_fluid {
+        left: 0;
+    }
+
+    .first_menu {
+        left: 35px;
+    }
+
+    .top_logo {
+        margin-top: 80px;
+        width: 224px;
+        height: 224px;
+    }
+
+    .menu ul {
+        margin-top: 60px;
+
+    }
+
+    .menu li {
+        margin: 20px;
+        font-size: 15px;
+    }
+
+}
 
 
 
 
 /*titles*/
+
+
+
 .title_box {
     width: 300px;
     height: 48px;
+    margin: auto 0;
 }
-.title_logo {
+
+.logos {
+    display: flex;
+    justify-content: space-between;
+    animation-name: fadein;
+    animation-duration: 2s;
+
+}
+
+.title_logo01 {
     float: left;
 }
+
+.title_logo02 {
+    width: 310px;
+    height: 80px;
+    margin: auto 0;
+}
+
 .contents_title {
     margin: 14px;
     font-size: 24px;
@@ -74,30 +185,35 @@ padding-bottom: 79%;
 
 /*section01*/
 .box01 {
-    margin: 80px 0 0;
+    margin: 0 0 40px;
 }
+
 .contents01 {
     /* display: flex; */
-    margin: 20px 0 40px 0;
+    margin: 0;
 }
+
 .poem {
     display: flex;
     width: 1000px;
-    margin: 80px auto;
-    align-content: center;
+    margin: 60px auto;
+    align-items: center;
 }
+
 .poem img {
     width: 150px;
     height: 150px;
     margin: 30px;
     align-content: center;
 }
+
 .poem_title {
     width: 550px;
     margin: 20px 0;
     font-size: 36px;
-    color: #ff6347;
+    color: #FF6347;
 }
+
 .text_box {
     width: 750px;
     line-height: 35px;
@@ -106,54 +222,16 @@ padding-bottom: 79%;
     font-size: 20px;
 }
 
-/* .text_logo ul{
-    margin: 40px 0;
-}
-.text_logo img{
-    width: 150px;
-    height: 150px;
-    padding: 0;
-    margin: 40px 20px 40px 80px;
-}
-.top_text{
-    width: 780px;
-    float: left;
-}
-.top_text dl{
-    width: 780px;
-    margin: 0 20px 0 0;
-}
-.top_text dt{
-    width: 504px;
-    margin: 80px 0 30px 0;
-    font-size: 36px;
-    color: #FF6347;
-}
-.top_text dd{
-    width: 780px;
-    margin: 0;
-    font-size: 20px;
-}
-.text01{
-    margin: 77px 0 77px 20px; 
-}
-.text02{
-    margin: 140px 0 77px 20px;
-}
-.text03{
-    margin: 130px 0 77px 20px;
-}
-.text04{
-    margin: 115px 0 77px 20px;
-} */
+
 
 /*contents02*/
-.section02 {
-    margin: 80px 0 0;
+.box02 {
+    margin: 100px 0 80px;
 }
+
 .contents02 {
     width: 1180px;
-    height: 450px;
+    height: 350px;
     margin: 60px 0 40px 0;
 }
 
@@ -164,43 +242,372 @@ padding-bottom: 79%;
     height: 250px;
     margin: 0 auto;
 }
-.test01 {
+
+.photo01 {
     width: 250px;
-    height: 250px;
+    height: auto;
     z-index: 5;
     margin: 0 10px 0 20px;
 }
-.test02 {
+
+.photo01 img {
+    width: 100%;
+    height: auto;
+}
+
+a:hover img.photo01 {
+    opacity: 0.6;
+    filter: brightness(110%);
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+
+.photo02 {
+    width: 250px;
+    height: auto;
+    z-index: 5;
+    margin: 0 10px 0 10px;
+}
+
+.photo02 img {
+    width: 100%;
+    height: auto;
+}
+
+a:hover img.photo02 {
+    opacity: 0.6;
+    filter: brightness(110%);
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+
+.photo03 {
     width: 250px;
     height: 250px;
     z-index: 5;
     margin: 0 10px 0 10px;
 }
-.test03 {
-    width: 250px;
-    height: 250px;
-    z-index: 5;
-    margin: 0 10px 0 10px;
+
+.photo03 img {
+    width: 100%;
+    height: auto;
 }
-.test04 {
+
+a:hover img.photo03 {
+    opacity: 0.6;
+    filter: brightness(110%);
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+
+.photo04 {
     width: 250px;
     height: 250px;
     z-index: 5;
     margin: 0 20px 0 10px;
 }
+
+.photo04 img {
+    width: 100%;
+    height: auto;
+}
+
+a:hover img.photo04 {
+    opacity: 0.6;
+    filter: brightness(110%);
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+
 .photo_back {
     z-index: -1;
     width: 1180px;
     height: 80px;
     padding: 0;
     margin: 0px auto;
-    background-color: #f9f9f9;
+    background-color: #F9F9F9;
     position: absolute;
-    top: 2640px;
+    top: 2580px;
 }
+
 .insta_icon {
-    width: 300px;
-    height: 70px;
-    margin: 90px 0;
+    width: 250px;
+    height: 40px;
+    margin: 90px 0 20px;
     float: right;
+    transition-duration: 0.5s;
 }
+
+a:hover img.insta_icon {
+    transform: scale(1.1, 1.1);
+    /*画像の拡大*/
+    cursor: pointer;
+    /*カーソルをポインターにする*/
+}
+
+
+
+/*レスポンシブ対応タブレット*/
+@media (max-width: 1239px) {
+
+    /*titles*/
+    .title_logo02 {
+        width: 160px;
+        height: 40px;
+        margin: auto 0;
+    }
+
+    /*cotents01*/
+    .poem {
+        display: flex;
+        width: 580px;
+        margin: 60px auto;
+        align-items: center;
+    }
+
+    .poem img {
+        width: 75px;
+        height: 75px;
+        margin: 70px 15px;
+    }
+
+    .poem_title {
+        width: 400px;
+        margin: 20px 0;
+        font-size: 24px;
+    }
+
+    .text_box {
+        width: 450px;
+        line-height: 35px;
+        letter-spacing: 3px;
+        margin-left: 15px;
+        font-size: 15px;
+    }
+
+    /*contents02*/
+    .contents02 {
+        width: 580px;
+        height: 270px;
+        margin: 60px 0;
+    }
+
+    .photo_box {
+        z-index: 2;
+        width: 535px;
+        height: 130px;
+        margin: 0 auto;
+    }
+
+    .photo01 {
+        width: 130px;
+        height: auto;
+        z-index: 5;
+        margin: auto;
+    }
+
+    .photo01 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .photo02 {
+        width: 130px;
+        height: auto;
+        z-index: 5;
+        margin: auto;
+    }
+
+    .photo02 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .photo03 {
+        width: 130px;
+        height: auto;
+        z-index: 5;
+        margin: auto;
+    }
+
+    .photo03 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .photo04 {
+        width: 130px;
+        height: auto;
+        z-index: 5;
+        margin: auto;
+    }
+
+    .photo04 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .photo_back {
+        z-index: -1;
+        width: 580px;
+        height: 50px;
+        padding: 0;
+        margin: 0px auto;
+        background-color: #F9F9F9;
+        position: absolute;
+        top: 2470px;
+    }
+
+    .insta_icon {
+        width: 120px;
+        height: 25px;
+        margin: 60px 0;
+    }
+}
+
+
+/*レスポンシブ対応スマホ*/
+@media (max-width: 750px) {
+
+
+    /*titles*/
+    .logos {
+        width: 100%;
+
+        display: flex;
+
+    }
+
+    .title_logo02 {
+        width: 160px;
+        height: 40px;
+        margin: auto 0;
+    }
+
+    /*cotents01*/
+    .contents01 {
+        width: 250px;
+    }
+
+    .box01 {
+        margin: 40px 0 20px;
+    }
+
+    .text_logo {
+        width: 250px;
+    }
+
+    .poem {
+        display: flex;
+        width: 270px;
+        margin: 40px auto;
+        align-content: center;
+    }
+
+    .poem img {
+        width: 50px;
+        height: 50px;
+        margin: 0px;
+        align-content: center;
+    }
+
+    .poem_title {
+        width: 280px;
+        margin: 0 0 20px;
+        font-size: 20px;
+    }
+
+    .text_box {
+        width: 270px;
+        line-height: 20px;
+        letter-spacing: 2px;
+        margin-left: 12px;
+        font-size: 12px;
+    }
+
+
+    /*contents02*/
+    .box02 {
+        margin: 20px 0 40px;
+    }
+
+    .contents02 {
+        width: 320px;
+        height: 155px;
+        margin: 40px 0;
+    }
+
+    .photo_box {
+        z-index: 2;
+        width: 280px;
+        height: 130px;
+        margin: 0 auto;
+    }
+
+    .photo01 {
+        width: 130px;
+        height: auto;
+        z-index: 5;
+        margin: auto;
+    }
+
+    .photo01 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .photo02 {
+        width: 130px;
+        z-index: 5;
+        margin: auto;
+    }
+
+    .photo02 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .photo03 {
+        display: none;
+    }
+
+    .photo04 {
+        display: none;
+    }
+
+    .photo_back {
+        z-index: -1;
+        width: 320px;
+        height: 50px;
+        padding: 0;
+        margin: 0px auto;
+        background-color: #F9F9F9;
+        position: absolute;
+        top: 1940px;
+    }
+
+    .insta_icon {
+        width: 120px;
+        height: 25px;
+        margin: 40px 0;
+    }
+
+
+
+}
+
+/* 
+    titles
+    
+    .title_logo02{
+        width: 160px;
+        height: 40px;
+        margin: auto 0;
+    }
+    cotents01
+    .poem{
+        display: flex;
+        width: auto;
+        margin: 50px auto;
+        align-content: center;
+    } */

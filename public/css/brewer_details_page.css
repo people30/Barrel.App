@@ -3,9 +3,11 @@
 ul {
     list-style: none;
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 /* ################## 蔵の写真、基本情報 ################## */
 .kura_info {
     margin-top: 20px;
@@ -15,10 +17,11 @@ a{
     background-color: #ff6347;
 }
 
-.kura_info img{
-    width:780px; 
-    height:520px;
+.kura_info img {
+    width: 780px;
+    height: 520px;
 }
+
 .about_kura {
     padding: 40px;
     color: #fff;
@@ -28,12 +31,15 @@ a{
     font-size: 20px;
     margin-top: 40px;
 }
-.about_kura_kengaku p{
+
+.about_kura_kengaku p {
     color: #808080;
 }
+
 p.available {
     color: #ffffff;
 }
+
 .about_kura_open table {
     font-size: 12px;
     border-collapse: separate;
@@ -44,44 +50,43 @@ p.available {
 .about_kura_open td {
     padding: 0 0 0 20px;
 }
-.about_kura_url a{
+
+.about_kura_url a {
     color: #ffffff;
 }
-.about_kura_url a:hover{
-color: #cccccc;
+
+.about_kura_url a:hover {
+    color: #cccccc;
 }
 
 /* 1239px以下 */
 
-@media (max-width: 1239px){
+@media (max-width: 1239px) {
     .kura_info {
         margin-top: 20px;
         display: block;
         background-color: #ff6347;
     }
-    .kura_info img{
-        width:580px; 
-        height:384px;
+
+    .kura_info img {
+        width: 580px;
+        height: 384px;
     }
 }
+
 /* 800px以下 */
 
-@media (max-width: 800px)
-{
-.kura_info {
-    margin-top: 20px;
-    display: block;
-    background-color: #ff6347;
-}
+@media (max-width: 800px) {
+    .kura_info {
+        margin-top: 20px;
+        display: block;
+        background-color: #ff6347;
+    }
 
-.kura_info img {
-    width: 100%;
-    height: auto;
-}
-
-
-
-
+    .kura_info img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 
@@ -117,17 +122,20 @@ color: #cccccc;
     align-items: center;
     justify-content: center;
 }
-.category a{
+
+.category a {
     color: #000000
 }
-.category a:hover{
+
+.category a:hover {
     color: #333333;
 }
 
 .story_title {
     color: #ff6347;
 }
-.story_title:hover{
+
+.story_title:hover {
     color: #FB7861;
 }
 
@@ -135,12 +143,15 @@ color: #cccccc;
     padding: 0 0 0 60px;
     text-align: left;
 }
-.company_gaiyou a{
+
+.company_gaiyou a {
     color: #000000;
 }
+
 .company_gaiyou a:hover {
     color: #333333;
 }
+
 .company_gaiyou table {
     border-collapse: separate;
     border-spacing: 0 20px;
@@ -153,42 +164,44 @@ color: #cccccc;
 
 #map_canvas {
     margin-top: 20px;
-    width:360px; 
-    height:240px;
+    width: 360px;
+    height: 240px;
 
 }
 
 /* 1239px以下 */
 
 @media (max-width: 1239px) {
-.kura_details {
-    display: block;
-}
-/* 
+    .kura_details {
+        display: block;
+    }
+
+    /* 
 .category {
     margin-right: 20px;
 } */
 
-.company_gaiyou {
-margin-top: 80px;
-    padding: 0;
-    text-align: left;
-}
-#map_canvas {
-      width:580px;
-      height:240px;
-}
+    .company_gaiyou {
+        margin-top: 80px;
+        padding: 0;
+        text-align: left;
+    }
+
+    #map_canvas {
+        width: 580px;
+        height: 240px;
+    }
 
 }
 
 /* 800px以下 */
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
 
 
-.company_gaiyou {
-    display: none;
-}
+    .company_gaiyou {
+        display: none;
+    }
 }
 
 
@@ -217,7 +230,8 @@ margin-top: 80px;
 .products_info li {
     margin: 10px 0;
 }
-.taste{
+
+.taste {
     background: linear-gradient(transparent 50%, #78CFE5 50%);
 }
 
@@ -272,10 +286,12 @@ margin-top: 80px;
     border: none;
     border-bottom: 1px solid #d6d6d6;
 }
+
 .price_list tr:nth-child(3n) {
     border: none;
     border-bottom: 1px solid #fff;
 }
+
 .price {
     font-size: 20px;
     padding-left: 20px;
@@ -294,9 +310,11 @@ margin-top: 80px;
     .item1 {
         margin: 60px 0;
     }
+
     .items {
         display: block;
     }
+
     .tax {
         padding-right: 320px;
     }
@@ -305,15 +323,14 @@ margin-top: 80px;
 
 /* 800px以下 */
 
-@media (max-width: 800px)
-{
+@media (max-width: 800px) {
 
-    
+
     .tax {
         padding-right: 0px;
         text-align: left;
         width: 100%;
     }
 
-    
+
 }
