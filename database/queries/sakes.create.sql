@@ -9,7 +9,7 @@ create table `sakes`
     `designation_id` int unsigned not null comment '特定名称',
     `taste_id` int unsigned not null comment '味の表現',
     `alcoholicity` double not null comment 'アルコール度 (>= 0, <= 1)',
-    `raw_rice` varchar(40) not null comment '主原料米の品種',
+    `raw_rice` varchar(40) default null comment '主原料米の品種',
     `rice_polishing_ratio` double not null comment '精米歩合 (>= 0, <= 1)',
     `text` text default null comment '説明',
     `created_at` datetime not null default current_timestamp,
