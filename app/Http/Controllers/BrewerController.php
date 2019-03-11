@@ -27,7 +27,7 @@ class BrewerController extends Controller
     {
         $request->validate([
             'selectedArea' => 'integer|nullable',
-            'backstageTour' => 'in:available,unavailable|nullable'
+            'backstageTour' => 'in:availables,unavailables|nullable'
         ]);
 
         $areas = $this->areaRepository->findAll();
@@ -60,7 +60,7 @@ class BrewerController extends Controller
             // 蔵見学の指定がある時
             if($backstageTour !== null)
             {
-                $check = $backstageTour == 'available';
+                $check = $backstageTour == 'availables';
                 $backstageTourMatched = $b->isBackstageSeeable == $check;
             }
             // 蔵見学の指定がない時
