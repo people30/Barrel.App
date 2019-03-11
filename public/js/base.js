@@ -10,18 +10,20 @@ function navFunc() {
     }
 }
 // 上に戻るボタン
-$(document).ready(function() {
+$(document).ready(function () {
     var pagetop = $('.pagetop')
-    pagetop.click(function() {
-        $('body, html').animate({ scrollTop: 0 }, 500)
+    pagetop.click(function () {
+        $('body, html').animate({
+            scrollTop: 0
+        }, 500)
         return false
     })
 })
 
 // ページを開いたときや該当箇所にスクロールしたときに画像のフェードイン
-$(function() {
-    $(window).scroll(function() {
-        $('.fadein').each(function() {
+$(function () {
+    $(window).scroll(function () {
+        $('.fadein').each(function () {
             var elemPos = $(this).offset().top
             var scroll = $(window).scrollTop()
             var windowHeight = $(window).height()
@@ -32,11 +34,11 @@ $(function() {
     })
 })
 
-$(function() {
+$(function () {
     var navBox = $('.top_sticky')
     navBox.hide()
     var TargetPos = 600
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         var ScrollPos = $(window).scrollTop()
         if (ScrollPos > TargetPos) {
             navBox.fadeIn()
