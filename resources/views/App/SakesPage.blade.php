@@ -174,7 +174,7 @@
                                 <!-- アルコール度イメージ -->
                                 <!-- 数字 -->
                                 <p class="subtitle_text">
-                                    <span>{{ $sake->alcoholicity *100}}</span>
+                                    <span>{{ $sake->alcoholicity * 100}}</span>
                                     <span>%</span>
                                 </p>
                                 <!-- ／数字 -->
@@ -191,7 +191,7 @@
                                 <!-- ／精米歩合イメージ -->
                                 <!-- 数字 -->
                                 <p class="subtitle_text">
-                                    <span>{{ $sake->ricePollishingRatio *100}}</span>
+                                    <span>{{ $sake->ricePollishingRatio * 100 }}</span>
                                     <span>%</span>
                                     <!-- ／数字 -->
                                 </p>
