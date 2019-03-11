@@ -28,7 +28,7 @@ class SakeController extends Controller
             'selectedPriceMax' => 'integer',
             'selectedPriceMin'=> 'integer',
             'selectedDesignations' => 'array',
-            'selectesTastes' => 'array'
+            'selectedTastes' => 'array'
         ]);
         
         $params = [];
