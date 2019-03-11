@@ -195,6 +195,7 @@ namespace App\Repositories
                     'sakes.taste_id as tasteId',
                     'sakes.alcoholicity',
                     'sakes.raw_rice as rawRice',
+                    'sakes.rice_polishing_ratio as ricePollishingRatio',
                     'sizes.content',
                     'sizes.price',
                     'sakes.text'
