@@ -12,6 +12,7 @@ namespace App\Repositories
     class ArticleRepository implements IArticleRepository
     {
         protected $wpUrl;
+        protected $requestTimeout = 5;
 
         public function __construct()
         {
@@ -87,7 +88,7 @@ namespace App\Repositories
                         'categories' => $catId,
                         'per_page' => 3
                     ],
-                    'timeout' => 3
+                    'timeout' => $this->requestTimeout
                 ]
             );
 
@@ -165,7 +166,7 @@ namespace App\Repositories
                         'query' => [
                             'post' => $postId
                         ],
-                        'timeout' => 3
+                        'timeout' => $this->requestTimeout
                     ]
                 );
             }
@@ -260,7 +261,7 @@ namespace App\Repositories
                         'query' => [
                             'post' => $postId
                         ],
-                        'timeout' => 3
+                        'timeout' => $this->requestTimeout
                     ]
                 );
             }
