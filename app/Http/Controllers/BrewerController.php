@@ -70,7 +70,8 @@ class BrewerController extends Controller
             }
             
             return $areaMatched && $backstageTourMatched;
-        });
+        })
+        ->values();
 
         return view('App.BrewersPage', compact('allBrewers', 'areas', 'brewers', 'selectedArea', 'backstageTour'));
     }
