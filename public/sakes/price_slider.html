@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jQuery UI Slider</title>
+  <link rel="stylesheet" href="../css/nouislider.min.css">
+  <style>
+    #noUiSlider {
+width: 90%;
+margin: 0 auto
+}
+
+#range {
+margin: 50px;
+}
+
+
+</style>
+</head>
+
+<body>
+  <form action="price_slider.html" method="GET">
+
+    <div id="noUiSlider">
+      <input type="number" name="space_low" step="500" id="min" class="area" placeholder="下限なし" value=""><span>～</span>
+      <input type="number" name="space_high" step="500" id="max" class="area" placeholder="上限なし" value=""><span></span>
+      <div id="range"></div>
+    </div>
+
+    <input type="submit" value="送信する">
+  </form>
+
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="../js/nouislider.min.js"></script>
+
+  <script>
+    var $slider = $('#range').get(0); //スライダー要素
+    var $min = $('#min'); //最小値のテキストフィールド
+    var $max = $('#max'); //最大値のテキストフィールド
+    var minVal = 0; //最小値
+    var maxVal = 50000; //最大値
+    var gap = 500; // 数値を500刻みにする
+
+    //noUiSliderをセット
+    noUiSlider.create($slider, {
+      start: [minVal - gap, maxVal + gap], //
+      connect: true,
+      step: gap,
+      range: {
+        'min': minVal - gap, //最小値を-5
+        'max': maxVal + gap //最小値を+5
+      },
+      pips: {
+        mode: 'range',
+        density: gap
+      }
+    });
+
+    //noUiSliderイベント
+    $slider.noUiSlider.on('update', function (values, handle) {
+
+      //現在の最小値・最大値を取得
+      var value = Math.floor(values[handle]);
+
+      if (handle) {
+        $max.get(0).value = value; //現在の最大値
+      } else {
+        $min.get(0).value = value; //現在の最小値
+      }
+
+      //noUiSlider下部の数値変更（そのままだと+-5の数値が表示されるため）
+      $('.noUi-value-large').text(minVal);
+      $('.noUi-value-large:last-child').text(maxVal);
+
+      //最小値以下・最大値以上でinputを空にする
+      if ($min.get(0).value <= minVal || $min.get(0).value > maxVal) {
+        $min.val('');
+      }
+      if ($max.get(0).value <= minVal || $max.get(0).value > maxVal) {
+        $max.val('');
+      }
+
+    });
+
+    //最小値をinputにセット
+    $min.get(0).addEventListener('change', function () {
+      $slider.noUiSlider.set([this.value, null]);
+    });
+
+    //最大値をinputにセット
+    $max.get(0).addEventListener('change', function () {
+      $slider.noUiSlider.set([null, this.value]);
+    });
+  </script>
+
+</body>
+
+</html>
