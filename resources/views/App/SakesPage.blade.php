@@ -87,8 +87,8 @@
                     <!-- ／味わいヘッダー -->
                     <!-- 味わいボタン -->
                     <ul class="search_content">
-                        @foreach
-                        <li><label><input type="checkbox" name="selectedTastes[]" value=""><span>{{ selectedTastes }}</span></label></li>
+                        @foreach($tastes as $taste)
+                        <li><label><input type="checkbox" name="selectedTastes[]" value="{{ $taste->id }}"><span>{{ $taste->name }}</span></label></li>
                         @endforeach
                     </ul>
                     <!-- ／味わいボタン -->
@@ -101,8 +101,8 @@
                     <!-- ／特定名称ヘッダー -->
                     <!-- 味わいボタン -->
                     <ul class="search_content">
-                    @foreach
-                        <li><label><input type="checkbox" name="selectedDesignations[]" value=""><span>{{ selectedDesignation }}</span></label></li>
+                    @foreach($designations as $designation )
+                        <li><label><input type="checkbox" name="selectedDesignations[]" value="{{ $designation->id }}"><span>{{ $designation->name }}</span></label></li>
                     @endforeach
                     </ul>
                     <!-- ／味わいボタン -->
@@ -111,7 +111,7 @@
                 <!-- キーワード -->
                 <div id="keyword" class="search_layout">
                     <p class="search_header">キーワード</p>
-                    <p class="search_content"><input type="text" name="keyword" value="keyword"></p>
+                    <p class="search_content"><input type="text" name="keyword" value=""></p>
                 </div>
                 <!-- ／キーワード -->
                 <!-- 価格スライダー -->
@@ -137,7 +137,7 @@
 
             <!-- 表示数 -->
             <div class="card_sum caption_text">
-                <span>{{ 54 }}</span><span>品 表示中</span>
+                <span>{{ $sakes->count() }}</span><span>品 表示中</span>
             </div>
             <!-- ／表示数 -->
 
@@ -146,23 +146,22 @@
             <div class="card_list">
 
                 <!-- カード -->
+                @foreach($sakes as $sake)
                 <div class="card">
                     <div class="card_inner">
                         <!-- 酒画像 -->
                         <div class="card_figure">
-                            @foreach
-                            <img src="{{ asset('/sake/sake-slug/designation-slug/kirai.80x260.png') }}" alt="" width="80" height="260">
-                            @endforeach
+                            <img src="{{ asset('/sake/slug/slug/sake.80x260.png') }}" alt="" width="80" height="260">
                         </div>
                         <!-- ／酒画像 -->
                         <!-- カードボディ -->
                         <div class="card_body">
                             <!-- 純米大吟醸 -->
-                            <p class="sake_designation caption_text">{{ $sake->designation }}</p>
+                            <p class="sake_designation caption_text">{{ $sake->designation->name }}</p>
                             <!-- ／純米大吟醸 -->
                             <!-- コクのある -->
                             <p class="sake_taste">
-                                <span class="caption_text taste_heavy">{{ $sake->taste }}</span>
+                                <span class="caption_text taste_heavy">{{ $sake->taste->name }}</span>
                             </p>
                             <!-- ／コクのある -->
                             <!-- 名前 -->
@@ -175,7 +174,7 @@
                                 <!-- アルコール度イメージ -->
                                 <!-- 数字 -->
                                 <p class="subtitle_text">
-                                    <span>{{ $sake->alcoholicity }}</span>
+                                    <span>{{ $sake->alcoholicity *100}}</span>
                                     <span>%</span>
                                 </p>
                                 <!-- ／数字 -->
@@ -192,7 +191,7 @@
                                 <!-- ／精米歩合イメージ -->
                                 <!-- 数字 -->
                                 <p class="subtitle_text">
-                                    <span>{{ $sake->ricePollishingRatio }}</span>
+                                    <span>{{ $sake->ricePollishingRatio *100}}</span>
                                     <span>%</span>
                                     <!-- ／数字 -->
                                 </p>
@@ -203,12 +202,14 @@
                             <!-- ／精米歩合 -->
                             <div class="card_footer">
                                 <!-- 容量 -->
+                                @foreach($sake->sizes as $size)
                                 <p><span class="sake_price caption_text">{{ $size->content }}</span>
                                     <span class="caption_text">ml</span>
                                     <span class="sake_price subtitle_text">{{ $size->price }}</span>
                                     <span class="caption_text">円 (税抜)</span></p>
+                                @endforeach
                                 <!-- 製造の文字 赤色 -->
-                                <p class="card_brewer"><a href="{{ route('BrewerDetailsPage', ['slug' => $brewer->slug]) }}"><span>製造:</span><span>{{ $brewer->name }}</span></a></p>
+                                <p class="card_brewer"><a href="{{ route('BrewerDetailsPage', ['slug' => $sake->brewer->slug]) }}"><span>製造:</span><span>{{ $sake->brewer->name }}</span></a></p>
                                 <!-- ／製造の文字 赤色 -->
                             </div>
                         </div>
@@ -216,6 +217,7 @@
                     </div>
                     <!-- ／カードインナー -->
                 </div>
+                @endforeach
                 <!-- ／カード -->
             </div>
             <!-- ／カードリスト -->
@@ -225,7 +227,6 @@
     <!-- ／メインエリア -->
 
     <!-- ################################################################### -->
-
         <!-- フッター外枠 -->
         <footer class="footer_area">
             <!-- フッター内枠 -->
