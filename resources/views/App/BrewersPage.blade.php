@@ -32,74 +32,13 @@
         <script src="{{ asset('js/base.js') }}"></script>
         <title>ぐびっと:徳島の酒蔵</title>
 
-        <template id="brewer_item_template">
-            <div class="card">
-                <!-- ピン -->
-                <div class="card_pin">
-                    <!-- ピンナンバー -->
-                    <div class="card_pin_number">
-                        <p class="pin_number"></p>
-                    </div>
-                    <!-- ／ピンナンバー -->
-                    <!-- ピン画像 -->
-                    <div class="card_pin_figure">
-                        <a href="#" class="pin_mark"><img src="{{ asset('/svg/mapicon1.svg') }}" alt="" width="28" height="64"></a>
-                    </div>
-                    <!-- ／ピン画像 -->
-                </div>
-                <!-- ／ピン -->
-                <!-- 写真 -->
-                <div class="card_figure">
-                    <a href="#"><img src="" width="780" height="520" alt=""></a>
-                </div>
-                <!-- ／写真 -->
-                <!-- カードテキスト -->
-                <div class="card_body">
-                    <!-- 酒蔵タイトル -->
-                    <div class="card_body_name">
-                        <a href="#"></a>
-                    </div>
-                    <!-- ／酒蔵タイトル -->
-                    <!-- 見学可不可 ※不可の場合は .card_body_not_seeable -->
-                    <div class="card_body_available">
-                        <p class="available"></p>
-                    </div>
-                    <!-- ／見学可不可 -->
-                    <!-- 営業時間 -->
-                    <div class="card_body_time caption_text">
-                        <!-- 営業時間ヘッダ固定 -->
-                        <div class="card_body_time_header">
-                            <p></p>
-                        </div>
-                        <!-- ／営業時間ヘッダ固定 -->
-                        <!-- 時間 -->
-                        <div class="card_body_time_hour">
-                            <p>
-                                <span class="card_body_time_opening"></span>
-                                <span> - </span>
-                                <span class="card_body_time_closing"></span>
-                            </p>
-                        </div>
-                        <!-- ／時間 -->
-                        <!-- 曜日 -->
-                        <div class="card_body_time_buisiness">
-                            <p></p>
-                        </div>
-                        <!-- ／曜日 -->
-                        <!-- ／営業時間 -->
-                    </div>
-                    <!-- アドレス -->
-                    <div class="card_body_email">
-                        <a href=""></a>
-                    </div>
-                    <!-- ／アドレス -->
-                </div>
-                <!-- ／カードテキスト -->
-            </div>
-        </template>
     </head>
 
-    <body data-context="{{ json_encode([ 'brewers' => $brewers ]) }}">
+    <body data-context="{{ json_encode([
+        'brewers' => $brewers,
+        'backstageSeeableBrewerMarkerUrl' => asset('svg/mapicon1.svg'),
+        'backstageUnseeableBrewerMarkerUrl' => asset('svg/mapicon2.svg')
+    ]) }}">
         <!-- ヘッダー -->
         <div class="sticky">
             <header class="header_area">
@@ -134,8 +73,7 @@
             <!-- 地図コンテンツ -->
             <div class="content_fluid">
                 <h1>徳島の酒蔵</h1>
-                <div class="map">
-                    <div id="map_canvas" style="width:100%; height:400px"></div>
+                <div id="map" class="map">
                 </div>
             </div>
             <!-- ／地図コンテンツ -->
@@ -167,12 +105,12 @@
                 <!-- ／フィルター -->
                 <!-- カードリスト -->
                 <div class="card_list" id="brewers">
-                    <div class="card" v-if="brewers.length > 0" v-for="brewer in brewers">
+                    <div class="card" v-if="brewersVisible.length > 0" v-for="brewer in brewersVisible">
                         <!-- ピン -->
                         <div class="card_pin">
                             <!-- ピンナンバー -->
                             <div class="card_pin_number">
-                                <p class="pin_number"></p>
+                                <p class="pin_number">@{{ brewer.mapNumber }}</p>
                             </div>
                             <!-- ／ピンナンバー -->
                             <!-- ピン画像 -->
@@ -191,12 +129,12 @@
                         <div class="card_body">
                             <!-- 酒蔵タイトル -->
                             <div class="card_body_name">
-                                <a href="{{ route('BrewerDetailsPage', ['slug' => '']) }}">@{{ brewer.name }}</a>
+                                <a href="{{ route('BrewerDetailsPage', ['slug' => 'test']) }}/">@{{ brewer.name }}</a>
                             </div>
                             <!-- ／酒蔵タイトル -->
                             <!-- 見学可不可 ※不可の場合は .card_body_not_seeable -->
                             <div class="card_body_available">
-                                <p v-bind:class="{ available: brewer.isBackstageSeeable }">酒蔵見学可</p>
+                                <p v-bind:class="{ available: brewer.isBackstageSeeable }">@{{ brewer.backstageTour }}</p>
                             </div>
                             <!-- ／見学可不可 -->
                             <!-- 営業時間 -->
