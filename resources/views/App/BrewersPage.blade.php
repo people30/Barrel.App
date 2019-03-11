@@ -122,14 +122,14 @@
                         <!-- ／ピン -->
                         <!-- 写真 -->
                         <div class="card_figure" v-if="brewer.keyVisual != null">
-                            <a href="#"><img v-bind:src="brewer.keyVisual['240x240'].filename" width="780" height="520" alt=""></a>
+                            <a v-bind:href="brewer.permalink"><img v-bind:src="brewer.keyVisual['240x240'].filename" width="780" height="520" alt=""></a>
                         </div>
                         <!-- ／写真 -->
                         <!-- カードテキスト -->
                         <div class="card_body">
                             <!-- 酒蔵タイトル -->
                             <div class="card_body_name">
-                                <a href="{{ route('BrewerDetailsPage', ['slug' => 'test']) }}/">@{{ brewer.name }}</a>
+                                <a v-bind:href="brewer.permalink">@{{ brewer.name }}</a>
                             </div>
                             <!-- ／酒蔵タイトル -->
                             <!-- 見学可不可 ※不可の場合は .card_body_not_seeable -->

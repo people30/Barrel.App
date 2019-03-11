@@ -121,6 +121,7 @@ namespace App\Repositories
                 $i->address = $i->prefecture . $i->city . $i->town;
                 $i->isBackstageSeeable = (bool)$i->isBackstageSeeable;
                 $i->links = $links->filter(function($l) use ($i) { return $l->brewerId === $i->id; })->keyBy('service');
+                $i->permalink = route('BrewerDetailsPage', ['slug' => $i->slug]) . '/';
 
                 $brewer = Factory::factory(Models\Brewer::class, $i);
 

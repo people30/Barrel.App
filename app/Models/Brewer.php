@@ -27,5 +27,6 @@ namespace App\Models
         public $text;
         public $keyVisual;
         public $links;
+        public $permalink;
     }
 }
