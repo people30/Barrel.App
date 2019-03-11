@@ -120,6 +120,8 @@ namespace App\Repositories
                 $i->area = $areas->first(function($a) use ($i) { return $a->id == $i->areaId; });
                 $i->address = $i->prefecture . $i->city . $i->town;
                 $i->isBackstageSeeable = (bool)$i->isBackstageSeeable;
+                $i->openingTime = $this->trimTimeSeconds($i->openingTime);
+                $i->closingTime = $this->trimTimeSeconds($i->closingTime);
                 $i->links = $links->filter(function($l) use ($i) { return $l->brewerId === $i->id; })->keyBy('service');
                 $i->permalink = route('BrewerDetailsPage', ['slug' => $i->slug]) . '/';
 
@@ -170,6 +172,11 @@ namespace App\Repositories
                 ->orderBy('order');
             
             return $query;
+        }
+
+        protected function trimTimeSeconds(string $time)
+        {
+            return substr($time, 0, strrpos($time, ':'));
         }
     }
 }
