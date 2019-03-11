@@ -2,7 +2,7 @@ var map;
 var marker_ary = new Array();
 var currentInfoWindow
 
-function initialize() {
+$(function() {
     var latlng = new google.maps.LatLng(34.078547, 134.523913);
     var myOptions = {
         zoom: 10,
@@ -15,28 +15,7 @@ function initialize() {
     google.maps.event.addListener(map, 'idle', function () {
         setPointMarker();
     });
-}
-
-//地図中央の緯度経度を表示
-function getMapcenter() {
-    //地図中央の緯度経度を取得
-    var mapcenter = map.getCenter();
-
-    //テキストフィールドにセット
-    document.getElementById("keido").value = mapcenter.lng();
-    document.getElementById("ido").value = mapcenter.lat();
-}
-
-//地図の中央にマーカー
-function setMarker() {
-    var mapCenter = map.getCenter();
-
-    //マーカー削除
-    MarkerClear();
-
-    //マーカー表示
-    MarkerSet(mapCenter.lat(), mapCenter.lng(), 'test');
-}
+});
 
 //マーカー削除
 function MarkerClear() {
@@ -105,41 +84,61 @@ function setPointMarker() {
 
     //地図の範囲内を取得
     var bounds = map.getBounds();
-    map_ne_lat = bounds.getNorthEast().lat();
-    map_sw_lat = bounds.getSouthWest().lat();
-    map_ne_lng = bounds.getNorthEast().lng();
-    map_sw_lng = bounds.getSouthWest().lng();
+    var map_ne_lat = bounds.getNorthEast().lat();
+    var map_sw_lat = bounds.getSouthWest().lat();
+    var map_ne_lng = bounds.getNorthEast().lng();
+    var map_sw_lng = bounds.getSouthWest().lng();
 
-    //XML取得
-    $.ajax({
-        url: './xml.php?ne_lat=' + map_ne_lat + '&sw_lat=' + map_sw_lat + '&ne_lng=' + map_ne_lng + '&sw_lng=' + map_sw_lng,
-        type: 'GET',
-        dataType: 'xml',
-        timeout: 1000,
-        error: function () {
-            alert("情報の読み込みに失敗しました");
-        },
-        success: function (xml) {
-            //帰ってきた地点の数だけループ
-            $(xml).find("Locate").each(function () {
-                var LocateLat = $("lat", this).text();
-                var LocateLng = $("lng", this).text();
-                var LocateName = $("name", this).text();
-                //マーカーをセット
-                MarkerSet(LocateLat, LocateLng, LocateName);
+    var data = JSON.parse($('body').attr('data-brewers'));
 
-                //リスト表示
-                //リストに対応するマーカー配列キーをセット
-                var marker_num = marker_ary.length - 1;
-                //liとaタグをセット
-                loc = $('<li>').append($('<a href="javascript:void(0)"/>').text(LocateName));
-                //セットしたタグにイベント「マーカーがクリックされた」をセット
-                loc.bind('click', function () {
-                    google.maps.event.trigger(marker_ary[marker_num], 'click');
-                });
-                //リスト表示
-                // $('#pointlist > ul').append(loc);
-            });
-        }
+    //帰ってきた地点の数だけループ
+    data.forEach(function (brewer) {
+        //マーカーをセット
+        MarkerSet(brewer.lat, brewer.lon, brewer.name);
+
+        //リスト表示
+        //リストに対応するマーカー配列キーをセット
+        var marker_num = marker_ary.length - 1;
+        //liとaタグをセット
+        loc = $('<li>').append($('<a href="javascript:void(0)"/>').text(brewer.name));
+        //セットしたタグにイベント「マーカーがクリックされた」をセット
+        loc.bind('click', function () {
+            google.maps.event.trigger(marker_ary[marker_num], 'click');
+        });
+        //リスト表示
+        // $('#pointlist > ul').append(loc);
     });
+
+    // //XML取得
+    // $.ajax({
+    //     url: './xml.php?ne_lat=' + map_ne_lat + '&sw_lat=' + map_sw_lat + '&ne_lng=' + map_ne_lng + '&sw_lng=' + map_sw_lng,
+    //     type: 'GET',
+    //     dataType: 'xml',
+    //     timeout: 1000,
+    //     error: function () {
+    //         // alert("情報の読み込みに失敗しました");
+    //     },
+    //     success: function (xml) {
+    //         //帰ってきた地点の数だけループ
+    //         $(xml).find("Locate").each(function () {
+    //             var LocateLat = $("lat", this).text();
+    //             var LocateLng = $("lng", this).text();
+    //             var LocateName = $("name", this).text();
+    //             //マーカーをセット
+    //             MarkerSet(LocateLat, LocateLng, LocateName);
+
+    //             //リスト表示
+    //             //リストに対応するマーカー配列キーをセット
+    //             var marker_num = marker_ary.length - 1;
+    //             //liとaタグをセット
+    //             loc = $('<li>').append($('<a href="javascript:void(0)"/>').text(LocateName));
+    //             //セットしたタグにイベント「マーカーがクリックされた」をセット
+    //             loc.bind('click', function () {
+    //                 google.maps.event.trigger(marker_ary[marker_num], 'click');
+    //             });
+    //             //リスト表示
+    //             // $('#pointlist > ul').append(loc);
+    //         });
+    //     }
+    // });
 }
