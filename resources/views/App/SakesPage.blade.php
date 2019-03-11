@@ -79,7 +79,7 @@
 
             <!-- 検索ボックス -->
             
-            <form method="post" action="" class="search_area">
+            <form method="get" action="{{ route('SakesPage') }}/" class="search_area">
                 <!-- 味わい -->
                 <div id="tastes" class="search_layout">
                     <!-- 味わいヘッダー -->
