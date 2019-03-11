@@ -86,7 +86,8 @@ namespace App\Repositories
                     'query' => [
                         'categories' => $catId,
                         'per_page' => 3
-                    ]
+                    ],
+                    'timeout' => 3
                 ]
             );
 
@@ -163,7 +164,8 @@ namespace App\Repositories
                     [
                         'query' => [
                             'post' => $postId
-                        ]
+                        ],
+                        'timeout' => 3
                     ]
                 );
             }
@@ -257,7 +259,8 @@ namespace App\Repositories
                     [
                         'query' => [
                             'post' => $postId
-                        ]
+                        ],
+                        'timeout' => 3
                     ]
                 );
             }
