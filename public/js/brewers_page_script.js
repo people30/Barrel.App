@@ -10,20 +10,18 @@ $(function ()
         el: '#brewers',
         data: {
             'allBrewers': dataContext.brewers,
-            'mapNELat': 0,
-            'mapNELon': 0,
-            'mapSWLat': 0,
-            'mapSWLon': 0
+            'mapNorth': 0,
+            'mapEast': 0,
+            'mapSouth': 0,
+            'mapWest': 0
         },
 
         computed: {
             'brewers': function()
             {
-                // if(this.brewers == null) return [];
-
-                return this.allBrewers.filter(function(brewer) {
-                    return true;
-                });
+                return this.allBrewers.filter((function(brewer) {
+                    return brewer.lat >= this.mapSouth && brewer.lat <= this.mapNorth && brewer.lon >= this.mapWest && brewer.lon <= this.mapEast;
+                }).bind(this));
             }
         },
 
@@ -91,14 +89,11 @@ $(function ()
 
                 //地図の範囲内を取得
                 var bounds = map.getBounds();
-                map_ne_lat = bounds.getNorthEast().lat();
-                map_sw_lat = bounds.getSouthWest().lat();
-                map_ne_lng = bounds.getNorthEast().lng();
-                map_sw_lng = bounds.getSouthWest().lng();
-                //     this.mapNELat = bounds.getNorthEast().lat();
-                // this.mapNELon = bounds.getNorthEast().lon();
-                // this.mapSWLat = bounds.getSouthWest().lat();
-                // this.mapSWLon = bounds.getSouthWest().lon();
+                this.mapNorth = bounds.getNorthEast().lat();
+                this.mapSouth = bounds.getSouthWest().lat();
+
+                this.mapEast = bounds.getNorthEast().lng();
+                this.mapWest = bounds.getSouthWest().lng();
 
                 //帰ってきた地点の数だけループ
                 this.brewers.forEach((function (brewer)
