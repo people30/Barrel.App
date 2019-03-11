@@ -160,7 +160,7 @@
                         </div>
                         <div class="group backstageTours">
                             <p class="item backstageTour"><a href="{{ route('BrewersPage') }}/?backstageTour=availables"><img src="{{ asset('/svg/mapicon1.svg') }}" width="28" height="64" alt=""><span class="label">見学可</span></a></p>
-                            <p class="item backstageTour"><a href="{{ route('BrewersPage') }}/?backstageTour=availables"><img src="{{ asset('/svg/mapicon2.svg') }}" width="28" height="64" alt=""><span class="label">見学不可</span></a></p>
+                            <p class="item backstageTour"><a href="{{ route('BrewersPage') }}/?backstageTour=unavailables"><img src="{{ asset('/svg/mapicon2.svg') }}" width="28" height="64" alt=""><span class="label">見学不可</span></a></p>
                         </div>
                     </div>
                 </div>
