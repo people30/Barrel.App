@@ -17,8 +17,6 @@
         <link rel="stylesheet" href="{{ asset('/css/sakes_page.css') }}"> 
         <!-- 価格スライダー -->
         <link rel="stylesheet" href="{{ asset('/css/nouislider.min.css') }}">
-        <!-- brewerscss -->
-        <link rel="stylesheet" href="{{ asset('/css/brewers_page.css') }}">
         <!-- ファビコン -->
         <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
         <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
@@ -28,6 +26,7 @@
         <script type="text/javascript" src="{{ asset('/js/brewers_page_script.js') }}"></script>
         <!-- ベーススクリプト -->
         <script src="{{ asset('js/base.js') }}"></script>
+        <!-- 地酒ページスクリプト -->
         <script src="{{ asset('js/sakes_page.js') }}"></script>
         <title>ぐびっと:徳島の地酒</title>
 
@@ -79,7 +78,8 @@
             </div>
 
             <!-- 検索ボックス -->
-            <form class="search_area">
+            
+            <form method="post" action="" class="search_area">
                 <!-- 味わい -->
                 <div id="tastes" class="search_layout">
                     <!-- 味わいヘッダー -->
