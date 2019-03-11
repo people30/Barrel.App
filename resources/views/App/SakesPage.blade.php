@@ -23,11 +23,10 @@
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap" type="text/javascript"></script>
-        <script type="text/javascript" src="{{ asset('/js/brewers_page_script.js') }}"></script>
         <!-- ベーススクリプト -->
-        <script src="{{ asset('js/base.js') }}"></script>
+        <script src="{{ asset('/js/base.js') }}"></script>
         <!-- 地酒ページスクリプト -->
-        <script src="{{ asset('js/sakes_page.js') }}"></script>
+        <script src="{{ asset('/js/sakes_page.js') }}"></script>
         <title>ぐびっと:徳島の地酒</title>
 
     </head>
@@ -79,7 +78,7 @@
 
             <!-- 検索ボックス -->
             
-            <form method="post" action="" class="search_area">
+            <form method="get" action="{{ route('SakesPage') }}/" class="search_area">
                 <!-- 味わい -->
                 <div id="tastes" class="search_layout">
                     <!-- 味わいヘッダー -->
