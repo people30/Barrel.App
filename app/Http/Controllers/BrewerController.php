@@ -26,8 +26,8 @@ class BrewerController extends Controller
     public function index(Request $request)
     {
         $request->validate([
-            'selectedArea' => 'integer',
-            'backstageTour' => 'in:available,unavailable'
+            'selectedArea' => 'integer|nullable',
+            'backstageTour' => 'in:available,unavailable|nullable'
         ]);
 
         $areas = $this->areaRepository->findAll();

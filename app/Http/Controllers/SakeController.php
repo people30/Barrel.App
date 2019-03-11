@@ -24,11 +24,11 @@ class SakeController extends Controller
     public function index(Request $request)
     {
         $request->validate([
-            'keyword' => 'string',
-            'selectedPriceMax' => 'integer',
-            'selectedPriceMin'=> 'integer',
-            'selectedDesignations' => 'array',
-            'selectedTastes' => 'array'
+            'keyword' => 'string|nullable',
+            'selectedPriceMax' => 'integer|nullable',
+            'selectedPriceMin'=> 'integer|nullable',
+            'selectedDesignations' => 'array|nullable',
+            'selectedTastes' => 'array|nullable'
         ]);
         
         $params = [];
