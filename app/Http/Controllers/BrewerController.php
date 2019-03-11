@@ -71,7 +71,11 @@ class BrewerController extends Controller
             
             return $areaMatched && $backstageTourMatched;
         })
-        ->values();
+        ->values()
+        ->each(function($brewer)
+        {
+            $brewer->detailsPageLink = route('BrewerDetailsPage', ['slug' => $brewer->slug]);
+        });
 
         return view('App.BrewersPage', compact('allBrewers', 'areas', 'brewers', 'selectedArea', 'backstageTour'));
     }
