@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- サイト説明 -->
         <meta property="og:description" content="">
         <!-- googleフォント -->
@@ -183,14 +184,9 @@
                 <!-- 酒蔵リストサンプル 酒蔵名はかわります。 -->
                 <div class="footer_brewery caption_text">
                     <ul>
-                        <li><a href="#">（株）勢玉</a></li>
-                        <li><a href="#">吉本醸造（株）</a></li>
-                        <li><a href="#">（有）斎藤酒造場</a></li>
-                        <li><a href="#">津乃峰酒造（株）</a></li>
-                        <li><a href="#">（株）本家松浦酒造場</a></li>
-                        <li><a href="#">日新酒類（株）</a></li>
-                        <li><a href="#">司菊酒造（株）</a></li>
-                        <li><a href="#">三芳菊酒造（株）</a></li>
+                        @foreach($allBrewers as $brewer)
+                        <li><a href="{{ route('BrewerDetailsPage', ['slug' => $brewer->slug]) }}">{{ $brewer->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <!-- ／酒蔵リスト -->
