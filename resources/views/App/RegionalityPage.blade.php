@@ -35,9 +35,9 @@
     <section class="content_fluid">
         <!--キービジュアル-->
         <div class="slider">
-            @for ($i = 0; $i < 4; $i++)
+            @foreach
         <div><img src="{{ $brewer->keyVisual->files['1920x1080'] }}"></div>
-            @endfor
+            @endforeach
         </div>
         <section class="first_menu">
             <div class="menu">
@@ -182,12 +182,12 @@
            <!-- バナー画像 -->
     <div class="banner">
         <div class="banner_pc">
-            <img src="img/bn-awanavi01.gif" alt="">
-            <img src="img/bn-syuzo01.jpg" alt="">
+            <img src="{{ asset('./img/bn-awanavi01.gif') }}" alt="">
+            <img src="{{ asset('./img/bn-syuzo01.jpg') }}" alt="">
         </div>
         <div class="banner_sm">
-            <img src="img/bn-awanavi02.gif" alt="">
-            <img src="img/bn-syuzo02.jpg" alt="">
+            <img src="{{ asset('./img/bn-awanavi02.gif') }}" alt="">
+            <img src="{{ asset('./img/bn-syuzo02.jpg') }}" alt="">
         </div>
     </div>
     <!-- ／バナー画像 -->
