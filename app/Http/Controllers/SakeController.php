@@ -24,32 +24,26 @@ class SakeController extends Controller
     public function index(Request $request)
     {
         $request->validate([
-            'keyword' => 'string',
-            'selectedPriceMax' => 'integer',
-            'selectedPriceMin'=> 'integer',
-            'selectedDesignations' => 'array',
-            'selectesTastes' => 'array'
+            'keyword' => 'string|nullable',
+            'selectedPriceMax' => 'integer|nullable',
+            'selectedPriceMin'=> 'integer|nullable',
+            'selectedDesignations' => 'array|nullable',
+            'selectedTastes' => 'array|nullable'
         ]);
         
         $params = [];
 
         $keyword = $request->has('keyword', null);
 
-        $selectedPriceMax = $request->has('selectedPriceMax')
-            ? (int)$request->input('selectedPriceMax')
-            : null;
+        $selectedPriceMax = $request->input('selectedPriceMax', null);
+        if($selectedPriceMax !== null) $selectedPriceMax = (int)$selectedPriceMax;
 
-        $selectedPriceMin = $request->has('selectedPriceMin')
-            ? (int)$request->input('selectedPriceMin')
-            : null;
+        $selectedPriceMin = $request->input('selectedPriceMin', null);
+        if($selectedPriceMin !== null) $selectedPriceMin = (int)$selectedPriceMin;
 
-        $selectedDesignations = $request->has('selectedDesignations')
-            ? $request->input('selectedDesignations')
-            : null;
+        $selectedDesignations = $request->input('selectedDesignations', null);
 
-        $selectedTastes = $request->has('selectedTastes')
-            ? $request->input('selectesTastes')
-            : null;
+        $selectedTastes = $request->input('selectedTastes', null);
 
         $allBrewers = $this->brewerRepository->findAll();
         $sakes = $this->sakeRepository->findAll(

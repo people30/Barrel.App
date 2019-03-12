@@ -20,6 +20,12 @@
         <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        @if(env('APP_DEBUG'))
+        <script src="{{ asset('js/vue.js') }}"></script>
+        @else
+        <script src="{{ asset('js/vue.min.js') }}"></script>
+        @endif
+        
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap"></script>
         <script type="text/javascript" src="{{ asset('/js/brewers_page_script.js') }}"></script>
         <!-- ベーススクリプト -->
@@ -28,7 +34,11 @@
 
     </head>
 
-    <body data-brewers="{{ json_encode($brewers) }}">
+    <body data-context="{{ json_encode([
+        'brewers' => $brewers,
+        'backstageSeeableBrewerMarkerUrl' => asset('svg/mapicon1.svg'),
+        'backstageUnseeableBrewerMarkerUrl' => asset('svg/mapicon2.svg')
+    ]) }}">
         <!-- ヘッダー -->
         <div class="sticky">
             <header class="header_area">
@@ -63,13 +73,7 @@
             <!-- 地図コンテンツ -->
             <div class="content_fluid">
                 <h1>徳島の酒蔵</h1>
-                <div class="map">
-                    <div id="map_canvas" style="width:100%; height:400px"></div>
-                    <div id="pointlist" style="width:20em;float:left;">
-                        <ul>
-                            <li>地点リスト</li>
-                        </ul>
-                    </div>
+                <div id="map" class="map">
                 </div>
             </div>
             <!-- ／地図コンテンツ -->
@@ -93,45 +97,44 @@
                             @endforeach
                         </div>
                         <div class="group backstageTours">
-                            <p class="item backstageTour"><a href=""><img src="{{ asset('/svg/mapicon1.svg') }}" width="28" height="64" alt=""><span class="label">見学可</span></a></p>
-                            <p class="item backstageTour"><a href=""><img src="{{ asset('/svg/mapicon2.svg') }}" width="28" height="64" alt=""><span class="label">見学不可</span></a></p>
+                            <p class="item backstageTour"><a href="{{ route('BrewersPage') }}/?backstageTour=availables"><img src="{{ asset('/svg/mapicon1.svg') }}" width="28" height="64" alt=""><span class="label">見学可</span></a></p>
+                            <p class="item backstageTour"><a href="{{ route('BrewersPage') }}/?backstageTour=unavailables"><img src="{{ asset('/svg/mapicon2.svg') }}" width="28" height="64" alt=""><span class="label">見学不可</span></a></p>
                         </div>
                     </div>
                 </div>
                 <!-- ／フィルター -->
                 <!-- カードリスト -->
-                <div class="card_list">
-                    <!-- カード1 -->
-                    <div class="card">
+                <div class="card_list" id="brewers">
+                    <div class="card" v-if="brewersVisible.length > 0" v-for="brewer in brewersVisible">
                         <!-- ピン -->
                         <div class="card_pin">
                             <!-- ピンナンバー -->
                             <div class="card_pin_number">
-                                <p>1</p>
+                                <p class="pin_number">@{{ brewer.mapNumber }}</p>
                             </div>
                             <!-- ／ピンナンバー -->
                             <!-- ピン画像 -->
                             <div class="card_pin_figure">
-                                <a href="#"><img src="{{ asset('/svg/mapicon1.svg') }}" alt="" width="28" height="64"></a>
+                                <a href="#" class="pin_mark"><img src="{{ asset('/svg/mapicon1.svg') }}" alt="" width="28" height="64"></a>
                             </div>
                             <!-- ／ピン画像 -->
                         </div>
                         <!-- ／ピン -->
                         <!-- 写真 -->
-                        <div class="card_figure">
-                            <a href="#"><img src="{{ asset('/brewers_img/brewer.780x520.jpg') }}" width="780" height="520" alt="有限会社斉藤酒造場"></a>
+                        <div class="card_figure" v-if="brewer.keyVisual != null">
+                            <a v-bind:href="brewer.permalink"><img v-bind:src="brewer.keyVisual.files['380x252'].url" v-bind:srcset="brewer.keyVisual.srcset" alt=""></a>
                         </div>
                         <!-- ／写真 -->
                         <!-- カードテキスト -->
                         <div class="card_body">
                             <!-- 酒蔵タイトル -->
                             <div class="card_body_name">
-                                <a href="#">有限会社斉藤酒造場</a>
+                                <a v-bind:href="brewer.permalink">@{{ brewer.name }}</a>
                             </div>
                             <!-- ／酒蔵タイトル -->
                             <!-- 見学可不可 ※不可の場合は .card_body_not_seeable -->
                             <div class="card_body_available">
-                                <p class="available">酒蔵見学可</p>
+                                <p v-bind:class="{ available: brewer.isBackstageSeeable }">@{{ brewer.backstageTour }}</p>
                             </div>
                             <!-- ／見学可不可 -->
                             <!-- 営業時間 -->
@@ -144,28 +147,27 @@
                                 <!-- 時間 -->
                                 <div class="card_body_time_hour">
                                     <p>
-                                        <span class="card_body_time_opening">8:00</span>
+                                        <span class="card_body_time_opening">@{{ brewer.openingTime }}</span>
                                         <span> - </span>
-                                        <span class="card_body_time_closing">20:00</span>
+                                        <span class="card_body_time_closing">@{{ brewer.closingTime }}</span>
                                     </p>
                                 </div>
                                 <!-- ／時間 -->
                                 <!-- 曜日 -->
                                 <div class="card_body_time_buisiness">
-                                    <p>月 - 土曜日(日・祝日休み)</p>
+                                    <p>@{{ brewer.buisinessDay }}</p>
                                 </div>
                                 <!-- ／曜日 -->
                                 <!-- ／営業時間 -->
                             </div>
                             <!-- アドレス -->
-                            <div class="card_body_email">
-                                <a href="#">www.sekinoi.co.jp</a>
+                            <div class="card_body_email" v-if="brewer.links['website'] != null">
+                                <a v-bind:href="brewer.links['website'].url">@{{ brewer.links['website'].url }}</a>
                             </div>
                             <!-- ／アドレス -->
                         </div>
                         <!-- ／カードテキスト -->
                     </div>
-                    <!-- ／カード1 -->
                 </div>
                 <!-- ／カードリスト -->
             </article>

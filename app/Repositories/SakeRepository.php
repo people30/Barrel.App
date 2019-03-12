@@ -149,11 +149,15 @@ namespace App\Repositories
             ->groupBy(function($i)
             {
                 return $i->id;
-            });
-
-            $items = $grouped->map(function($group)
+            })
+            ->map(function($group)
             {
-                $sake = Factory::factory(Models\Sake::class, $group->first());
+                $raw = $group->first();
+                $sake = Factory::factory(Models\Sake::class, $raw);
+                $sake->bottle = $this->photoRepository->getSakeAlbum($sake)->first(function($s) use($raw)
+                {
+                    return $s->filename == $raw->bottleFilename;
+                });
 
                 $sake->sizes = $group->map(function($i)
                 {
@@ -163,7 +167,7 @@ namespace App\Repositories
                 return $sake;
             });
 
-            return $items;
+            return $grouped;
         }
         
         public function getProducts(Models\Brewer $brewer) : Collection
@@ -195,6 +199,7 @@ namespace App\Repositories
                     'sakes.taste_id as tasteId',
                     'sakes.alcoholicity',
                     'sakes.raw_rice as rawRice',
+                    'sakes.rice_polishing_ratio as ricePollishingRatio',
                     'sizes.content',
                     'sizes.price',
                     'sakes.text'

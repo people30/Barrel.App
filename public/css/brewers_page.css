@@ -384,6 +384,25 @@ font-size: 24px;
         }
 }
 
+.map {
+    width: auto;
+    height: 320px;
+}
+
+@media(min-width: 800px)
+{
+    .map {
+        height: 240px;
+    }
+}
+
+@media(min-width: 1240px)
+{
+    .map {
+        height: 320px;
+    }
+}
+
 .map_filter {
     display: flex;
     grid-column: 1/-1;

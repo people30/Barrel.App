@@ -1,144 +1,112 @@
-var map;
-var marker_ary = new Array();
-var currentInfoWindow
+document.addEventListener('DOMContentLoaded', function () {
+    var dataContext = JSON.parse(document.getElementsByTagName('body')[0].getAttribute('data-context'));
 
-$(function() {
-    var latlng = new google.maps.LatLng(34.078547, 134.523913);
-    var myOptions = {
-        zoom: 10,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-    //イベント登録　地図の表示領域が変更されたらイベントを発生させる
-    google.maps.event.addListener(map, 'idle', function () {
-        setPointMarker();
+    dataContext.brewers.forEach(function (brewer) {
+        brewer.backstageTour = brewer.isBackstageSeeable ? '酒蔵見学可' : '酒蔵見学不可';
     });
-});
 
-//マーカー削除
-function MarkerClear() {
-    //表示中のマーカーがあれば削除
-    if (marker_ary.length > 0)
-    {
-        //マーカー削除
-        for (i = 0; i < marker_ary.length; i++)
-        {
-            marker_ary[i].setMap();
-        }
-        //配列削除
-        for (i = 0; i <= marker_ary.length; i++)
-        {
-            marker_ary.shift();
-        }
-    }
-}
+    var vm = new Vue({
+        el: '#brewers',
+        data: {
+            'brewers': dataContext.brewers,
+            'mapNorth': 0,
+            'mapEast': 0,
+            'mapSouth': 0,
+            'mapWest': 0
+        },
 
-function MarkerSet(lat, lng, text) {
-    var marker_num = marker_ary.length;
-    var marker_position = new google.maps.LatLng(lat, lng);
-    var markerOpts = {
-        map: map,
-        position: marker_position,
-        icon: new google.maps.MarkerImage(
-            '../svg/mapicon1.svg',
-            new google.maps.Size(12, 44),    //マーカー画像のサイズ
-            new google.maps.Point(0, 0),     //位置（0,0で固定）
-            //new google.maps.Point(値x,値y), //位置（任意の調整値）
-        ),
-    };
-    marker_ary[marker_num] = new google.maps.Marker(markerOpts);
-
-    //textが渡されていたらふきだしをセット
-    if (text.length > 0)
-    {
-        var infoWndOpts = {
-            content: text
-        };
-        var infoWnd = new google.maps.InfoWindow(infoWndOpts);
-        google.maps.event.addListener(marker_ary[marker_num], "click", function () {
-
-            //先に開いた情報ウィンドウがあれば、closeする
-            if (currentInfoWindow)
-            {
-                currentInfoWindow.close();
+        computed: {
+            'brewersVisible': function () {
+                return this.brewers.filter((function (brewer) {
+                    return brewer.lat >= this.mapSouth && brewer.lat <= this.mapNorth && brewer.lon >= this.mapWest && brewer.lon <= this.mapEast;
+                }).bind(this));
             }
+        },
 
-            //情報ウィンドウを開く
-            infoWnd.open(map, marker_ary[marker_num]);
+        methods: {
+            // 各地点の緯度と経度の平均から中心点の座標を求める
+            getCenter: function() {
+                // 緯度
+                var lats = this.brewers.map(function(brewer) { return brewer.lat; });
+                var centerLat = lats.reduce(function(prev, current) { return prev + current; }) / lats.length;
 
-            //開いた情報ウィンドウを記録しておく
-            currentInfoWindow = infoWnd;
-        });
-    }
-}
+                // 経度
+                var lons = this.brewers.map(function(brewer) { return brewer.lon; });
+                var centerLon = lons.reduce(function(prev, current) { return prev + current; }) / lons.length;
 
-//XMLで取得した地点を地図上でマーカーに表示
-function setPointMarker() {
-    //リストの内容を削除
-    $('#pointlist > ul').empty();
-
-    //マーカー削除
-    MarkerClear();
-
-    //地図の範囲内を取得
-    var bounds = map.getBounds();
-    var map_ne_lat = bounds.getNorthEast().lat();
-    var map_sw_lat = bounds.getSouthWest().lat();
-    var map_ne_lng = bounds.getNorthEast().lng();
-    var map_sw_lng = bounds.getSouthWest().lng();
-
-    var data = JSON.parse($('body').attr('data-brewers'));
-
-    //帰ってきた地点の数だけループ
-    data.forEach(function (brewer) {
-        //マーカーをセット
-        MarkerSet(brewer.lat, brewer.lon, brewer.name);
-
-        //リスト表示
-        //リストに対応するマーカー配列キーをセット
-        var marker_num = marker_ary.length - 1;
-        //liとaタグをセット
-        loc = $('<li>').append($('<a href="javascript:void(0)"/>').text(brewer.name));
-        //セットしたタグにイベント「マーカーがクリックされた」をセット
-        loc.bind('click', function () {
-            google.maps.event.trigger(marker_ary[marker_num], 'click');
-        });
-        //リスト表示
-        // $('#pointlist > ul').append(loc);
+                return {
+                    lat: centerLat,
+                    lon: centerLon
+                };
+            }
+        }
     });
 
-    // //XML取得
-    // $.ajax({
-    //     url: './xml.php?ne_lat=' + map_ne_lat + '&sw_lat=' + map_sw_lat + '&ne_lng=' + map_ne_lng + '&sw_lng=' + map_sw_lng,
-    //     type: 'GET',
-    //     dataType: 'xml',
-    //     timeout: 1000,
-    //     error: function () {
-    //         // alert("情報の読み込みに失敗しました");
-    //     },
-    //     success: function (xml) {
-    //         //帰ってきた地点の数だけループ
-    //         $(xml).find("Locate").each(function () {
-    //             var LocateLat = $("lat", this).text();
-    //             var LocateLng = $("lng", this).text();
-    //             var LocateName = $("name", this).text();
-    //             //マーカーをセット
-    //             MarkerSet(LocateLat, LocateLng, LocateName);
+    var flyoutCurrent = null;
+    var markers = [];
+    var center = vm.getCenter();
+    var map = new google.maps.Map(
+        document.getElementById("map"),
+        {
+            zoom: 10,
+            center: new google.maps.LatLng(center.lat, center.lon),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+    );
 
-    //             //リスト表示
-    //             //リストに対応するマーカー配列キーをセット
-    //             var marker_num = marker_ary.length - 1;
-    //             //liとaタグをセット
-    //             loc = $('<li>').append($('<a href="javascript:void(0)"/>').text(LocateName));
-    //             //セットしたタグにイベント「マーカーがクリックされた」をセット
-    //             loc.bind('click', function () {
-    //                 google.maps.event.trigger(marker_ary[marker_num], 'click');
-    //             });
-    //             //リスト表示
-    //             // $('#pointlist > ul').append(loc);
-    //         });
-    //     }
-    // });
-}
+    // 地図が移動している時にマップの端をビュー モデルに渡す
+    map.addListener('bounds_changed', function() {
+        // 地図の端を取得
+        var bounds = map.getBounds();
+        vm.mapNorth = bounds.getNorthEast().lat();
+        vm.mapSouth = bounds.getSouthWest().lat();
+
+        vm.mapEast = bounds.getNorthEast().lng();
+        vm.mapWest = bounds.getSouthWest().lng();
+    });
+
+    // マーカーを地図に登録
+    vm.brewers.forEach((function (brewer, index) {
+        brewer.mapNumber = index + 1;
+        var marker_num = markers.length;
+        var iconUrl = brewer.isBackstageSeeable ? dataContext.backstageSeeableBrewerMarkerUrl : dataContext.backstageUnseeableBrewerMarkerUrl;
+
+        markers[index] = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(brewer.lat, brewer.lon),
+            icon: new google.maps.MarkerImage(
+                iconUrl,
+                new google.maps.Size(28, 64),    //マーカー画像のサイズ
+                new google.maps.Point(0, 0),     //位置（0,0で固定）
+                //new google.maps.Point(値x,値y), //位置（任意の調整値）
+            )
+        });
+
+        // マーカーをクリックした時の吹き出し
+        if (brewer.name.length > 0) {
+            var flyout = new google.maps.InfoWindow({
+                content: brewer.name
+            });
+
+            markers[index].addListener('click', (function () {
+
+                //先に開いた情報ウィンドウがあれば、closeする
+                if (flyoutCurrent) {
+                    flyoutCurrent.close();
+                }
+
+                //情報ウィンドウを開く
+                flyout.open(map, markers[index]);
+
+                //開いた情報ウィンドウを記録しておく
+                flyoutCurrent = flyout;
+            }).bind(this));
+        }
+
+        brewer.keyVisual.srcset =
+            brewer.keyVisual.files['280x184'].url + ' 280w, ' +
+            brewer.keyVisual.files['380x252'].url + ' 380w, ' +
+            brewer.keyVisual.files['580x384'].url + ' 580w, ' +
+            brewer.keyVisual.files['780x520'].url + ' 780w';
+    }).bind(this));
+});

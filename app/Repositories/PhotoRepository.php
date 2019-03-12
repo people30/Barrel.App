@@ -48,7 +48,8 @@ namespace App\Repositories
                 foreach($sizes as $filepath)
                 {
                     $imageFile = new Models\ImageFile();
-                    $imageFile->filepath = $filepath;
+                    $imageFile->filepath = public_path($filepath);
+                    $imageFile->url = asset($filepath);
 
                     $size = explode('.', basename($filepath))[1];
 
@@ -57,7 +58,7 @@ namespace App\Repositories
                     $imageFile->width = (int)$width;
                     $imageFile->height = (int)$height;
 
-                    $photo->files->push($imageFile);
+                    $photo->files[$size] = $imageFile;
 
                     unset($width, $height);
                 }
@@ -92,7 +93,7 @@ namespace App\Repositories
 
                 list($filename, $size, $extension) = $exploded;
 
-                $grouped[$filename][$size] = '/storage/' . $filepath;
+                $grouped[$filename][$size] = 'storage/' . $filepath;
 
                 unset($filename, $size, $extension);
             }
