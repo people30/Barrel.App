@@ -65,19 +65,22 @@
         <article class="content">
             <!-- 蔵の写真、基本情報 -->
             <section>
-                <h1 class="header_text">{{ $brewer }}</h1>
+                <h1 class="header_text">{{ $brewer->name }}</h1>
                 <section class="kura_info">
                     <div class="main_image">
-                        <img src="{{ asset('../../img/蔵５.jpg') }}">
+                        <img src="{{$brewer->KeyVisual->files['780x520']->url}}" 
+                srcset="{{$brewer->KeyVisual->files['780x520']->url}} 780w, 
+                        {{$brewer->KeyVisual->files['580x384']->url}} 580w, 
+                        {{$brewer->KeyVisual->files['320x240']->url}} 320w">
                     </div>
                     <article class="about_kura">
                         <ul>
                             <li class="about_kura_outline">
-                               {{ 酒蔵説明内容 }}
+                               {{ $brewer->text }}
                             </li>
                             <li class="about_kura_kengaku">
-                                <p>{{酒蔵見学不可}}</p>
-                                <p class="available">{{酒蔵見学可}}</p>
+                                <p>{{$brewer->isBackstageSeeable}}</p>
+                                <p class="available">{{$brewer->isBackstageSeeable}}</p>
                             </li>
 
                             <li class="about_kura_open">
@@ -104,7 +107,10 @@
                     @for ($i = 0; $i < 4; $i++)
                     <div>
                     <a class="full_scr" href="{{ asset('../../img/$brewer->slug->random().jpg') }}" data-fancybox>
-                        <img src="../../img/蔵１.jpg"></a>
+                        <img src="{{$brewer->KeyVisual->files['780x520']->url}}" 
+                srcset="{{$brewer->KeyVisual->files['380x252']->url}} 380w, 
+                        {{$brewer->KeyVisual->files['280x184']->url}} 280w, 
+                        {{$brewer->KeyVisual->files['320x240']->url}} 130w"></a>
                     </div>
                     @endfor
 
@@ -128,12 +134,12 @@
                                     </div>
                                     <div>
                                         <h3>
-                                            <a class="subtitle_text story_title" href="{{ env }}">{{ タイトル }}</a>
+                                            <a class="subtitle_text story_title" href="{{ env }}">{{ $stories->article->title }}</a>
                                         </h3>
                                     </div>
                                 </div>
                                 <p>
-                                    {{ $article->text }}
+                                    {{ $stories->$article->text }}
                                 </p>
                             </li>
                             <!-- ／ブログ記事 一件-->
