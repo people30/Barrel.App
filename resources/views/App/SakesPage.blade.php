@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- ベースcss -->
         <link rel="stylesheet" href="{{ asset('/css/base.css') }}">
-            <!-- sakes_page css -->
-        <link rel="stylesheet" href="{{ asset('/css/sakes_page.css') }}"> 
+        <!-- sakes_page css -->
+        <link rel="stylesheet" href="{{ asset('/css/sakes_page.css') }}">
         <!-- 価格スライダー -->
         <link rel="stylesheet" href="{{ asset('/css/nouislider.min.css') }}">
         <!-- ファビコン -->
@@ -26,14 +26,16 @@
         <!-- ベーススクリプト -->
         <script src="{{ asset('/js/base.js') }}"></script>
         <!-- 地酒ページスクリプト -->
+        <script src="{{ asset('/js/nouislider.min.js') }}"></script>
+        <script src="{{ asset('/js/wNumb.js') }}"></script>
         <script src="{{ asset('/js/sakes_page.js') }}"></script>
         <title>ぐびっと:徳島の地酒</title>
 
     </head>
 
-</head>
+    </head>
 
-<body>
+    <body>
         <!-- ヘッダー -->
         <div class="sticky">
             <header class="header_area">
@@ -63,168 +65,168 @@
         </div>
         <!-- ／ヘッダー -->
 
-    <!-- ################################################################### -->
-    <!-- メインエリア -->
-    <main class="main_area">
-        <article class="content">
-            <div class="title_area">
-                <!-- タイトル -->
-                <h1 class="header_text">徳島の地酒</h1>
-                <!-- ／タイトル -->
-                <!-- 検索を表示か非表示か -->
-                <p class="search_onoff"><a href="">検索を非表示</a></p>
-                <!-- ／検索を表示か非表示か -->
-            </div>
+        <!-- ################################################################### -->
+        <!-- メインエリア -->
+        <main class="main_area">
+            <article class="content">
+                <div class="title_area">
+                    <!-- タイトル -->
+                    <h1 class="header_text">徳島の地酒</h1>
+                    <!-- ／タイトル -->
+                    <!-- 検索を表示か非表示か -->
+                    <p class="search_onoff"><a href="">検索を非表示</a></p>
+                    <!-- ／検索を表示か非表示か -->
+                </div>
 
-            <!-- 検索ボックス -->
-            
-            <form method="get" action="{{ route('SakesPage') }}/" class="search_area">
-                <!-- 味わい -->
-                <div id="tastes" class="search_layout">
-                    <!-- 味わいヘッダー -->
-                    <p class="search_header">味わい</p>
-                    <!-- ／味わいヘッダー -->
-                    <!-- 味わいボタン -->
-                    <ul class="search_content">
-                        @foreach($tastes as $taste)
-                        <li><label><input type="checkbox" name="selectedTastes[]" value="{{ $taste->id }}"><span>{{ $taste->name }}</span></label></li>
-                        @endforeach
-                    </ul>
-                    <!-- ／味わいボタン -->
-                </div>
-                <!-- ／味わい -->
-                <!-- 特定名称 -->
-                <div id="designations" class="search_layout">
-                    <!-- 特定名称ヘッダー -->
-                    <p class="search_header">特定名称</p>
-                    <!-- ／特定名称ヘッダー -->
-                    <!-- 味わいボタン -->
-                    <ul class="search_content">
-                    @foreach($designations as $designation )
-                        <li><label><input type="checkbox" name="selectedDesignations[]" value="{{ $designation->id }}"><span>{{ $designation->name }}</span></label></li>
-                    @endforeach
-                    </ul>
-                    <!-- ／味わいボタン -->
-                </div>
-                <!-- 特定名称 -->
-                <!-- キーワード -->
-                <div id="keyword" class="search_layout">
-                    <p class="search_header">キーワード</p>
-                    <p class="search_content"><input type="text" name="keyword" value=""></p>
-                </div>
-                <!-- ／キーワード -->
-                <!-- 価格スライダー -->
-                <div id="price" class="search_layout">
-                    <p class="search_header">価格</p>
-                    <div id="noUiSlider">
-                        <div id="range"></div>
-                        <input type="hidden" name="selectedPriceMin" id="min" class="area" value="">
-                        <input type="hidden" name="selectedPriceMax" id="max" class="area" value="">
+                <!-- 検索ボックス -->
+
+                <form method="get" action="{{ route('SakesPage') }}/" class="search_area">
+                    <!-- 味わい -->
+                    <div id="tastes" class="search_layout">
+                        <!-- 味わいヘッダー -->
+                        <p class="search_header">味わい</p>
+                        <!-- ／味わいヘッダー -->
+                        <!-- 味わいボタン -->
+                        <ul class="search_content">
+                            @foreach($tastes as $taste)
+                            <li><label><input type="checkbox" name="selectedTastes[]" value="{{ $taste->id }}"><span>{{ $taste->name }}</span></label></li>
+                            @endforeach
+                        </ul>
+                        <!-- ／味わいボタン -->
                     </div>
-                </div>
-                <!-- ／価格スライダー -->
-                <!-- 検索ボタン -->
-                <div class="button_layout">
-                    <p class="button"><button type="submit">検索</button></p>
-                </div>
-                <!-- ／検索ボタン -->
-            </form>
-            <!-- ／検索ボックス -->
-
-            <!-- ###################################### -->
-
-            <!-- 表示数 -->
-            <div class="card_sum caption_text">
-                <span>{{ $sakes->count() }}</span><span>品 表示中</span>
-            </div>
-            <!-- ／表示数 -->
-
-            <!-- ###################################### -->
-            <!-- カードリスト -->
-            <div class="card_list">
-
-                <!-- カード -->
-                @foreach($sakes as $sake)
-                <div class="card">
-                    <div class="card_inner">
-                        <!-- 酒画像 -->
-                        <div class="card_figure">
-                            <img src="{{ $sake->bottle->files['80x260']->url }}" alt="" width="80" height="260">
+                    <!-- ／味わい -->
+                    <!-- 特定名称 -->
+                    <div id="designations" class="search_layout">
+                        <!-- 特定名称ヘッダー -->
+                        <p class="search_header">特定名称</p>
+                        <!-- ／特定名称ヘッダー -->
+                        <!-- 味わいボタン -->
+                        <ul class="search_content">
+                            @foreach($designations as $designation )
+                            <li><label><input type="checkbox" name="selectedDesignations[]" value="{{ $designation->id }}"><span>{{ $designation->name }}</span></label></li>
+                            @endforeach
+                        </ul>
+                        <!-- ／味わいボタン -->
+                    </div>
+                    <!-- 特定名称 -->
+                    <!-- キーワード -->
+                    <div id="keyword" class="search_layout">
+                        <p class="search_header">キーワード</p>
+                        <p class="search_content"><input type="text" name="keyword" value=""></p>
+                    </div>
+                    <!-- ／キーワード -->
+                    <!-- 価格スライダー -->
+                    <div id="price" class="search_layout">
+                        <p class="search_header">価格</p>
+                        <div class="search_content">
+                            <div id="range"></div>
+                            <input type="hidden" name="selectedPriceMin" id="selectedPriceMin" value="">
+                            <input type="hidden" name="selectedPriceMax" id="selectedPriceMax" value="">
                         </div>
-                        <!-- ／酒画像 -->
-                        <!-- カードボディ -->
-                        <div class="card_body">
-                            <!-- 純米大吟醸 -->
-                            <p class="sake_designation caption_text">{{ $sake->designation->name }}</p>
-                            <!-- ／純米大吟醸 -->
-                            <!-- コクのある -->
-                            <p class="sake_taste">
-                                <span class="caption_text taste_heavy">{{ $sake->taste->name }}</span>
-                            </p>
-                            <!-- ／コクのある -->
-                            <!-- 名前 -->
-                            <p class="sake_name non_bar_text">{{ $sake->name }}</p>
-                            <!-- ／名前 -->
-                            <!-- アルコール度 -->
-                            <div class="sake_alcoholicity">
-                                <!-- アルコール度イメージ -->
-                                <img src="{{ asset('/svg/al15.svg') }}" alt="" width="25px" height="50px">
-                                <!-- アルコール度イメージ -->
-                                <!-- 数字 -->
-                                <p class="subtitle_text">
-                                    <span>{{ $sake->alcoholicity * 100}}</span>
-                                    <span>%</span>
-                                </p>
-                                <!-- ／数字 -->
-                                <!-- アルコール度文字 -->
-                                <p class="caption_text">アルコール度</p>
-                                <!-- ／アルコール度文字 -->
+                    </div>
+                    <!-- ／価格スライダー -->
+                    <!-- 検索ボタン -->
+                    <div class="button_layout">
+                        <p class="button"><button type="submit">検索</button></p>
+                    </div>
+                    <!-- ／検索ボタン -->
+                </form>
+                <!-- ／検索ボックス -->
+
+                <!-- ###################################### -->
+
+                <!-- 表示数 -->
+                <div class="card_sum caption_text">
+                    <span>{{ $sakes->count() }}</span><span>品 表示中</span>
+                </div>
+                <!-- ／表示数 -->
+
+                <!-- ###################################### -->
+                <!-- カードリスト -->
+                <div class="card_list">
+
+                    <!-- カード -->
+                    @foreach($sakes as $sake)
+                    <div class="card">
+                        <div class="card_inner">
+                            <!-- 酒画像 -->
+                            <div class="card_figure">
+                                <img src="{{ $sake->bottle->files['80x260']->url }}" alt="" width="80" height="260">
                             </div>
-                            <!-- ／アルコール度 -->
-                            <!-- 精米歩合 -->
-                            <div class="rice_pollishing_ratio">
-                                <!-- 精米歩合イメージ -->
-                                <img src="{{ asset('/svg/seimai40.svg') }}" alt="" width="30px" height="50px">
-                                
-                                <!-- ／精米歩合イメージ -->
-                                <!-- 数字 -->
-                                <p class="subtitle_text">
-                                    <span>{{ $sake->ricePollishingRatio * 100 }}</span>
-                                    <span>%</span>
+                            <!-- ／酒画像 -->
+                            <!-- カードボディ -->
+                            <div class="card_body">
+                                <!-- 純米大吟醸 -->
+                                <p class="sake_designation caption_text">{{ $sake->designation->name }}</p>
+                                <!-- ／純米大吟醸 -->
+                                <!-- コクのある -->
+                                <p class="sake_taste">
+                                    <span class="caption_text taste_heavy">{{ $sake->taste->name }}</span>
+                                </p>
+                                <!-- ／コクのある -->
+                                <!-- 名前 -->
+                                <p class="sake_name non_bar_text">{{ $sake->name }}</p>
+                                <!-- ／名前 -->
+                                <!-- アルコール度 -->
+                                <div class="sake_alcoholicity">
+                                    <!-- アルコール度イメージ -->
+                                    <img src="{{ asset('/svg/al15.svg') }}" alt="" width="25px" height="50px">
+                                    <!-- アルコール度イメージ -->
+                                    <!-- 数字 -->
+                                    <p class="subtitle_text">
+                                        <span>{{ $sake->alcoholicity * 100}}</span>
+                                        <span>%</span>
+                                    </p>
                                     <!-- ／数字 -->
-                                </p>
-                                <!-- 精米歩合文字 -->
-                                <p class="caption_text">精米歩合</p>
-                                <!-- ／精米歩合文字 -->
+                                    <!-- アルコール度文字 -->
+                                    <p class="caption_text">アルコール度</p>
+                                    <!-- ／アルコール度文字 -->
+                                </div>
+                                <!-- ／アルコール度 -->
+                                <!-- 精米歩合 -->
+                                <div class="rice_pollishing_ratio">
+                                    <!-- 精米歩合イメージ -->
+                                    <img src="{{ asset('/svg/seimai40.svg') }}" alt="" width="30px" height="50px">
+
+                                    <!-- ／精米歩合イメージ -->
+                                    <!-- 数字 -->
+                                    <p class="subtitle_text">
+                                        <span>{{ $sake->ricePollishingRatio * 100 }}</span>
+                                        <span>%</span>
+                                        <!-- ／数字 -->
+                                    </p>
+                                    <!-- 精米歩合文字 -->
+                                    <p class="caption_text">精米歩合</p>
+                                    <!-- ／精米歩合文字 -->
+                                </div>
+                                <!-- ／精米歩合 -->
+                                <div class="card_footer">
+                                    <!-- 容量 -->
+                                    @foreach($sake->sizes as $size)
+                                    <p><span class="sake_price caption_text">{{ number_format($size->content) }}</span>
+                                        <span class="caption_text">ml</span>
+                                        <span class="sake_price subtitle_text">{{ number_format($size->price) }}</span>
+                                        <span class="caption_text">円 (税抜)</span></p>
+                                    @endforeach
+                                    <!-- 製造の文字 赤色 -->
+                                    <p class="card_brewer"><a href="{{ route('BrewerDetailsPage', ['slug' => $sake->brewer->slug]) }}"><span>製造:</span><span>{{ $sake->brewer->name }}</span></a></p>
+                                    <!-- ／製造の文字 赤色 -->
+                                </div>
                             </div>
-                            <!-- ／精米歩合 -->
-                            <div class="card_footer">
-                                <!-- 容量 -->
-                                @foreach($sake->sizes as $size)
-                                <p><span class="sake_price caption_text">{{ number_format($size->content) }}</span>
-                                    <span class="caption_text">ml</span>
-                                    <span class="sake_price subtitle_text">{{ number_format($size->price) }}</span>
-                                    <span class="caption_text">円 (税抜)</span></p>
-                                @endforeach
-                                <!-- 製造の文字 赤色 -->
-                                <p class="card_brewer"><a href="{{ route('BrewerDetailsPage', ['slug' => $sake->brewer->slug]) }}"><span>製造:</span><span>{{ $sake->brewer->name }}</span></a></p>
-                                <!-- ／製造の文字 赤色 -->
-                            </div>
+                            <!-- ／カードボディ -->
                         </div>
-                        <!-- ／カードボディ -->
+                        <!-- ／カードインナー -->
                     </div>
-                    <!-- ／カードインナー -->
+                    @endforeach
+                    <!-- ／カード -->
                 </div>
-                @endforeach
-                <!-- ／カード -->
-            </div>
-            <!-- ／カードリスト -->
-        </article>
+                <!-- ／カードリスト -->
+            </article>
 
-    </main>
-    <!-- ／メインエリア -->
+        </main>
+        <!-- ／メインエリア -->
 
-    <!-- ################################################################### -->
+        <!-- ################################################################### -->
         <!-- フッター外枠 -->
         <footer class="footer_area">
             <!-- フッター内枠 -->
@@ -274,69 +276,6 @@
             <!-- ／フッター内枠 -->
         </footer>
         <!-- ／フッター外枠 -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="../js/nouislider.min.js"></script>
-
-    <script>
-        var $slider = $('#range').get(0); //スライダー要素
-        var $min = $('#min'); //最小値のテキストフィールド
-        var $max = $('#max'); //最大値のテキストフィールド
-        var minVal = 0; //最小値
-        var maxVal = 50000; //最大値
-        var gap = 500; // 数値を500刻みにする
-
-        //noUiSliderをセット
-        noUiSlider.create($slider, {
-            start: [minVal - gap, maxVal + gap], //
-            connect: true,
-            step: gap,
-            range: {
-                'min': minVal - gap, //最小値を-5
-                'max': maxVal + gap //最小値を+5
-            },
-            pips: {
-                mode: 'range',
-                density: gap
-            }
-        });
-
-        //noUiSliderイベント
-        $slider.noUiSlider.on('update', function (values, handle) {
-
-            //現在の最小値・最大値を取得
-            var value = Math.floor(values[handle]);
-
-            if (handle) {
-                $max.get(0).value = value; //現在の最大値
-            } else {
-                $min.get(0).value = value; //現在の最小値
-            }
-
-            //noUiSlider下部の数値変更（そのままだと+-5の数値が表示されるため）
-            $('.noUi-value-large').text(minVal);
-            $('.noUi-value-large:last-child').text(maxVal);
-
-            //最小値以下・最大値以上でinputを空にする
-            if ($min.get(0).value <= minVal || $min.get(0).value > maxVal) {
-                $min.val('');
-            }
-            if ($max.get(0).value <= minVal || $max.get(0).value > maxVal) {
-                $max.val('');
-            }
-
-        });
-
-        //最小値をinputにセット
-        $min.get(0).addEventListener('change', function () {
-            $slider.noUiSlider.set([this.value, null]);
-        });
-
-        //最大値をinputにセット
-        $max.get(0).addEventListener('change', function () {
-            $slider.noUiSlider.set([null, this.value]);
-        });
-    </script>
-</body>
+    </body>
 
 </html>
