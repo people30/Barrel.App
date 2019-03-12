@@ -110,7 +110,7 @@
                         <img src="{{$brewer->KeyVisual->files['780x520']->url}}" 
                 srcset="{{$brewer->KeyVisual->files['380x252']->url}} 380w, 
                         {{$brewer->KeyVisual->files['280x184']->url}} 280w, 
-                        {{$brewer->KeyVisual->files['320x240']->url}} 130w"></a>
+                        {{$brewer->KeyVisual->files['320x240']->url}} 280w"></a>
                     </div>
                     @endfor
 
