@@ -7,22 +7,18 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- サイト説明 -->
         <meta property="og:description" content="">
-        <!-- googleフォント -->
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
-        <!-- fontawesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- ベースcss -->
         <link rel="stylesheet" href="{{ asset('/css/base.css') }}">
         <!-- sakes_page css -->
         <link rel="stylesheet" href="{{ asset('/css/sakes_page.css') }}">
         <!-- 価格スライダー -->
         <link rel="stylesheet" href="{{ asset('/css/nouislider.min.css') }}">
-        <!-- ファビコン -->
-        <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
-        <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
+        <!-- googleフォント -->
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap" type="text/javascript"></script>
+        <script src="{{ asset('/css/jquery-3.3.1.min.js') }}"></script>
         <!-- ベーススクリプト -->
         <script src="{{ asset('/js/base.js') }}"></script>
         <!-- 地酒ページスクリプト -->
@@ -30,9 +26,6 @@
         <script src="{{ asset('/js/wNumb.js') }}"></script>
         <script src="{{ asset('/js/sakes_page.js') }}"></script>
         <title>ぐびっと:徳島の地酒</title>
-
-    </head>
-
     </head>
 
     <body>

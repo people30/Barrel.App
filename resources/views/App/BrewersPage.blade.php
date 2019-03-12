@@ -7,32 +7,28 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- サイト説明 -->
         <meta property="og:description" content="">
-        <!-- googleフォント -->
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
-        <!-- fontawesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- ベースcss -->
         <link rel="stylesheet" href="{{ asset('/css/base.css') }}">
         <!-- brewerscss -->
         <link rel="stylesheet" href="{{ asset('/css/brewers_page.css') }}">
-        <!-- ファビコン -->
-        <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
-        <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
+        <!-- googleフォント -->
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <!-- Goole Map -->
-        <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}&callback=initMap"></script>
-        <!-- ベーススクリプト -->
-        <script src="{{ asset('js/base.js') }}"></script>
+        <script src="{{ asset('/css/jquery-3.3.1.min.js') }}"></script>
+        <!-- Vue -->
         @if(env('APP_DEBUG'))
         <script src="{{ asset('js/vue.js') }}"></script>
         @else
         <script src="{{ asset('js/vue.min.js') }}"></script>
         @endif
-        
-        <script type="text/javascript" src="{{ asset('/js/brewers_page_script.js') }}"></script>
+        <!-- Goole Map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}&amp;callback=initMap"></script>
+        <!-- ベーススクリプト -->
+        <script src="{{ asset('js/base.js') }}"></script>
+        <script src="{{ asset('/js/brewers_page.js') }}"></script>
         <title>ぐびっと:徳島の酒蔵</title>
-
     </head>
 
     <body data-context="{{ json_encode([
