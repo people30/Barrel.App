@@ -21,7 +21,7 @@
         @if(env('APP_DEBUG'))
         <script src="{{ asset('/js/vue.js') }}"></script>
         @else
-        <script src="{{ asset(/'js/vue.min.js') }}"></script>
+        <script src="{{ asset('/js/vue.min.js') }}"></script>
         @endif
         <!-- Goole Map -->
         <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}&amp;callback=initMap"></script>
