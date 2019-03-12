@@ -103,8 +103,8 @@
                 <div class="sub_image slider">
                     @for ($i = 0; $i < 4; $i++)
                     <div>
-                            <a class="full_scr" href="{{ asset('../../img/$brewer->slug->random().jpg') }}" data-fancybox>
-                                <img src="../../img/蔵１.jpg"></a>
+                    <a class="full_scr" href="{{ asset('../../img/$brewer->slug->random().jpg') }}" data-fancybox>
+                        <img src="../../img/蔵１.jpg"></a>
                     </div>
                     @endfor
 
