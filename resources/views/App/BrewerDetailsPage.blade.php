@@ -15,9 +15,9 @@
         <link rel="stylesheet" href="{{ asset('/css/base.css') }}">
 
         <!-- 蔵詳細専用css -->
-        <link rel="stylesheet" href="{{ asset('../../css/jquery.bxslider_kura.css') }}">
-        <link rel="stylesheet" href="{{ asset('../../css/jquery.fancybox.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('../../css/brewer_details_page.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/jquery.bxslider_kura.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/jquery.fancybox.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/brewer_details_page.css') }}">
 
         <!-- ファビコン -->
         <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
@@ -68,10 +68,10 @@
                 <h1 class="header_text">{{ $brewer->name }}</h1>
                 <section class="kura_info">
                     <div class="main_image">
-                        <img src="{{$brewer->KeyVisual->files['780x520']->url}}" 
-                srcset="{{$brewer->KeyVisual->files['780x520']->url}} 780w, 
-                        {{$brewer->KeyVisual->files['580x384']->url}} 580w, 
-                        {{$brewer->KeyVisual->files['320x240']->url}} 320w">
+                        <img src="{{$brewer->keyVisual->files['780x520']->url}}" 
+                srcset="{{$brewer->keyVisual->files['780x520']->url}} 320w, 
+                        {{$brewer->keyVisual->files['580x384']->url}} 580w, 
+                        {{$brewer->keyVisual->files['320x240']->url}} 780w">
                     </div>
                     <article class="about_kura">
                         <ul>
@@ -89,30 +89,32 @@
                                         <th>営業時間</th>
                                         <td>
                                             {{ $brewer->openingTime }} - {{ $brewer->closingTime }}
-                                            <br>{{ $brewer->businessDay}}
+                                            <br>{{ $brewer->buisinessDay}}
                                         </td>
                                     </tr>
                                 </table>
                             </li>
 
                             <li class="about_kura_url">
-                            <a href="{{ $brewer->link->url }}">
-                                    {{ $brewer->link->url }}</a>
+                            <a href="{{ $brewer->links['website']->url }}">
+                                    {{ $brewer->links['website']->url }}</a>
                             </li>
                         </ul>
                     </article>
                 </section>
 
                 <div class="sub_image slider">
-                    @for ($i = 0; $i < 4; $i++)
+                    @foreach ($photos as $photo)
                     <div>
-                    <a class="full_scr" href="{{ asset('../../img/$brewer->slug->random().jpg') }}" data-fancybox>
-                        <img src="{{$brewer->KeyVisual->files['780x520']->url}}" 
-                srcset="{{$brewer->KeyVisual->files['380x252']->url}} 380w, 
-                        {{$brewer->KeyVisual->files['280x184']->url}} 280w, 
-                        {{$brewer->KeyVisual->files['320x240']->url}} 280w"></a>
+                    <a class="full_scr" href="{{ $photo->files['780x520']->url }}" data-fancybox>
+
+                        <img src="{{$photo->files['780x520']->url}}" 
+                srcset="{{$photo->files['780x520']->url}} 280w, 
+                        {{$photo->files['780x520']->url}} 280w, 
+                        {{$photo->files['780x520']->url}} 380w"></a>
+                    
                     </div>
-                    @endfor
+                    @endforeach
 
                 </div>
             </section>
@@ -125,25 +127,25 @@
                     <div class="kura_stories">
                         <!-- ブログ記事 リスト -->
                         <ul>
-                            @for ($i = 0; $i < 3; $i++)
+                        @foreach ($stories as $story)
                               <!-- ブログ記事 一件 -->
                             <li>
                                 <div class="blog_head">
                                     <div class="category">
-                                    <a href="{{ env('WP_URL')}}">{{ $stories->article->categories->name }}</a>
+                                    <a href="{{ env('WP_URL')}}">{{ $stories->categories->name }}</a>
                                     </div>
                                     <div>
                                         <h3>
-                                            <a class="subtitle_text story_title" href="{{ env }}">{{ $stories->article->title }}</a>
+                                            <a class="subtitle_text story_title" href="{{ env }}">{{ $stories->title }}</a>
                                         </h3>
                                     </div>
                                 </div>
                                 <p>
-                                    {{ $stories->$article->text }}
+                                    {{ $stories->text }}
                                 </p>
                             </li>
                             <!-- ／ブログ記事 一件-->
-                            @endfor
+                            @endforeach
  
                         </ul>
                         <!-- ブログ記事 リスト -->
@@ -170,7 +172,7 @@
                             </tr>
                             <tr>
                                 <th>営業日</th>
-                                <td>{{ $brewer->businessDay}}</td>
+                                <td>{{ $brewer->buisinessDay}}</td>
                             </tr>
                             <tr>
                                 <th>営業時間</th>
@@ -191,7 +193,7 @@
                             <tr>
                                 <th>URL</th>
                                 <td>
-                                    <a class="gaiyou_url" href="{{ $brewer->link->url }}">{{ $brewer->link->url }}</a>
+                                    <a class="gaiyou_url" href="{{ $brewer->links['website']->url }}">{{ $brewer->links['website']->url }}</a>
                                 </td>
                             </tr>
                             <tr>
@@ -209,26 +211,26 @@
             <section class="products">
                 <h1 class="title_text">代表柄</h1>
                 <div class="items">
-                    @for ($i = 0; $i < 3; $i++)
+                    @foreach ($products as $product)
                     <!-- カード -->
                         <div class="item_card">
                                 <div class="spec">
                                     <img src="{{ asset('../../svg/bin.svg') }}" alt="酒瓶の画像">
                                     <ul class="products_info">
                                         <li class="caption_text tokutei_meishou">
-                                            {{ $sake->designation }}
+                                            {{ $product->designation->name }}
                                         </li>
                                         <li class="caption_text taste">
-                                            {{ $sake->tastes }}
+                                            {{ $product->taste->name }}
                                         </li>
-                                        <li class="meigara">{{ $sake->name }}</li>
+                                        <li class="meigara">{{ $product->name }}</li>
         
                                         <li class="product_alc">
                                             <div class="grid_item">
                                                 <img src="{{ asset('../../svg/al20.svg') }}" alt="">
                                             </div>
                                             <ul>
-                                            <li>{{ $sake->alcoholicity * 100 }}%</li>
+                                            <li>{{ $product->alcoholicity * 100 }}%</li>
                                                 <li>アルコール度</li>
                                             </ul>
                                         </li>
@@ -237,27 +239,27 @@
                                                 <img src="{{ asset('../../svg/seimai40.svg') }}" alt="">
                                             </div>
                                             <ul>
-                                                <li>{{ $sake->ricePollishingRatio * 100 }}%</li>
+                                                <li>{{ $product->ricePollishingRatio * 100 }}%</li>
                                                 <li>精米歩合</li>
                                             </ul>
                                         </li>
                                         <li class="rice">
                                             <ul>
                                                 <li>原料米</li>
-                                                <li>{{ $sake->rawRice }}</li>
+                                                <li>{{ $product->rawRice }}</li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </div>
                                 <p class="product_point">
-                                        {{ $sake->text }}
+                                        {{ $product->text }}
                                 </p>
                                 <table class="price_list">
                                     <tbody>
-                                        @foreach ($sake->saizes as $size)
+                                        @foreach ($product->sizes as $size)
                                         <tr>
-                                            <th class=" caption_text">{{ $sake->size->content}}ml</th>
-                                            <td class="price">{{ $sake->size->price }}円</td>
+                                            <th class=" caption_text">{{ $size->content}}ml</th>
+                                            <td class="price">{{ $size->price }}円</td>
                                             <td class="tax caption_text">（税抜）</td>
                                         </tr>      
                                         @endforeach
@@ -265,7 +267,7 @@
                                 </table>
                         </div>
                     <!-- ／カード -->
-                    @endfor
+                    @endforeach
             </section>
 
             <!-- ／ 製造品一覧 -->
@@ -326,7 +328,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <!-- スクリプト -->
-    <script src="{{ asset('../../js/base.js') }}"></script>
+    <script src="{{ asset('/js/base.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
     <script>
@@ -408,7 +410,7 @@
         }
 
     </script>
-    <script type="text/javascript" src="{{ asset('../../js/jquery.fancybox.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jquery.fancybox.min.js') }}"></script>
     <script type="text/javascript">
         fullScreen(function ($) {
             $(".full_scr").attr('rel', 'group').fancybox();
