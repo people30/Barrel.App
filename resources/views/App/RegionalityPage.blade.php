@@ -30,23 +30,18 @@
 
 
 </head>
-
 <body>
 
     <section class="content_fluid">
-
         <!--キービジュアル-->
         <div class="slider">
             @for ($i = 0; $i < 4; $i++)
             <div><img src="{{ asset('./img/$photos->random().jpg') }}"></div>
             @endfor
-
         </div>
-
         <section class="first_menu">
             <div class="menu">
                 <div><img class="top_logo" src="{{ asset('./img/site_logo.jpg') }}"></div>
-
                 <ul>
                     <li class="selected"><a href="{{ route('RegionalityPage') }}/#regionality">徳島の風土と日本酒</a></li>
                     <li><a href="{{ route('SakesPage') }}/">徳島の地酒</a></li>
@@ -62,10 +57,8 @@
             </div>
         </section>
     </section>
-
     <!-- ヘッダー -->
     <div class="sticky top_sticky">
-
         <header class="header_area">
             <!-- ヘッダーロゴ -->
             <h1 class="header_logo pagetop">
@@ -92,114 +85,105 @@
         </header>
     </div>
     <!-- ／ヘッダー -->
-
-
     <!-- ################################################################### -->
     <!-- メインエリア -->
     <main class="main_area">
+    <!--/キービジュアル navi-->
 
-        <!--/キービジュアル navi-->
-
-
-<article class="content">
-    <!--contents01-->
-    <section class="box01">
-        <div class="logos">
-            <div class="title_box">
-                <h1 class="title_text">徳島の風土と日本酒</h1>
+    <article class="content">
+        <!--contents01-->
+        <section class="box01">
+            <div class="logos">
+                <div class="title_box">
+                    <h1 class="title_text">徳島の風土と日本酒</h1>
+                </div>
+                <div><img class="title_logo02" src="{{ asset('./svg/textlogo_05.svg') }}"></div>
             </div>
-            <div><img class="title_logo02" src="{{ asset('./svg/textlogo_05.svg') }}"></div>
-        </div>
-        <div class="contents01">
-
-            <ul class="text_logo">
-                <li>
-                    <div class="poem">
-                        <div><img src="{{ asset('./svg/navylogo01.svg') }}"></div>
-                        <div class="text_box">
-                            <p class="poem_title">県土で生まれた味わい</p>
-                            徳島の風土と蔵元それぞれの持つ伝統、日々の営みが響きあい、大
-                            人が楽しめる豊かな味が作り出されています。このサイトでは、徳
-                            島での酒蔵の活動と想いを紹介します。
+            <div class="contents01">
+                <ul class="text_logo">
+                    <li>
+                        <div class="poem">
+                            <div><img src="{{ asset('./svg/navylogo01.svg') }}"></div>
+                            <div class="text_box">
+                                <p class="poem_title">県土で生まれた味わい</p>
+                                徳島の風土と蔵元それぞれの持つ伝統、日々の営みが響きあい、大
+                                人が楽しめる豊かな味が作り出されています。このサイトでは、徳
+                                島での酒蔵の活動と想いを紹介します。
+                            </div>
                         </div>
-                    </div>
-                <li>
-                    <div class="poem">
-                        <div><img src="{{ asset('./svg/navylogo02.svg') }}"></div>
-                        <div class="text_box">
-                            <p class="poem_title">豊かな自然に育まれた「お米」</p>
-                            徳島県の醸造に使われるお米は、「山田錦」や「美山錦」などの全
-                            国的にも有名な酒造好適米をはじめ、その地域独自の酒米など
-                            多種多様なものがあります。
+                    <li>
+                        <div class="poem">
+                            <div><img src="{{ asset('./svg/navylogo02.svg') }}"></div>
+                            <div class="text_box">
+                                <p class="poem_title">豊かな自然に育まれた「お米」</p>
+                                徳島県の醸造に使われるお米は、「山田錦」や「美山錦」などの全
+                                国的にも有名な酒造好適米をはじめ、その地域独自の酒米など
+                                多種多様なものがあります。
+                            </div>
                         </div>
-                    </div>
-                <li>
-                    <div class="poem">
-                        <div><img src="{{ asset('./svg/navylogo03.svg') }}"></div>
-                        <div class="text_box">
-                            <p class="poem_title">「清流」の収束する吉野川</p>
-                            そして、お米同様に重要な「水」にも恵まれています。徳島県では、
-                            剣山山系や讃岐山脈からの伏流水が豊富な水源となり、酒造りに好
-                            んで使われています。そのため、吉野川などの河川沿いに多くの
-                            蔵元が存在しております。
+                    <li>
+                        <div class="poem">
+                            <div><img src="{{ asset('./svg/navylogo03.svg') }}"></div>
+                            <div class="text_box">
+                                <p class="poem_title">「清流」の収束する吉野川</p>
+                                そして、お米同様に重要な「水」にも恵まれています。徳島県では、
+                                剣山山系や讃岐山脈からの伏流水が豊富な水源となり、酒造りに好
+                                んで使われています。そのため、吉野川などの河川沿いに多くの
+                                蔵元が存在しております。
+                            </div>
                         </div>
-                    </div>
-                <li>
-                    <div class="poem">
-                        <div><img src="{{ asset('./svg/navylogo04.svg') }}"></div>
-                        <div class="text_box">
-                            <p class="poem_title">判断と、試行錯誤の日々</p>
-                            一見、このように生産資源に恵まれた徳島県ですが、自然すべてが
-                            味方というわけではありません。醸造には通常、十分な寒さが
-                            必要ですが、徳島県は温暖な地域なので温度管理に徹底した醸造が
-                            行われています。そこには日々、上質な徳島酒を生み出すために
-                            気候環境と戦う職人たちの試行錯誤重ねられています。
+                    <li>
+                        <div class="poem">
+                            <div><img src="{{ asset('./svg/navylogo04.svg') }}"></div>
+                            <div class="text_box">
+                                <p class="poem_title">判断と、試行錯誤の日々</p>
+                                一見、このように生産資源に恵まれた徳島県ですが、自然すべてが
+                                味方というわけではありません。醸造には通常、十分な寒さが
+                                必要ですが、徳島県は温暖な地域なので温度管理に徹底した醸造が
+                                行われています。そこには日々、上質な徳島酒を生み出すために
+                                気候環境と戦う職人たちの試行錯誤重ねられています。
+                            </div>
                         </div>
-                    </div>
-            </ul>
-        </div>
-    </section>
-    <!--/contents01-->
-
-    <!--contents02-->
-
-    <section class="box02">
-        <div class="logos">
-            <div class="title_box">
-
-                <h1 class="title_text">Instagramギャラリー</h1>
+                </ul>
             </div>
-            <div><img class="title_logo02" src="{{ asset('./svg/textlogo_05.svg') }}"></div>
-        </div>
-        <div class="contents02">
-            <div class="photo_box">
-                <a href="https://www.instagram.com/gubittotokushima/?utm_source=ig_embed&amp;utm_medium=loading">
-                    <img class="photo01" src="{{ asset('./img/photo01.jpg') }}" alt="">
-                </a>
+        </section>
+        <!--/contents01-->
+
+        <!--contents02-->
+        <section class="box02">
+            <div class="logos">
+                <div class="title_box">
+                    <h1 class="title_text">Instagramギャラリー</h1>
+                </div>
+                <div><img class="title_logo02" src="{{ asset('./svg/textlogo_05.svg') }}"></div>
+            </div>
+            <div class="contents02">
+                <div class="photo_box">
+                    <a href="https://www.instagram.com/gubittotokushima/?utm_source=ig_embed&amp;utm_medium=loading">
+                        <img class="photo01" src="{{ asset('./img/photo01.jpg') }}" alt="">
+                    </a>
+                    <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                        <img class="photo02" src="{{ asset('./img/photo02.jpg') }}" alt="">
+                    </a>
+                    <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                        <img class="photo03" src="{{ asset('./img/photo03.jpg') }}" alt="">
+                    </a>
+                    <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                        <img class="photo04" src="{{ asset('./img/photo04.jpg') }}" alt="">
+                    </a>
+                </div>
+                <div class="photo_back"></div>
                 <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
-                    <img class="photo02" src="{{ asset('./img/photo02.jpg') }}" alt="">
-                </a>
-                <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
-                    <img class="photo03" src="{{ asset('./img/photo03.jpg') }}" alt="">
-                </a>
-                <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
-                    <img class="photo04" src="{{ asset('./img/photo04.jpg') }}" alt="">
+                    <img class="insta_icon" src="{{ asset('./svg/Insta_icon.svg') }}">
                 </a>
             </div>
-            <div class="photo_back"></div>
-            <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
-                <img class="insta_icon" src="{{ asset('./svg/Insta_icon.svg') }}">
-            </a>
-        </div>
-    </section>
-    <!--/contents02-->
-</article>
+        </section>
+        <!--/contents02-->
+    </article>
 
-</main>
-
-<!-- ／メインエリア -->
+    </main>
+    <!-- ／メインエリア -->
 <!-- ################################################################### -->
-
         <!-- フッター外枠 -->
         <footer class="footer_area">
             <!-- フッター内枠 -->
@@ -250,15 +234,11 @@
         </footer>
         <!-- ／フッター外枠 -->
 
-
-
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <!-- ベーススクリプト -->
     <script src="js/base.js"></script>
-
     <!--キービジュアル-->
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <script>
