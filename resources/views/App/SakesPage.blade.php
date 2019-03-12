@@ -117,10 +117,9 @@
                 <div id="price" class="search_layout">
                     <p class="search_header">価格</p>
                     <div id="noUiSlider">
-                        <input type="number" name="space_low" step="500" id="min" class="area" placeholder="下限なし" value="selectedPriceMin"><span>～</span>
-                        <input type="number" name="space_high" step="500" id="max" class="area" placeholder="上限なし"
-                            value="selectedPriceMax"><span></span>
                         <div id="range"></div>
+                        <input type="hidden" name="selectedPriceMin" id="min" class="area" value="">
+                        <input type="hidden" name="selectedPriceMax" id="max" class="area" value="">
                     </div>
                 </div>
                 <!-- ／価格スライダー -->
@@ -202,9 +201,9 @@
                             <div class="card_footer">
                                 <!-- 容量 -->
                                 @foreach($sake->sizes as $size)
-                                <p><span class="sake_price caption_text">{{ $size->content }}</span>
+                                <p><span class="sake_price caption_text">{{ number_format($size->content) }}</span>
                                     <span class="caption_text">ml</span>
-                                    <span class="sake_price subtitle_text">{{ $size->price }}</span>
+                                    <span class="sake_price subtitle_text">{{ number_format($size->price) }}</span>
                                     <span class="caption_text">円 (税抜)</span></p>
                                 @endforeach
                                 <!-- 製造の文字 赤色 -->
