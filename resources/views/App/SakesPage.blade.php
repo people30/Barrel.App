@@ -149,7 +149,7 @@
                     <div class="card_inner">
                         <!-- 酒画像 -->
                         <div class="card_figure">
-                            <img src="{{ asset('/sake/slug/slug/sake.80x260.png') }}" alt="" width="80" height="260">
+                            <img src="{{ $sake->bottle->files['80x260']->url }}" alt="" width="80" height="260">
                         </div>
                         <!-- ／酒画像 -->
                         <!-- カードボディ -->
