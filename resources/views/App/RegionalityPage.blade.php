@@ -36,7 +36,7 @@
         <!--キービジュアル-->
         <div class="slider">
             @for ($i = 0; $i < 4; $i++)
-            <div><img src="{{ asset('./img/$photos->random().jpg') }}"></div>
+        <div><img src="{{ $brewer->keyVisual->files['1920x1080'] }}"></div>
             @endfor
         </div>
         <section class="first_menu">
