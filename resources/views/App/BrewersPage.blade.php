@@ -16,17 +16,17 @@
         <!-- fontawesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- jQuery -->
-        <script src="{{ asset('/css/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
         <!-- Vue -->
         @if(env('APP_DEBUG'))
-        <script src="{{ asset('js/vue.js') }}"></script>
+        <script src="{{ asset('/js/vue.js') }}"></script>
         @else
-        <script src="{{ asset('js/vue.min.js') }}"></script>
+        <script src="{{ asset(/'js/vue.min.js') }}"></script>
         @endif
         <!-- Goole Map -->
         <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}&amp;callback=initMap"></script>
         <!-- ベーススクリプト -->
-        <script src="{{ asset('js/base.js') }}"></script>
+        <script src="{{ asset('/js/base.js') }}"></script>
         <script src="{{ asset('/js/brewers_page.js') }}"></script>
         <title>ぐびっと:徳島の酒蔵</title>
     </head>

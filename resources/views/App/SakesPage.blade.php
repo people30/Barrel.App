@@ -18,7 +18,7 @@
         <!-- fontawesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- jQuery -->
-        <script src="{{ asset('/css/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
         <!-- ベーススクリプト -->
         <script src="{{ asset('/js/base.js') }}"></script>
         <!-- 地酒ページスクリプト -->
@@ -144,7 +144,9 @@
                         <div class="card_inner">
                             <!-- 酒画像 -->
                             <div class="card_figure">
+                                @if($sake->bottle != null)
                                 <img src="{{ $sake->bottle->files['80x260']->url }}" alt="" width="80" height="260">
+                                @endif
                             </div>
                             <!-- ／酒画像 -->
                             <!-- カードボディ -->
