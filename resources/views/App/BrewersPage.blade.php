@@ -122,7 +122,7 @@
                         <!-- ／ピン -->
                         <!-- 写真 -->
                         <div class="card_figure" v-if="brewer.keyVisual != null">
-                            <a v-bind:href="brewer.permalink"><img v-bind:src="brewer.keyVisual['240x240'].filename" width="780" height="520" alt=""></a>
+                            <a v-bind:href="brewer.permalink"><img v-bind:src="brewer.keyVisual.files['380x252'].url" v-bind:srcset="brewer.keyVisual.srcset" alt=""></a>
                         </div>
                         <!-- ／写真 -->
                         <!-- カードテキスト -->

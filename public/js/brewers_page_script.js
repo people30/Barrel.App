@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     lat: centerLat,
                     lon: centerLon
                 };
-                return ;
             }
         }
     });
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             position: new google.maps.LatLng(brewer.lat, brewer.lon),
             icon: new google.maps.MarkerImage(
                 iconUrl,
-                new google.maps.Size(12, 44),    //マーカー画像のサイズ
+                new google.maps.Size(28, 64),    //マーカー画像のサイズ
                 new google.maps.Point(0, 0),     //位置（0,0で固定）
                 //new google.maps.Point(値x,値y), //位置（任意の調整値）
             )
@@ -103,5 +102,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 flyoutCurrent = flyout;
             }).bind(this));
         }
+
+        brewer.keyVisual.srcset =
+            brewer.keyVisual.files['280x184'].url + ' 280w, ' +
+            brewer.keyVisual.files['380x252'].url + ' 380w, ' +
+            brewer.keyVisual.files['580x384'].url + ' 580w, ' +
+            brewer.keyVisual.files['780x520'].url + ' 780w';
     }).bind(this));
 });
