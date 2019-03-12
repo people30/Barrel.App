@@ -179,6 +179,18 @@
             </div>
         </section>
         <!--/contents02-->
+           <!-- バナー画像 -->
+    <div class="banner">
+        <div class="banner_pc">
+            <img src="img/bn-awanavi01.gif" alt="">
+            <img src="img/bn-syuzo01.jpg" alt="">
+        </div>
+        <div class="banner_sm">
+            <img src="img/bn-awanavi02.gif" alt="">
+            <img src="img/bn-syuzo02.jpg" alt="">
+        </div>
+    </div>
+    <!-- ／バナー画像 -->
     </article>
 
     </main>
