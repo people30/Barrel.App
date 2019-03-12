@@ -11,5 +11,6 @@ namespace App\Repositories
         public function findAll(array $params = []) : Collection;
         public function getIn(array $ids) : Collection;
         public function getProducts(Models\Brewer $brewer) : Collection;
+        public function getPriceRange() : array;
     }
 }

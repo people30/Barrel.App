@@ -56,26 +56,9 @@ class SakeController extends Controller
             )
         );
 
-        $prices = [];
-
-        $sakes->each(function($sake) use(&$prices)
-        {
-            $sake->sizes->each(function($size) use(&$prices)
-            {
-                $prices[] = $size->price;
-            });
-        });
-
-        if(count($prices) > 0)
-        {
-            $priceMax = max($prices);
-            $priceMin = min($prices);
-        }
-        else
-        {
-            $priceMax = null;
-            $priceMin = null;
-        }
+        $price = $this->sakeRepository->getPriceRange();
+        $priceMax = $price['max'];
+        $priceMin = $price['min'];
 
         $tastes = $this->tasteRepository->findAll();
 
@@ -117,6 +100,7 @@ class SakeController extends Controller
                 'selectedPriceMax',
                 'selectedPriceMin',
                 'selectedDesignations',
-                'selectedTastes'));
+                'selectedTastes')
+            );
     }
 }

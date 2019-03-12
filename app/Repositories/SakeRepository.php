@@ -209,5 +209,19 @@ namespace App\Repositories
             
             return $query;
         }
+
+        public function getPriceRange() : array
+        {
+            $max = \DB::table('sizes')
+                ->max('price');
+
+            $min = \DB::table('sizes')
+                ->min('price');
+
+            return [
+                'min' => $min,
+                'max' => $max
+            ];
+        }
     }
 }

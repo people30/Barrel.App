@@ -28,7 +28,12 @@
         <title>ぐびっと:徳島の地酒</title>
     </head>
 
-    <body>
+    <body data-context="{{ json_encode(compact([
+        'priceMin',
+        'priceMax',
+        'selectedPriceMin',
+        'selectedPriceMax'
+    ])) }}">
         <!-- ヘッダー -->
         <div class="sticky">
             <header class="header_area">
