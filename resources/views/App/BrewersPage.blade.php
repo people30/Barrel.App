@@ -20,16 +20,17 @@
         <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <!-- Goole Map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}&callback=initMap"></script>
+        <!-- ベーススクリプト -->
+        <script src="{{ asset('js/base.js') }}"></script>
         @if(env('APP_DEBUG'))
         <script src="{{ asset('js/vue.js') }}"></script>
         @else
         <script src="{{ asset('js/vue.min.js') }}"></script>
         @endif
         
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap"></script>
         <script type="text/javascript" src="{{ asset('/js/brewers_page_script.js') }}"></script>
-        <!-- ベーススクリプト -->
-        <script src="{{ asset('js/base.js') }}"></script>
         <title>ぐびっと:徳島の酒蔵</title>
 
     </head>
