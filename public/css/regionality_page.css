@@ -591,23 +591,52 @@ a:hover img.insta_icon {
         height: 25px;
         margin: 40px 0;
     }
+}
 
+/* バナーのメディアクエリ */
 
+@media (max-width: 800px) {
+    .banner {
+        margin-left: 20px;
+    }
+        .banner_pc img{
+            display: none;
+        }
+        .banner_sm img{
+            display: block;
+        }
+        .banner_sm img:first-child {
+            margin-bottom: 20px;
+        }
+}
+
+@media (min-width: 800px) and (max-width: 1239px) {
+    .banner {
+        margin-left: 23px;
+    }
+        .banaer_pc img{
+            display: block;
+        }
+        .banner_sm img{
+            display: none;
+        }
+        .banner_pc img:first-child {
+            margin-bottom: 20px;
+        }
 
 }
 
-/* 
-    titles
-    
-    .title_logo02{
-        width: 160px;
-        height: 40px;
-        margin: auto 0;
+@media (min-width: 1240px) {
+    .banner {
+        margin-left: 52px;
     }
-    cotents01
-    .poem{
-        display: flex;
-        width: auto;
-        margin: 50px auto;
-        align-content: center;
-    } */
+        .banaer_pc img{
+            display: block;
+        }
+        .banner_sm img{
+            display: none;
+        }
+        .banner_pc img:first-child {
+            margin-right: 20px;
+        }
+}
