@@ -215,7 +215,7 @@
 }
 
 .text_box {
-    width: 750px;
+    width: 800px;
     line-height: 35px;
     letter-spacing: 3px;
     margin-left: 20px;
@@ -467,7 +467,7 @@ a:hover img.insta_icon {
 
 
 /*レスポンシブ対応スマホ*/
-@media (max-width: 750px) {
+@media (max-width: 800px) {
 
 
     /*titles*/
