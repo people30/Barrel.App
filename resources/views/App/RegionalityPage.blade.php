@@ -89,10 +89,10 @@
     <!-- ／ヘッダー -->
     <!-- ################################################################### -->
     <!-- メインエリア -->
-    <main class="main_area" id="regionality">
+    <main class="main_area">
     <!--/キービジュアル navi-->
 
-    <article class="content">
+    <article class="content" id="regionality">
         <!--contents01-->
         <section class="box01">
             <div class="logos">
