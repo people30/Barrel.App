@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', function () {
             getCenter: function () {
                 // 緯度
                 var lats = this.brewers.map(function (brewer) { return brewer.lat; });
-                var centerLat = lats.reduce(function (prev, current) { return prev + current; }) / lats.length;
+                var centerLat = lats.length > 0 ? lats.reduce(function (prev, current) { return prev + current; }) / lats.length : 34.071620;
 
                 // 経度
                 var lons = this.brewers.map(function (brewer) { return brewer.lon; });
-                var centerLon = lons.reduce(function (prev, current) { return prev + current; }) / lons.length;
+                var centerLon = lons.length > 0 ? lons.reduce(function (prev, current) { return prev + current; }) / lons.length : 134.558074;
 
                 return {
                     lat: centerLat,
