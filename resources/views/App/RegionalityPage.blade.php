@@ -42,20 +42,22 @@
             @endforeach
         </div>
         <section class="first_menu">
-            <div class="menu">
-                <div><img class="top_logo" src="{{ asset('./img/site_logo.jpg') }}"></div>
-                <ul>
-                    <li class="selected"><a href="{{ route('RegionalityPage') }}/#regionality">徳島の風土と日本酒</a></li>
-                    <li><a href="{{ route('SakesPage') }}/">徳島の地酒</a></li>
-                    <li><a href="{{ route('BrewersPage') }}/">徳島の酒蔵</a></li>
-                    <li><a href="{{ env('WP_URL') }}">読みもの</a></li>
-                </ul>
-                {{-- <ul class="brewer_info">
-                    <li>
-                        <p class="caption_text">徳島市</p>
-                    </li>
-                    <li><a href="{{ route('BrewerDetailsPage',['slug'=>$brewer->slug]) }}">{{ $brewers }}</a></li>
-                </ul> --}}
+            <div class="key_visual_content">
+                <div class="menu">
+                    <div><img class="top_logo" src="{{ asset('./img/site_logo.jpg') }}"></div>
+                    <ul>
+                        <li class="selected"><a href="{{ route('RegionalityPage') }}/#regionality">徳島の風土と日本酒</a></li>
+                        <li><a href="{{ route('SakesPage') }}/">徳島の地酒</a></li>
+                        <li><a href="{{ route('BrewersPage') }}/">徳島の酒蔵</a></li>
+                        <li><a href="{{ env('WP_URL') }}">読みもの</a></li>
+                    </ul>
+                    {{-- <ul class="brewer_info">
+                        <li>
+                            <p class="caption_text">徳島市</p>
+                        </li>
+                        <li><a href="{{ route('BrewerDetailsPage',['slug'=>$brewer->slug]) }}">{{ $brewers }}</a></li>
+                    </ul> --}}
+                </div>
             </div>
         </section>
     </section>

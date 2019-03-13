@@ -1,16 +1,17 @@
 @charset "utf-8";
 /*feid in*/
+
 @keyframes fadein {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 /*keyvisual*/
 
 .top_sticky {
@@ -21,11 +22,13 @@
 .header_menu {
     background: #fff;
 }
-.slider{
+
+.content_fluid {
     position: relative;
 }
 
 /*navmenu*/
+
 .top_logo {
     margin-top: 80px;
     width: 400px;
@@ -35,11 +38,23 @@
 .first_menu {
     position: absolute;
     top: 0;
-    left: 160px;
-    z-index: 3;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.first_menu .key_visual_content {
+    width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.first_menu .key_visual_content .menu {
 }
 
 .menu {
+    width: 400px;
+    margin-left: -40px;
     background-color: rgba(0, 0, 0, 0.596);
     height: 100vh;
     position: relative;
@@ -47,7 +62,6 @@
 
 .menu ul {
     margin-top: 60px;
-
 }
 
 .menu li {
@@ -60,98 +74,78 @@
     text-decoration: none;
     color: #fff;
 }
-.brewer_info {
-    position: absolute;
-    bottom: 40px;
-
-}
-
-
-@media (max-width: 1240px){
-
-.top_logo {
-    width: 240px;
-    height: 240px;
-}
-
-.first_menu {
-
-    left: 270px;
-}
-
-.menu ul {
-    margin-top: 40px;
-
-}
-
-.menu li {
-    margin: 0 40px 20px;
-    font-size: 15px;
-    color: #fff
-}
-
-.menu a {
-    text-decoration: none;
-    color: #fff;
-}
 
 .brewer_info {
     position: absolute;
     bottom: 40px;
-
-}
-.brewer_info li {
-    margin-bottom: 0;
 }
 
-
-
-} 
-
-
-
-
-
-
+@media (max-width: 1240px) {
+    .top_logo {
+        width: 240px;
+        height: 240px;
+    }
+    .first_menu .key_visual_content {
+        width: 580px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .menu {
+        width: 240px;
+    }
+    
+    .menu ul {
+        margin-top: 40px;
+    }
+    .menu li {
+        margin: 0 40px 20px;
+        font-size: 15px;
+        color: #fff
+    }
+    .menu a {
+        text-decoration: none;
+        color: #fff;
+    }
+    .brewer_info {
+        position: absolute;
+        bottom: 40px;
+    }
+    .brewer_info li {
+        margin-bottom: 0;
+    }
+}
 
 @media (max-width: 800px) {
-
-
-
-
-
     .content_fluid {
         left: 0;
     }
-
-    .first_menu {
-        left: 35px;
+    .first_menu .key_visual_content {
+        width: auto;
+        margin-left: 20px;
+        margin-right: 20px;
     }
-
+    
+    .menu {
+        width: 224px;
+        margin-left: 0px;
+    }
+    
     .top_logo {
         margin-top: 80px;
         width: 224px;
         height: 224px;
     }
-
     .menu ul {
         margin-top: 60px;
-
     }
-
     .menu li {
         margin: 20px;
         font-size: 15px;
     }
-
 }
 
-
-
-
 /*titles*/
-
-
 
 .title_box {
     width: 300px;
@@ -164,7 +158,6 @@
     justify-content: space-between;
     animation-name: fadein;
     animation-duration: 2s;
-
 }
 
 .title_logo01 {
@@ -184,6 +177,7 @@
 }
 
 /*section01*/
+
 .box01 {
     margin: 0 0 40px;
 }
@@ -222,9 +216,8 @@
     font-size: 20px;
 }
 
-
-
 /*contents02*/
+
 .box02 {
     margin: 100px 0 80px;
 }
@@ -236,6 +229,7 @@
 }
 
 /*Instagramギャラリー*/
+
 .photo_box {
     z-index: 2;
     width: 1115px;
@@ -345,18 +339,15 @@ a:hover img.insta_icon {
     /*カーソルをポインターにする*/
 }
 
-
-
 /*レスポンシブ対応タブレット*/
-@media (max-width: 1239px) {
 
+@media (max-width: 1239px) {
     /*titles*/
     .title_logo02 {
         width: 160px;
         height: 40px;
         margin: auto 0;
     }
-
     /*cotents01*/
     .poem {
         display: flex;
@@ -364,19 +355,16 @@ a:hover img.insta_icon {
         margin: 60px auto;
         align-items: center;
     }
-
     .poem img {
         width: 75px;
         height: 75px;
         margin: 70px 15px;
     }
-
     .poem_title {
         width: 400px;
         margin: 20px 0;
         font-size: 24px;
     }
-
     .text_box {
         width: 450px;
         line-height: 35px;
@@ -384,69 +372,58 @@ a:hover img.insta_icon {
         margin-left: 15px;
         font-size: 15px;
     }
-
     /*contents02*/
     .contents02 {
         width: 580px;
         height: 270px;
         margin: 60px 0;
     }
-
     .photo_box {
         z-index: 2;
         width: 535px;
         height: 130px;
         margin: 0 auto;
     }
-
     .photo01 {
         width: 130px;
         height: auto;
         z-index: 5;
         margin: auto;
     }
-
     .photo01 img {
         width: 100%;
         height: auto;
     }
-
     .photo02 {
         width: 130px;
         height: auto;
         z-index: 5;
         margin: auto;
     }
-
     .photo02 img {
         width: 100%;
         height: auto;
     }
-
     .photo03 {
         width: 130px;
         height: auto;
         z-index: 5;
         margin: auto;
     }
-
     .photo03 img {
         width: 100%;
         height: auto;
     }
-
     .photo04 {
         width: 130px;
         height: auto;
         z-index: 5;
         margin: auto;
     }
-
     .photo04 img {
         width: 100%;
         height: auto;
     }
-
     .photo_back {
         z-index: -1;
         width: 580px;
@@ -457,7 +434,6 @@ a:hover img.insta_icon {
         position: absolute;
         top: 2470px;
     }
-
     .insta_icon {
         width: 120px;
         height: 25px;
@@ -465,58 +441,46 @@ a:hover img.insta_icon {
     }
 }
 
-
 /*レスポンシブ対応スマホ*/
+
 @media (max-width: 800px) {
-
-
     /*titles*/
     .logos {
         width: 100%;
-
         display: flex;
-
     }
-
     .title_logo02 {
         width: 160px;
         height: 40px;
         margin: auto 0;
     }
-
     /*cotents01*/
     .contents01 {
         width: 250px;
     }
-
     .box01 {
         margin: 40px 0 20px;
     }
-
     .text_logo {
         width: 250px;
     }
-
     .poem {
         display: flex;
         width: 270px;
         margin: 40px auto;
         align-content: center;
     }
-
     .poem img {
         width: 50px;
         height: 50px;
         margin: 0px;
         align-content: center;
     }
-
     .poem_title {
         width: 280px;
         margin: 0 0 20px;
         font-size: 20px;
     }
-
     .text_box {
         width: 270px;
         line-height: 20px;
@@ -524,57 +488,46 @@ a:hover img.insta_icon {
         margin-left: 12px;
         font-size: 12px;
     }
-
-
     /*contents02*/
     .box02 {
         margin: 20px 0 40px;
     }
-
     .contents02 {
         width: 320px;
         height: 155px;
         margin: 40px 0;
     }
-
     .photo_box {
         z-index: 2;
         width: 280px;
         height: 130px;
         margin: 0 auto;
     }
-
     .photo01 {
         width: 130px;
         height: auto;
         z-index: 5;
         margin: auto;
     }
-
     .photo01 img {
         width: 100%;
         height: auto;
     }
-
     .photo02 {
         width: 130px;
         z-index: 5;
         margin: auto;
     }
-
     .photo02 img {
         width: 100%;
         height: auto;
     }
-
     .photo03 {
         display: none;
     }
-
     .photo04 {
         display: none;
     }
-
     .photo_back {
         z-index: -1;
         width: 320px;
@@ -585,7 +538,6 @@ a:hover img.insta_icon {
         position: absolute;
         top: 1940px;
     }
-
     .insta_icon {
         width: 120px;
         height: 25px;
@@ -599,44 +551,43 @@ a:hover img.insta_icon {
     .banner {
         margin-left: 20px;
     }
-        .banner_pc img{
-            display: none;
-        }
-        .banner_sm img{
-            display: block;
-        }
-        .banner_sm img:first-child {
-            margin-bottom: 20px;
-        }
+    .banner_pc img {
+        display: none;
+    }
+    .banner_sm img {
+        display: block;
+    }
+    .banner_sm img:first-child {
+        margin-bottom: 20px;
+    }
 }
 
 @media (min-width: 800px) and (max-width: 1239px) {
     .banner {
         margin-left: 23px;
     }
-        .banaer_pc img{
-            display: block;
-        }
-        .banner_sm img{
-            display: none;
-        }
-        .banner_pc img:first-child {
-            margin-bottom: 20px;
-        }
-
+    .banaer_pc img {
+        display: block;
+    }
+    .banner_sm img {
+        display: none;
+    }
+    .banner_pc img:first-child {
+        margin-bottom: 20px;
+    }
 }
 
 @media (min-width: 1240px) {
     .banner {
         margin-left: 52px;
     }
-        .banaer_pc img{
-            display: block;
-        }
-        .banner_sm img{
-            display: none;
-        }
-        .banner_pc img:first-child {
-            margin-right: 20px;
-        }
+    .banaer_pc img {
+        display: block;
+    }
+    .banner_sm img {
+        display: none;
+    }
+    .banner_pc img:first-child {
+        margin-right: 20px;
+    }
 }
