@@ -399,7 +399,7 @@ font-size: 24px;
 @media(min-width: 1240px)
 {
     .map {
-        height: 400px;
+        height: 320px;
     }
 }
 

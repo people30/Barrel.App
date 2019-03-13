@@ -25,20 +25,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         methods: {
             // 各地点の緯度と経度の平均から中心点の座標を求める
-            getCenter: function() {
+            getCenter: function () {
                 // 緯度
-                var lats = this.brewers.map(function(brewer) { return brewer.lat; });
-                var centerLat = lats.reduce(function(prev, current) { return prev + current; }) / lats.length;
+                var lats = this.brewers.map(function (brewer) { return brewer.lat; });
+                var centerLat = lats.reduce(function (prev, current) { return prev + current; }) / lats.length;
 
                 // 経度
-                var lons = this.brewers.map(function(brewer) { return brewer.lon; });
-                var centerLon = lons.reduce(function(prev, current) { return prev + current; }) / lons.length;
+                var lons = this.brewers.map(function (brewer) { return brewer.lon; });
+                var centerLon = lons.reduce(function (prev, current) { return prev + current; }) / lons.length;
 
                 return {
                     lat: centerLat,
                     lon: centerLon
                 };
-                return ;
             }
         }
     });
@@ -56,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     // 地図が移動している時にマップの端をビュー モデルに渡す
-    map.addListener('bounds_changed', function() {
+    map.addListener('bounds_changed', function () {
         // 地図の端を取得
         var bounds = map.getBounds();
         vm.mapNorth = bounds.getNorthEast().lat();
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             position: new google.maps.LatLng(brewer.lat, brewer.lon),
             icon: new google.maps.MarkerImage(
                 iconUrl,
-                new google.maps.Size(12, 44),    //マーカー画像のサイズ
+                new google.maps.Size(28, 64),    //マーカー画像のサイズ
                 new google.maps.Point(0, 0),     //位置（0,0で固定）
                 //new google.maps.Point(値x,値y), //位置（任意の調整値）
             )
@@ -102,6 +101,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 //開いた情報ウィンドウを記録しておく
                 flyoutCurrent = flyout;
             }).bind(this));
+        }
+
+        if (brewer.keyVisual != null) {
+            brewer.keyVisual.srcset =
+                brewer.keyVisual.files['280x184'].url + ' 280w, ' +
+                brewer.keyVisual.files['380x252'].url + ' 380w, ' +
+                brewer.keyVisual.files['580x384'].url + ' 580w, ' +
+                brewer.keyVisual.files['780x520'].url + ' 780w';
         }
     }).bind(this));
 });

@@ -104,10 +104,13 @@ namespace App\Repositories
 
             if(array_key_exists('selectedTastes', $params) && is_array($params['selectedTastes']))
             {
-                foreach($params['selectedTastes'] as $tasteId)
+                $query = $query->where(function($query) use($params)
                 {
-                    $query = $query->orWhere('sakes.taste_id', $tasteId);
-                }
+                    foreach($params['selectedTastes'] as $tasteId)
+                    {
+                        $query = $query->orWhere('sakes.taste_id', $tasteId);
+                    }
+                });
             }
 
             return $query;
@@ -149,11 +152,15 @@ namespace App\Repositories
             ->groupBy(function($i)
             {
                 return $i->id;
-            });
-
-            $items = $grouped->map(function($group)
+            })
+            ->map(function($group)
             {
-                $sake = Factory::factory(Models\Sake::class, $group->first());
+                $raw = $group->first();
+                $sake = Factory::factory(Models\Sake::class, $raw);
+                $sake->bottle = $this->photoRepository->getSakeAlbum($sake)->first(function($s) use($raw)
+                {
+                    return $s->filename == $raw->bottleFilename;
+                });
 
                 $sake->sizes = $group->map(function($i)
                 {
@@ -163,7 +170,7 @@ namespace App\Repositories
                 return $sake;
             });
 
-            return $items;
+            return $grouped;
         }
         
         public function getProducts(Models\Brewer $brewer) : Collection
@@ -204,6 +211,20 @@ namespace App\Repositories
                 ->orderBy('content');
             
             return $query;
+        }
+
+        public function getPriceRange() : array
+        {
+            $max = \DB::table('sizes')
+                ->max('price');
+
+            $min = \DB::table('sizes')
+                ->min('price');
+
+            return [
+                'min' => $min,
+                'max' => $max
+            ];
         }
     }
 }

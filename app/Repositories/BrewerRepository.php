@@ -131,6 +131,7 @@ namespace App\Repositories
                 {
                     $brewer->keyVisual = $this->photoRepository->getBrewerAlbum($brewer)->first(function($p) use($i)
                     {
+                        $p->filename . ' ' . $i->keyVisualFilename . '<br>';
                         return $p->filename == $i->keyVisualFilename;
                     });
                 }

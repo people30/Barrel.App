@@ -30,26 +30,20 @@ class SakeController extends Controller
             'selectedDesignations' => 'array|nullable',
             'selectedTastes' => 'array|nullable'
         ]);
-        
+
         $params = [];
 
-        $keyword = $request->has('keyword', null);
+        $keyword = $request->input('keyword', null);
 
-        $selectedPriceMax = $request->has('selectedPriceMax')
-            ? (int)$request->input('selectedPriceMax')
-            : null;
+        $selectedPriceMax = $request->input('selectedPriceMax', null);
+        if($selectedPriceMax !== null) $selectedPriceMax = (int)$selectedPriceMax;
 
-        $selectedPriceMin = $request->has('selectedPriceMin')
-            ? (int)$request->input('selectedPriceMin')
-            : null;
+        $selectedPriceMin = $request->input('selectedPriceMin', null);
+        if($selectedPriceMin !== null) $selectedPriceMin = (int)$selectedPriceMin;
 
-        $selectedDesignations = $request->has('selectedDesignations')
-            ? $request->input('selectedDesignations')
-            : null;
+        $selectedDesignations = $request->input('selectedDesignations', null);
 
-        $selectedTastes = $request->has('selectedTastes')
-            ? $request->input('selectesTastes')
-            : null;
+        $selectedTastes = $request->input('selectedTastes', null);
 
         $allBrewers = $this->brewerRepository->findAll();
         $sakes = $this->sakeRepository->findAll(
@@ -62,28 +56,12 @@ class SakeController extends Controller
             )
         );
 
-        $prices = [];
-
-        $sakes->each(function($sake) use(&$prices)
-        {
-            $sake->sizes->each(function($size) use(&$prices)
-            {
-                $prices[] = $size->price;
-            });
-        });
-
-        if(count($prices) > 0)
-        {
-            $priceMax = max($prices);
-            $priceMin = min($prices);
-        }
-        else
-        {
-            $priceMax = null;
-            $priceMin = null;
-        }
+        $price = $this->sakeRepository->getPriceRange();
+        $priceMax = $price['max'];
+        $priceMin = $price['min'];
 
         $tastes = $this->tasteRepository->findAll();
+        $designations = $this->designationRepository->findAll();
 
         if($selectedTastes !== null)
         {
@@ -97,8 +75,6 @@ class SakeController extends Controller
             $selectedTastes = collect([]);
         }
 
-        $designations = $this->designationRepository->findAll();
-
         if($selectedDesignations !== null)
         {
             $selectedDesignations = $designations->filter(function($d) use($selectedDesignations)
@@ -111,6 +87,34 @@ class SakeController extends Controller
             $selectedDesignations = collect([]);
         }
 
+        // 現在のフィルタリング項目
+        $filterContents = [];
+
+        if($keyword !== null)
+        {
+            $filterContents[] = $keyword;
+        }
+
+        foreach($selectedTastes as $st)
+        {
+            $filterContents[] = $st->name;
+        }
+
+        foreach($selectedDesignations as $sd)
+        {
+            $filterContents[] = $sd->name;
+        }
+
+        if($selectedPriceMin !== null)
+        {
+            $filterContents[] = $selectedPriceMin . '円以上';
+        }
+
+        if($selectedPriceMax !== null)
+        {
+            $filterContents[] = $selectedPriceMax . '円以下';
+        }
+        
         return view('App.Sakespage',
             compact(
                 'allBrewers',
@@ -123,6 +127,8 @@ class SakeController extends Controller
                 'selectedPriceMax',
                 'selectedPriceMin',
                 'selectedDesignations',
-                'selectedTastes'));
+                'selectedTastes',
+                'filterContents')
+            );
     }
 }
