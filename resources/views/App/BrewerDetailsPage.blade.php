@@ -222,7 +222,7 @@
                     <!-- カード -->
                         <div class="item_card">
                                 <div class="spec">
-                                    <img src="{{ asset('/svg/bin.svg') }}" alt="酒瓶の画像">
+                                <img src="{{ $product->bottle->files['80x260']->url }}" alt="" width="80" height="260">
                                     <ul class="products_info">
                                         <li class="caption_text tokutei_meishou">
                                             {{ $product->designation->name }}
@@ -337,8 +337,7 @@
                     <!-- ／フッターリンクメニュー -->
                     <!-- SNS -->
                     <div class="sns header_text">
-                        <a href="#" class="fab fa-facebook"><span class="sr-only">Facebook</span></a>
-                        <a href="#" class="fab fa-twitter"><span class="sr-only">Twitter</span></a>
+                        <a href="https://www.facebook.com/Gubittotokushima-628717054256840/?modal=admin_todo_tour" class="fab fa-facebook"><span class="sr-only">Facebook</span></a>
                         <a href="#" class="fab fa-instagram"><span class="sr-only">instagram</span></a>
                     </div>
                     <!-- ／SNS -->
