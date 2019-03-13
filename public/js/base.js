@@ -9,14 +9,6 @@ function navFunc() {
         mymenu.style.height = 100 + 'vh'
     }
 }
-// 上に戻るボタン
-$(document).ready(function() {
-    var pagetop = $('.pagetop')
-    pagetop.click(function() {
-        $('body, html').animate({ scrollTop: 0 }, 500)
-        return false
-    })
-})
 
 // ページを開いたときや該当箇所にスクロールしたときに画像のフェードイン
 $(function() {
@@ -30,7 +22,7 @@ $(function() {
             }
         })
     })
-})
+});
 
 $(function() {
     var navBox = $('.top_sticky')
@@ -44,7 +36,7 @@ $(function() {
             navBox.fadeOut()
         }
     })
-})
+});
 
 // // ページの途中から現れ、スクロールに追随してくるボタン
 // $(document).ready(function() {
