@@ -33,23 +33,27 @@ a {
 /* 味の表現背景色クラス */
 
 /* 軽快でなめらか */
-.taste_lite {
+.soft {
+    background: linear-gradient(#fff 12px, #78CFE5 2px);
     background-color: #78CFE5;
 }
 /* コクのある */
-.taste_heavy {
+.rich {
     background: linear-gradient(#fff 12px, #F1E076 2px);
+    background-color: #F1E076;
 }
 /* 熟成 */
-.taste_ferment {
+.matured {
+    background: linear-gradient(#fff 12px, #FFA4A4 2px);
     background-color: #FFA4A4;
 }
 /* 香りの高い */
-.taste_smell {
+.flavory {
+    background: linear-gradient(#fff 12px, #A9F98C 2px);
     background-color: #A9F98C;
 }
 /* サーチエリアボーダー */
-.search_area {
+.search_area form {
     border: solid 1px #D6D6D6;
 }
 
@@ -75,27 +79,55 @@ a {
 }
 
 /* タイトルエリアのマージンボトム共通 */
-.title_area {
+.header_text {
     margin-bottom: 20px;
 }
 
-.title_area .header_text {
-    margin-bottom: 8px;
+/* テキスト ブロック ボタン */
+.text_block_button
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: #000000;
+}
+.text_block_button:hover
+{
+    color: #333333;
+    cursor: pointer;
+}
+
+/*  */
+.text_block_button .items
+{
+    color: #FF6347;
+}
+.text_block_button:hover .items
+{
+    color: #FB7861;
 }
 
 /* 検索エリアのマージンボトム共通 */
 .search_area {
     margin-bottom: 40px;
 }
+
+.search_control_expansion_button {
+    margin-bottom: 40px;
+}
+
 .search_onoff a:hover {
     color: #5796c6;
 }
 
 .content {
     display: grid;
-    grid-template: repeat(4, auto) / auto;
+    grid-template: repeat(5, auto) / auto;
 }
-    .title_area {
+    .header_text {
         grid-row: 1/2;
     }
     .search_area {
@@ -113,36 +145,14 @@ a {
 /* ###################################################################### */
 /* タイトル */
 
-/* 検索エリア */
-@media (min-width: 800px) {
-  
-    /* タイトルエリアのレイアウト */
-    .title_area {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .title_area .header_text {
-        margin-bottom: 0px;
-    }
-
-    .search_onoff {
-        display: flex;
-        align-items: flex-end;
-    }
-}
-
-@media (min-width: 1240px) {
-}
-
 /* ###################################################################### */
 /* 検索フォーム */
 
-.search_area {
+.search_area form {
     padding: 19px 19px;
 }
 
-.search_area.hidden {
+.search_area form.hidden {
     display: none;
 }
 
@@ -185,7 +195,7 @@ a {
     margin-left: 100px;
 }
 
-.button_layout button {
+.button_layout .button button {
     width: 100%;
     max-width: 360px;
     padding: 8px;
@@ -193,24 +203,27 @@ a {
     color: #ffffff;
 }
 
+.button_layout .button button,
+.button_layout .button a {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.button_layout .button button:last-child,
+.button_layout .button a:last-child {
+    margin-right: 0px;
+}
+
+
 /* 検索エリア */
 @media (min-width: 800px) {
-  
-    /* タイトルエリアのレイアウト */
-    .title_area {
-        display: flex;
-        justify-content: space-between;
-    }
-    .search_onoff {
-        display: flex;
-        align-items: flex-end;
-    }
 
-    .search_area {
+    /* 検索コントロールのレイアウト */
+    .search_area form {
         padding: 39px 39px;
     }
     
-        .search_layout#tastes > .search_content,
+    .search_layout#tastes > .search_content,
     .search_layout#designations > .search_content {
         columns: auto 170px;
         column-gap: 20px;

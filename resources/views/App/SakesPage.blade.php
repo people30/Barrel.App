@@ -67,77 +67,82 @@
         <!-- メインエリア -->
         <main class="main_area">
             <article class="content">
-                <div class="title_area">
-                    <!-- タイトル -->
-                    <h1 class="header_text">徳島の地酒</h1>
-                    <!-- ／タイトル -->
-                    <!-- 検索を表示か非表示か -->
-                    <p class="search_onoff"><a href="">検索を非表示</a></p>
-                    <!-- ／検索を表示か非表示か -->
-                </div>
+                <!-- タイトル -->
+                <h1 class="header_text">徳島の地酒</h1>
+                <!-- ／タイトル -->
 
                 <!-- 検索ボックス -->
 
-                <form method="get" action="{{ route('SakesPage') }}/" class="search_area">
-                    <!-- 味わい -->
-                    <div id="tastes" class="search_layout">
-                        <!-- 味わいヘッダー -->
-                        <p class="search_header">味わい</p>
-                        <!-- ／味わいヘッダー -->
-                        <!-- 味わいボタン -->
-                        <ul class="search_content">
-                            @foreach($tastes as $taste)
-                            <li><label><input type="checkbox" name="selectedTastes[]" value="{{ $taste->id }}"><span>{{ $taste->name }}</span></label></li>
-                            @endforeach
-                        </ul>
-                        <!-- ／味わいボタン -->
-                    </div>
-                    <!-- ／味わい -->
-                    <!-- 特定名称 -->
-                    <div id="designations" class="search_layout">
-                        <!-- 特定名称ヘッダー -->
-                        <p class="search_header">特定名称</p>
-                        <!-- ／特定名称ヘッダー -->
-                        <!-- 味わいボタン -->
-                        <ul class="search_content">
-                            @foreach($designations as $designation )
-                            <li><label><input type="checkbox" name="selectedDesignations[]" value="{{ $designation->id }}"><span>{{ $designation->name }}</span></label></li>
-                            @endforeach
-                        </ul>
-                        <!-- ／味わいボタン -->
-                    </div>
-                    <!-- 特定名称 -->
-                    <!-- キーワード -->
-                    <div id="keyword" class="search_layout">
-                        <p class="search_header">キーワード</p>
-                        <p class="search_content"><input type="text" name="keyword" value=""></p>
-                    </div>
-                    <!-- ／キーワード -->
-                    <!-- 価格スライダー -->
-                    <div id="price" class="search_layout">
-                        <p class="search_header">価格</p>
-                        <div class="search_content">
-                            <div id="range"></div>
-                            <input type="hidden" name="selectedPriceMin" id="selectedPriceMin" value="">
-                            <input type="hidden" name="selectedPriceMax" id="selectedPriceMax" value="">
+                <div class="search_area">
+                    <p class="search_control_expansion_button"><button type="button" id="text_block_button" class="text_block_button">{{ $sakes->count() }} 品 表示中: <span class="items">{{
+                        count($filterContents) > 0
+                        ? implode(', ', $filterContents)
+                        : 'すべて'
+                    }}</span></button></p>
+                    <form id="filter_control" method="get" action="{{ route('SakesPage') }}/" class="hidden">
+                        <!-- 味わい -->
+                        <div id="tastes" class="search_layout">
+                            <!-- 味わいヘッダー -->
+                            <p class="search_header">味わい</p>
+                            <!-- ／味わいヘッダー -->
+                            <!-- 味わいボタン -->
+                            <ul class="search_content">
+                                @foreach($tastes as $taste)
+                                @if($selectedTastes->contains(function($st) use($taste) { return $st->id == $taste->id; }))
+                                <li><label><input type="checkbox" name="selectedTastes[]" value="{{ $taste->id }}" checked="checked"><span>{{ $taste->name }}</span></label></li>
+                                @else
+                                <li><label><input type="checkbox" name="selectedTastes[]" value="{{ $taste->id }}"><span>{{ $taste->name }}</span></label></li>
+                                @endif
+                                @endforeach
+                            </ul>
+                            <!-- ／味わいボタン -->
                         </div>
-                    </div>
-                    <!-- ／価格スライダー -->
-                    <!-- 検索ボタン -->
-                    <div class="button_layout">
-                        <p class="button"><button type="submit">検索</button></p>
-                    </div>
-                    <!-- ／検索ボタン -->
-                </form>
-                <!-- ／検索ボックス -->
-
-                <!-- ###################################### -->
-
-                <!-- 表示数 -->
-                <div class="card_sum caption_text">
-                    <span>{{ $sakes->count() }}</span><span>品 表示中</span>
+                        <!-- ／味わい -->
+                        <!-- 特定名称 -->
+                        <div id="designations" class="search_layout">
+                            <!-- 特定名称ヘッダー -->
+                            <p class="search_header">特定名称</p>
+                            <!-- ／特定名称ヘッダー -->
+                            <!-- 味わいボタン -->
+                            <ul class="search_content">
+                                @foreach($designations as $designation )
+                                @if($selectedDesignations->contains(function($d) use($designation) { return $d->id == $designation->id; }))
+                                <li><label><input type="checkbox" name="selectedDesignations[]" value="{{ $designation->id }}" checked="checked"><span>{{ $designation->name }}</span></label></li>
+                                @else
+                                <li><label><input type="checkbox" name="selectedDesignations[]" value="{{ $designation->id }}"><span>{{ $designation->name }}</span></label></li>
+                                @endif
+                                @endforeach
+                            </ul>
+                            <!-- ／味わいボタン -->
+                        </div>
+                        <!-- 特定名称 -->
+                        <!-- キーワード -->
+                        <div id="keyword" class="search_layout">
+                            <p class="search_header">キーワード</p>
+                            <p class="search_content"><input type="text" name="keyword" value=""></p>
+                        </div>
+                        <!-- ／キーワード -->
+                        <!-- 価格スライダー -->
+                        <div id="price" class="search_layout">
+                            <p class="search_header">価格</p>
+                            <div class="search_content">
+                                <div id="range"></div>
+                                <input type="hidden" name="selectedPriceMin" id="selectedPriceMin" value="">
+                                <input type="hidden" name="selectedPriceMax" id="selectedPriceMax" value="">
+                            </div>
+                        </div>
+                        <!-- ／価格スライダー -->
+                        <!-- 検索ボタン -->
+                        <div class="button_layout">
+                            <p class="button">
+                                <button type="submit">検索</button>
+                                <a href="{{ route('SakesPage') }}/">フィルタをクリア</a>
+                            </p>
+                        </div>
+                        <!-- ／検索ボタン -->
+                    </form>
                 </div>
-                <!-- ／表示数 -->
+                <!-- ／検索ボックス -->
 
                 <!-- ###################################### -->
                 <!-- カードリスト -->
@@ -161,7 +166,7 @@
                                 <!-- ／純米大吟醸 -->
                                 <!-- コクのある -->
                                 <p class="sake_taste">
-                                    <span class="caption_text taste_heavy">{{ $sake->taste->name }}</span>
+                                    <span class="caption_text {{ $sake->taste->slug }}">{{ $sake->taste->name }}</span>
                                 </p>
                                 <!-- ／コクのある -->
                                 <!-- 名前 -->

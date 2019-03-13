@@ -104,10 +104,13 @@ namespace App\Repositories
 
             if(array_key_exists('selectedTastes', $params) && is_array($params['selectedTastes']))
             {
-                foreach($params['selectedTastes'] as $tasteId)
+                $query = $query->where(function($query) use($params)
                 {
-                    $query = $query->orWhere('sakes.taste_id', $tasteId);
-                }
+                    foreach($params['selectedTastes'] as $tasteId)
+                    {
+                        $query = $query->orWhere('sakes.taste_id', $tasteId);
+                    }
+                });
             }
 
             return $query;
