@@ -41,15 +41,18 @@
     bottom: 0;
     left: 0;
     right: 0;
+    visibility: collapse;
 }
 
 .first_menu .key_visual_content {
     width: 1180px;
     margin-left: auto;
     margin-right: auto;
+    visibility: collapse;
 }
 
 .first_menu .key_visual_content .menu {
+    visibility: visible;
 }
 
 .menu {
@@ -168,6 +171,7 @@
     width: 310px;
     height: 80px;
     margin: auto 0;
+    display: none;
 }
 
 .contents_title {

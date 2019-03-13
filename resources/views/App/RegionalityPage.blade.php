@@ -17,16 +17,14 @@
         <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
         <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap" type="text/javascript"></script>
-        <script type="text/javascript" src="{{ asset('/js/brewers_page_script.js') }}"></script>
+        <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
         <!-- ベーススクリプト -->
-        <script src="{{ asset('js/base.js') }}"></script>
+        <script src="{{ asset('/js/base.js') }}"></script>
         <title>ぐびっと:徳島の地酒と酒蔵</title>
 
         <!--メインCSSリンク-->
-        <link rel="stylesheet" href="{{ asset('css/regionality_page.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/jquery.bxslider.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/regionality_page.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/jquery.bxslider.css') }}">
 
 
 </head>
@@ -37,14 +35,14 @@
         <div class="slider">
             @foreach($allBrewers as $brewer)
             @if($brewer->keyVisual !== null )
-        <div><img src="{{ $brewer->keyVisual->files['1920x1080']->url }}"></div>
+        <div><a href="{{ route('BrewerDetailsPage', ['slug' => $brewer->slug]) }}"><img src="{{ $brewer->keyVisual->files['1920x1080']->url }}"></a></div>
             @endif
             @endforeach
         </div>
         <section class="first_menu">
             <div class="key_visual_content">
                 <div class="menu">
-                    <div><img class="top_logo" src="{{ asset('./img/site_logo.jpg') }}"></div>
+                    <div><img class="top_logo" src="{{ asset('/img/site_logo.jpg') }}"></div>
                     <ul>
                         <li class="selected"><a href="{{ route('RegionalityPage') }}/#regionality">徳島の風土と日本酒</a></li>
                         <li><a href="{{ route('SakesPage') }}/">徳島の地酒</a></li>
@@ -101,13 +99,13 @@
                 <div class="title_box">
                     <h1 class="title_text">徳島の風土と日本酒</h1>
                 </div>
-                <div><img class="title_logo02" src="{{ asset('./svg/textlogo_05.svg') }}"></div>
+                <div><img class="title_logo02" src="{{ asset('/svg/textlogo_05.svg') }}"></div>
             </div>
             <div class="contents01">
                 <ul class="text_logo">
                     <li>
                         <div class="poem">
-                            <div><img src="{{ asset('./svg/navylogo01.svg') }}"></div>
+                            <div><img src="{{ asset('/svg/navylogo01.svg') }}"></div>
                             <div class="text_box">
                                 <p class="poem_title">県土で生まれた味わい</p>
                                 徳島の風土と蔵元それぞれの持つ伝統、日々の営みが響きあい、大
@@ -117,7 +115,7 @@
                         </div>
                     <li>
                         <div class="poem">
-                            <div><img src="{{ asset('./svg/navylogo02.svg') }}"></div>
+                            <div><img src="{{ asset('/svg/navylogo02.svg') }}"></div>
                             <div class="text_box">
                                 <p class="poem_title">豊かな自然に育まれた「お米」</p>
                                 徳島県の醸造に使われるお米は、「山田錦」や「美山錦」などの全
@@ -127,7 +125,7 @@
                         </div>
                     <li>
                         <div class="poem">
-                            <div><img src="{{ asset('./svg/navylogo03.svg') }}"></div>
+                            <div><img src="{{ asset('/svg/navylogo03.svg') }}"></div>
                             <div class="text_box">
                                 <p class="poem_title">「清流」の収束する吉野川</p>
                                 そして、お米同様に重要な「水」にも恵まれています。徳島県では、
@@ -138,7 +136,7 @@
                         </div>
                     <li>
                         <div class="poem">
-                            <div><img src="{{ asset('./svg/navylogo04.svg') }}"></div>
+                            <div><img src="{{ asset('/svg/navylogo04.svg') }}"></div>
                             <div class="text_box">
                                 <p class="poem_title">判断と、試行錯誤の日々</p>
                                 一見、このように生産資源に恵まれた徳島県ですが、自然すべてが
@@ -159,26 +157,26 @@
                 <div class="title_box">
                     <h1 class="title_text">Instagramギャラリー</h1>
                 </div>
-                <div><img class="title_logo02" src="{{ asset('./svg/textlogo_05.svg') }}"></div>
+                <div><img class="title_logo02" src="{{ asset('/svg/textlogo_05.svg') }}"></div>
             </div>
             <div class="contents02">
                 <div class="photo_box">
                     <a href="https://www.instagram.com/gubittotokushima/?utm_source=ig_embed&amp;utm_medium=loading">
-                        <img class="photo01" src="{{ asset('./img/photo01.jpg') }}" alt="">
+                        <img class="photo01" src="{{ asset('/img/photo01.jpg') }}" alt="">
                     </a>
                     <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
-                        <img class="photo02" src="{{ asset('./img/photo02.jpg') }}" alt="">
+                        <img class="photo02" src="{{ asset('/img/photo02.jpg') }}" alt="">
                     </a>
                     <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
-                        <img class="photo03" src="{{ asset('./img/photo03.jpg') }}" alt="">
+                        <img class="photo03" src="{{ asset('/img/photo03.jpg') }}" alt="">
                     </a>
                     <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
-                        <img class="photo04" src="{{ asset('./img/photo04.jpg') }}" alt="">
+                        <img class="photo04" src="{{ asset('/img/photo04.jpg') }}" alt="">
                     </a>
                 </div>
                 <div class="photo_back"></div>
                 <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
-                    <img class="insta_icon" src="{{ asset('./svg/Insta_icon.svg') }}">
+                    <img class="insta_icon" src="{{ asset('/svg/Insta_icon.svg') }}">
                 </a>
             </div>
         </section>
@@ -186,12 +184,12 @@
            <!-- バナー画像 -->
     <div class="banner">
         <div class="banner_pc">
-            <img src="{{ asset('./img/bn-awanavi01.gif') }}" alt="">
-            <img src="{{ asset('./img/bn-syuzo01.jpg') }}" alt="">
+            <img src="{{ asset('/img/bn-awanavi01.gif') }}" alt="">
+            <img src="{{ asset('/img/bn-syuzo01.jpg') }}" alt="">
         </div>
         <div class="banner_sm">
-            <img src="{{ asset('./img/bn-awanavi02.gif') }}" alt="">
-            <img src="{{ asset('./img/bn-syuzo02.jpg') }}" alt="">
+            <img src="{{ asset('/img/bn-awanavi02.gif') }}" alt="">
+            <img src="{{ asset('/img/bn-syuzo02.jpg') }}" alt="">
         </div>
     </div>
     <!-- ／バナー画像 -->
