@@ -147,7 +147,22 @@
                 <!-- ###################################### -->
                 <!-- カードリスト -->
                 <div class="card_list">
-
+<?php
+                $alcoholicityPict = [];
+                for($i = 5; $i < 100; $i += 5)
+                {
+                    if($i <= 20)
+                        $alcoholicityPict[$i] = asset('/svg/al' . $i . '.svg');
+                    else
+                        $alcoholicityPict[$i] = asset('/svg/al20.svg');
+                }
+                
+                $pollishingPict = [];
+                for($i = 10; $i < 100; $i += 10)
+                {
+                    $pollishingPict[$i] = asset('/svg/seimai' . $i . '.svg');
+                }
+?>
                     <!-- カード -->
                     @foreach($sakes as $sake)
                     <div class="card">
@@ -175,7 +190,7 @@
                                 <!-- アルコール度 -->
                                 <div class="sake_alcoholicity">
                                     <!-- アルコール度イメージ -->
-                                    <img src="{{ asset('/svg/al15.svg') }}" alt="" width="25px" height="50px">
+                                    <img src="{{ asset($alcoholicityPict[ceil($sake->alcoholicity * 100 / 5) * 5]) }}" alt="" width="25" height="50">
                                     <!-- アルコール度イメージ -->
                                     <!-- 数字 -->
                                     <p class="subtitle_text">
@@ -191,7 +206,7 @@
                                 <!-- 精米歩合 -->
                                 <div class="rice_pollishing_ratio">
                                     <!-- 精米歩合イメージ -->
-                                    <img src="{{ asset('/svg/seimai40.svg') }}" alt="" width="30px" height="50px">
+                                    <img src="{{ asset($pollishingPict[ceil($sake->ricePollishingRatio * 10) * 10]) }}" alt="" width="30" height="50">
 
                                     <!-- ／精米歩合イメージ -->
                                     <!-- 数字 -->
@@ -214,7 +229,7 @@
                                         <span class="caption_text">円 (税抜)</span></p>
                                     @endforeach
                                     <!-- 製造の文字 赤色 -->
-                                    <p class="card_brewer"><a href="{{ route('BrewerDetailsPage', ['slug' => $sake->brewer->slug]) }}"><span>製造:</span><span>{{ $sake->brewer->name }}</span></a></p>
+                                    <p class="card_brewer"><a href="{{ route('BrewerDetailsPage', ['slug' => $sake->brewer->slug]) }}/"><span>製造:</span><span>{{ $sake->brewer->name }}</span></a></p>
                                     <!-- ／製造の文字 赤色 -->
                                 </div>
                             </div>
