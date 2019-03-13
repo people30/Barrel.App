@@ -27,12 +27,12 @@ a {
     color: #fff;
 }
 
-.about_kura_kengaku {
+.about_kura_seeable {
     font-size: 20px;
     margin-top: 40px;
 }
 
-.about_kura_kengaku p {
+.about_kura_seeable p {
     color: #808080;
 }
 
@@ -176,10 +176,7 @@ p.available {
         display: block;
     }
 
-    /* 
-.category {
-    margin-right: 20px;
-} */
+
 
     .company_gaiyou {
         margin-top: 80px;
@@ -231,8 +228,17 @@ p.available {
     margin: 10px 0;
 }
 
-.taste {
-    background: linear-gradient(transparent 50%, #78CFE5 50%);
+.flavory {
+    background: linear-gradient(transparent 50%, rgb(124, 229, 120) 50%);
+}
+.matured {
+    background: linear-gradient(transparent 50%, rgb(229, 120, 120) 50%);
+}
+.soft {
+    background: linear-gradient(transparent 50%, rgb(120, 229, 220) 50%);
+}
+.rich {
+    background: linear-gradient(transparent 50%, rgb(218, 229, 120) 50%);
 }
 
 .meigara {
@@ -307,7 +313,7 @@ p.available {
 /* 1239px以下 */
 
 @media (max-width: 1239px) {
-    .item1 {
+    .item_card{
         margin: 60px 0;
     }
 

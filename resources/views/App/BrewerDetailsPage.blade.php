@@ -26,7 +26,7 @@
     <title>ぐびっと:{{$brewer->name}}</title>
 </head>
 
-<body onload="initialize()">
+<body>
         <!-- ヘッダー -->
         <div class="sticky">
                 <header class="header_area">
@@ -78,11 +78,18 @@
                             <li class="about_kura_outline">
                                {{ $brewer->text }}
                             </li>
-                            <li class="about_kura_kengaku">
-                                <p>{{$brewer->isBackstageSeeable}}</p>
-                                <p class="available">{{$brewer->isBackstageSeeable}}</p>
-                            </li>
 
+
+                            <li class="about_kura_seeable">
+                            @if ($brewer->isBackstageSeeable)
+                            <p class="available">見学可</p>
+                            @else
+                            <p>見学不可</p>
+                            @endif
+                            </li>
+                            
+                            
+                            
                             <li class="about_kura_open">
                                 <table>
                                     <tr>
@@ -180,7 +187,7 @@
                             </tr>
                             <tr>
                                 <th>TEL</th>
-                            <td>{{ $brewer->phoneNumber }}}</td>
+                            <td>{{ $brewer->phoneNumber }}</td>
                             </tr>
                             <tr>
                                 <th>FAX</th>
@@ -215,19 +222,27 @@
                     <!-- カード -->
                         <div class="item_card">
                                 <div class="spec">
-                                    <img src="{{ asset('../../svg/bin.svg') }}" alt="酒瓶の画像">
+                                    <img src="{{ asset('/svg/bin.svg') }}" alt="酒瓶の画像">
                                     <ul class="products_info">
                                         <li class="caption_text tokutei_meishou">
                                             {{ $product->designation->name }}
                                         </li>
-                                        <li class="caption_text taste">
+                                        <li class="caption_text {{$product->taste->slug}}">
                                             {{ $product->taste->name }}
                                         </li>
                                         <li class="meigara">{{ $product->name }}</li>
         
                                         <li class="product_alc">
                                             <div class="grid_item">
-                                                <img src="{{ asset('../../svg/al20.svg') }}" alt="">
+                                            @if (ceil(($product->alcoholicity * 100) / 5) * 5 == 5 )
+                                            <img src="{{ asset('/svg/al5.svg') }}" alt="">
+                                            @elseif (ceil(($product->alcoholicity * 100) / 5) * 5 == 10 )
+                                            <img src="{{ asset('/svg/al10.svg') }}" alt="">
+                                            @elseif (ceil(($product->alcoholicity * 100) / 5) * 5 == 15 )
+                                            <img src="{{ asset('/svg/al15.svg') }}" alt="">
+                                            @elseif (ceil(($product->alcoholicity * 100) / 5) * 5 == 20 )
+                                            <img src="{{ asset('/svg/al20.svg') }}" alt="">
+                                            @endif
                                             </div>
                                             <ul>
                                             <li>{{ $product->alcoholicity * 100 }}%</li>
@@ -236,8 +251,27 @@
                                         </li>
                                         <li class="product_seimai">
                                             <div class="grid_item">
-                                                <img src="{{ asset('../../svg/seimai40.svg') }}" alt="">
-                                            </div>
+                                            @if (ceil($product->ricePollishingRatio * 10) == 1 )
+                                            <img src="{{ asset('/svg/seimai10.svg') }}" alt="">
+                                            @elseif (ceil($product->ricePollishingRatio * 10) == 2 )
+                                            <img src="{{ asset('/svg/seimai20.svg') }}" alt="">
+                                            @elseif (ceil($product->ricePollishingRatio * 10) == 3 )
+                                            <img src="{{ asset('/svg/seimai30.svg') }}" alt="">
+                                            @elseif (ceil($product->ricePollishingRatio * 10) == 4 )
+                                            <img src="{{ asset('/svg/seimai40.svg') }}" alt="">
+                                            @elseif (ceil($product->ricePollishingRatio * 10) == 5 )
+                                            <img src="{{ asset('/svg/seimai50.svg') }}" alt="">
+                                            @elseif (ceil($product->ricePollishingRatio * 10) == 6 )
+                                            <img src="{{ asset('/svg/seimai60.svg') }}" alt="">
+                                            @elseif (ceil($product->ricePollishingRatio * 10) == 7 )
+                                            <img src="{{ asset('/svg/seimai70.svg') }}" alt="">
+                                            @elseif (ceil($product->ricePollishingRatio * 10) == 8 )
+                                            <img src="{{ asset('/svg/seimai80.svg') }}" alt="">
+                                            @elseif (ceil($product->ricePollishingRatio * 10) == 9 )
+                                            <img src="{{ asset('/svg/seimai90.svg') }}" alt="">
+                                            @endif
+                                        
+                                        </div>
                                             <ul>
                                                 <li>{{ $product->ricePollishingRatio * 100 }}%</li>
                                                 <li>精米歩合</li>
@@ -260,7 +294,7 @@
                                         <tr>
                                             <th class=" caption_text">{{ $size->content}}ml</th>
                                             <td class="price">{{ $size->price }}円</td>
-                                            <td class="tax caption_text">（税抜）</td>
+                                            <td class="tax caption_text">(税抜)</td>
                                         </tr>      
                                         @endforeach
                                     </tbody>
@@ -384,17 +418,16 @@
 
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap"
-        type="text/javascript"></script>
-    <script type="text/javascript">
-        var map;
-        var marker_ary = new Array();
-        var currentInfoWindow;
-
-        function initialize() {
-            var latlng = new google.maps.LatLng(34.078547, 134.523913);
+<script type="text/javascript">
+var map;
+var marker;
+function initMap() {
+    var latlng = new google.maps.LatLng(
+        {{ $brewer->lat }},
+        {{ $brewer->lon }}
+        );
             var myOptions = {
-                zoom: 10,
+                zoom: 17,
                 center: latlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -402,19 +435,25 @@
                 document.getElementById("map_canvas"),
                 myOptions
             );
-
-            // //イベント登録　地図の表示領域が変更されたらイベントを発生させる
-            // google.maps.event.addListener(map, 'idle', function(){
-            //     setPointMarker();
-            // });
-        }
+ marker = new google.maps.Marker({ // マーカーの追加
+        position: latlng, // マーカーを立てる位置を指定
+        map: map, // マーカーを立てる地図を指定
+        icon: new google.maps.MarkerImage(
+        "{{ asset('/svg/mapicon1.svg') }}",
+        new google.maps.Size(24, 64),    //マーカー画像のサイズ
+        new google.maps.Point(-5, 0),     //位置（0,0で固定）
+                ),
+   });
+}
 
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap"
+        type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('/js/jquery.fancybox.min.js') }}"></script>
     <script type="text/javascript">
-        fullScreen(function ($) {
-            $(".full_scr").attr('rel', 'group').fancybox();
-        });
+        // fullScreen(function ($) {
+        //     $(".full_scr").attr('rel', 'group').fancybox();
+        // });
         $('[data-fancybox]').fancybox({
             // オプションはここに書きます
             hideOnOverlayClick: true,
