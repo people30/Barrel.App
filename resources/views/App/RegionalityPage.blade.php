@@ -89,7 +89,7 @@
     <!-- ／ヘッダー -->
     <!-- ################################################################### -->
     <!-- メインエリア -->
-    <main class="main_area">
+    <main class="main_area" id="regionality">
     <!--/キービジュアル navi-->
 
     <article class="content">
