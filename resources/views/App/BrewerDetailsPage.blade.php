@@ -69,17 +69,15 @@
                 <section class="kura_info">
                     <div class="main_image">
                         <img src="{{$brewer->keyVisual->files['780x520']->url}}" 
-                srcset="{{$brewer->keyVisual->files['780x520']->url}} 320w, 
-                        {{$brewer->keyVisual->files['580x384']->url}} 580w, 
-                        {{$brewer->keyVisual->files['320x240']->url}} 780w">
+                            srcset="{{$brewer->keyVisual->files['780x520']->url}} 320w, 
+                                    {{$brewer->keyVisual->files['580x384']->url}} 580w, 
+                                    {{$brewer->keyVisual->files['320x240']->url}} 780w">
                     </div>
                     <article class="about_kura">
                         <ul>
                             <li class="about_kura_outline">
                                {{ $brewer->text }}
                             </li>
-
-
                             <li class="about_kura_seeable">
                             @if ($brewer->isBackstageSeeable)
                             <p class="available">見学可</p>
@@ -87,9 +85,6 @@
                             <p>見学不可</p>
                             @endif
                             </li>
-                            
-                            
-                            
                             <li class="about_kura_open">
                                 <table>
                                     <tr>
@@ -222,7 +217,7 @@
                     <!-- カード -->
                         <div class="item_card">
                                 <div class="spec">
-                                <img src="{{ $product->bottle->files['80x260']->url }}" alt="" width="80" height="260">
+
                                     <ul class="products_info">
                                         <li class="caption_text tokutei_meishou">
                                             {{ $product->designation->name }}
@@ -292,8 +287,8 @@
                                     <tbody>
                                         @foreach ($product->sizes as $size)
                                         <tr>
-                                            <th class=" caption_text">{{ $size->content}}ml</th>
-                                            <td class="price">{{ $size->price }}円</td>
+                                            <th class=" caption_text">{{ number_format($size->content)}}ml</th>
+                                            <td class="price">{{ number_format($size->price) }}円</td>
                                             <td class="tax caption_text">(税抜)</td>
                                         </tr>      
                                         @endforeach
