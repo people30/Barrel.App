@@ -35,7 +35,7 @@
     <section class="content_fluid">
         <!--キービジュアル-->
         <div class="slider">
-            @foreach
+            @foreach($allBrewers as $brewer)
         <div><img src="{{ $brewer->keyVisual->files['1920x1080'] }}"></div>
             @endforeach
         </div>
