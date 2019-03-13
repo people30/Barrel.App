@@ -36,7 +36,9 @@
         <!--キービジュアル-->
         <div class="slider">
             @foreach($allBrewers as $brewer)
-        <div><img src="{{ $brewer->keyVisual->files['1920x1080'] }}"></div>
+            @if($brewer->keyVisual !== null )
+        <div><img src="{{ $brewer->keyVisual->files['1920x1080']->url }}"></div>
+            @endif
             @endforeach
         </div>
         <section class="first_menu">
@@ -48,12 +50,12 @@
                     <li><a href="{{ route('BrewersPage') }}/">徳島の酒蔵</a></li>
                     <li><a href="{{ env('WP_URL') }}">読みもの</a></li>
                 </ul>
-                <ul class="brewer_info">
+                {{-- <ul class="brewer_info">
                     <li>
                         <p class="caption_text">徳島市</p>
                     </li>
-                    <li><a href="{{ asset('./brewer/$brewers/index.html') }}">{{ $brewers }}</a></li>
-                </ul>
+                    <li><a href="{{ route('BrewerDetailsPage',['slug'=>$brewer->slug]) }}">{{ $brewers }}</a></li>
+                </ul> --}}
             </div>
         </section>
     </section>
