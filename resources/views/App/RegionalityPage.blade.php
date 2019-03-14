@@ -35,7 +35,7 @@
         <div class="slider">
             @foreach($allBrewers as $brewer)
             @if($brewer->keyVisual !== null )
-        <div><a href="{{ route('BrewerDetailsPage', ['slug' => $brewer->slug]) }}"><img src="{{ $brewer->keyVisual->files['1920x1080']->url }}"></a></div>
+        <div><a href="{{ route('BrewerDetailsPage', ['slug' => $brewer->slug]) }}/"><img src="{{ $brewer->keyVisual->files['1920x1080']->url }}"></a></div>
             @endif
             @endforeach
         </div>

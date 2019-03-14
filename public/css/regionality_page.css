@@ -156,6 +156,10 @@
     margin: auto 0;
 }
 
+.title_text {
+    margin-left: 0px;
+}
+
 .logos {
     display: flex;
     justify-content: space-between;
