@@ -30,7 +30,7 @@
 </head>
 <body>
 
-    <section class="content_fluid">
+    <section class="key_visual">
         <!--キービジュアル-->
         <div class="slider">
             @foreach($allBrewers as $brewer)

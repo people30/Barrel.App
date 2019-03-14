@@ -68,7 +68,7 @@
         <!-- メインエリア -->
         <main class="main_area">
             <!-- 地図コンテンツ -->
-            <div class="content_fluid">
+            <div class="key_visual">
                 <h1>徳島の酒蔵</h1>
                 <div id="map" class="map">
                 </div>

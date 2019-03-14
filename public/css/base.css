@@ -168,7 +168,7 @@ body,
             grid-template-rows: auto auto;
         }
             /* フルイドコンテンツ */
-            .content_fluid {
+            .key_visual {
                 grid-column: 1/-1;
                 grid-row: 1/2;
             }
@@ -277,7 +277,7 @@ body,
             grid-template-rows: auto auto;
         }
             /* 横幅いっぱいのコンテンツ */
-            .content_fluid {
+            .key_visual {
                 grid-column: 1/-1;
                 grid-row: 1/2;
             }
@@ -385,7 +385,7 @@ body,
             grid-template-rows: auto auto;
         }
             /* 横幅いっぱいのコンテンツ */
-            .content_fluid {
+            .key_visual {
                 grid-column: 1/-1;
                 grid-row: 1/2;
             }

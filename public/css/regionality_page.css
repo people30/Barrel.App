@@ -23,7 +23,7 @@
     background: #fff;
 }
 
-.content_fluid {
+.key_visual {
     position: relative;
 }
 
@@ -120,7 +120,7 @@
 }
 
 @media (max-width: 800px) {
-    .content_fluid {
+    .key_visual {
         left: 0;
     }
     .first_menu .key_visual_content {
