@@ -24,7 +24,7 @@
         <script src="{{ asset('/js/vue.min.js') }}"></script>
         @endif
         <!-- Goole Map -->
-        <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}&amp;callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}"></script>
         <!-- ベーススクリプト -->
         <script src="{{ asset('/js/base.js') }}"></script>
         <script src="{{ asset('/js/brewers_page.js') }}"></script>

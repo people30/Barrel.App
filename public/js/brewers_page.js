@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
         brewer.backstageTour = brewer.isBackstageSeeable ? '酒蔵見学可' : '酒蔵見学不可';
     });
 
+    var margin = 0.05;
+
     var vm = new Vue({
         el: '#brewers',
         data: {
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         computed: {
             'brewersVisible': function () {
                 return this.brewers.filter((function (brewer) {
-                    return brewer.lat >= this.mapSouth - 0.2 && brewer.lat <= this.mapNorth + 0.2 && brewer.lon >= this.mapWest - 0.2 && brewer.lon <= this.mapEast + 0.2;
+                    return brewer.lat >= this.mapSouth - margin && brewer.lat <= this.mapNorth + margin && brewer.lon >= this.mapWest - margin && brewer.lon <= this.mapEast + margin;
                 }).bind(this));
             }
         },

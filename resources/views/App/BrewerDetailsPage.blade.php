@@ -23,10 +23,24 @@
         <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
         <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/vnd.microsoft.icon">
 
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+        <!-- スクリプト -->
+        <script src="{{ asset('/js/base.js') }}"></script>
+        <script src="{{ asset('/js/jquery.bxslider.min.js') }}"></script>
+        <script src="{{ asset('/js/jquery.fancybox.min.js') }}"></script>
+        <script src="{{ asset('/js/brewer_details_page.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}"></script>
+
     <title>ぐびっと:{{$brewer->name}}</title>
 </head>
 
-<body>
+<body data-context="{{ json_encode([
+    'brewer' => $brewer,
+    'backstageSeeableBrewerMarkerUrl' => asset('svg/mapicon1.svg'),
+    'backstageUnseeableBrewerMarkerUrl' => asset('svg/mapicon2.svg')
+]) }}">
         <!-- ヘッダー -->
         <div class="sticky">
                 <header class="header_area">
@@ -215,7 +229,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div id="map_canvas"></div>
+                    <div id="map"></div>
                 </article>
             </section>
 
@@ -363,109 +377,6 @@
                 <!-- ／フッター内枠 -->
             </footer>
             <!-- ／フッター外枠 -->
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
-    <!-- スクリプト -->
-    <script src="{{ asset('/js/base.js') }}"></script>
-    <script src="{{ asset('/js/jquery.bxslider.min.js') }}"></script>
-
-    <script>
-        $(document).ready(function () {
-            var settings = function () {
-                var settings1 = {
-                    moveSlides: 1,
-                    maxSlides: 3,
-                    minSlides: 2,
-                    touchEnabled: true,
-                    slideWidth: 380,
-                    slideMargin: 20,
-                    pager: false
-                };
-                var settings2 = {
-                    moveSlides: 1,
-                    maxSlides: 2,
-                    minSlides: 2,
-                    touchEnabled: true,
-                    slideWidth: 280,
-                    slideMargin: 20,
-                    pager: false
-                };
-
-                var settings3 = {
-                    moveSlides: 1,
-                    maxSlides: 2,
-                    minSlides: 2,
-                    touchEnabled: true,
-                    slideWidth: 280,
-                    slideMargin: 20,
-                    pager: true,
-                    controls: false,
-                    auto: true
-                };
-
-                return $(window).width() > 1240 ?
-                    settings1 :
-                    settings2 && $(window).width() > 800 ?
-                    settings2 :
-                    settings3;
-            };
-
-            var mySlider;
-
-            function slideSetting() {
-                mySlider.reloadSlider(settings());
-            }
-
-            mySlider = $(".slider").bxSlider(settings());
-            $(window).resize(slideSetting);
-        });
-
-    </script>
-
-<script type="text/javascript">
-var map;
-var marker;
-function initMap() {
-    var latlng = new google.maps.LatLng(
-        {{ $brewer->lat }},
-        {{ $brewer->lon }}
-        );
-            var myOptions = {
-                zoom: 17,
-                center: latlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            map = new google.maps.Map(
-                document.getElementById("map_canvas"),
-                myOptions
-            );
- marker = new google.maps.Marker({ // マーカーの追加
-        position: latlng, // マーカーを立てる位置を指定
-        map: map, // マーカーを立てる地図を指定
-        icon: new google.maps.MarkerImage(
-        "{{ asset('/svg/mapicon1.svg') }}",
-        new google.maps.Size(24, 64),    //マーカー画像のサイズ
-        new google.maps.Point(-5, 0),     //位置（0,0で固定）
-                ),
-   });
-}
-
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}&amp;callback=initMap"></script>
-    <script type="text/javascript" src="{{ asset('/js/jquery.fancybox.min.js') }}"></script>
-    <script type="text/javascript">
-        // fullScreen(function ($) {
-        //     $(".full_scr").attr('rel', 'group').fancybox();
-        // });
-        $('[data-fancybox]').fancybox({
-            // オプションはここに書きます
-            hideOnOverlayClick: true,
-            protect: true, //右クリック抑止
-        });
-
-    </script>
-
 
 </body>
 

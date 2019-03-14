@@ -199,7 +199,7 @@ p.available {
     padding: 0 0 0 35px;
 }
 
-#map_canvas {
+#map {
     margin-top: 20px;
     width: 360px;
     height: 240px;
@@ -229,7 +229,7 @@ p.available {
         text-align: left;
     }
 
-    #map_canvas {
+    #map {
         width: 580px;
         height: 240px;
     }
