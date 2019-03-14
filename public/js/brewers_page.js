@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         computed: {
             'brewersVisible': function () {
                 return this.brewers.filter((function (brewer) {
-                    return brewer.lat >= this.mapSouth && brewer.lat <= this.mapNorth && brewer.lon >= this.mapWest && brewer.lon <= this.mapEast;
+                    return brewer.lat >= this.mapSouth - 0.2 && brewer.lat <= this.mapNorth + 0.2 && brewer.lon >= this.mapWest - 0.2 && brewer.lon <= this.mapEast + 0.2;
                 }).bind(this));
             }
         },
