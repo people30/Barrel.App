@@ -46,8 +46,8 @@
                     <div class="header_menu">
                         <ul class="header_list">
                             <li><a href="{{ route('RegionalityPage') }}/#regionality">徳島の風土と日本酒</a></li>
-                            <li class="selected"><a href="{{ route('SakesPage') }}/">徳島の地酒</a></li>
-                            <li><a href="{{ route('BrewersPage') }}/">徳島の酒蔵</a></li>
+                            <li><a href="{{ route('SakesPage') }}/">徳島の地酒</a></li>
+                            <li class="selected"><a href="{{ route('BrewersPage') }}/">徳島の酒蔵</a></li>
                             <li><a href="{{ env('WP_URL') }}">読みもの</a></li>
                         </ul>
                     </div>
@@ -217,7 +217,7 @@
                     <!-- カード -->
                         <div class="item_card">
                                 <div class="spec">
-
+                                    <img src="{{ $product->bottle->files['80x260']->url }}" alt="" width="80" height="260">
                                     <ul class="products_info">
                                         <li class="caption_text tokutei_meishou">
                                             {{ $product->designation->name }}
@@ -230,13 +230,13 @@
                                         <li class="product_alc">
                                             <div class="grid_item">
                                             @if (ceil(($product->alcoholicity * 100) / 5) * 5 == 5 )
-                                            <img src="{{ asset('/svg/al5.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/al5.svg') }}" width="25px" height="50px" alt="">
                                             @elseif (ceil(($product->alcoholicity * 100) / 5) * 5 == 10 )
-                                            <img src="{{ asset('/svg/al10.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/al10.svg') }}" width="25px" height="50px" alt="">
                                             @elseif (ceil(($product->alcoholicity * 100) / 5) * 5 == 15 )
-                                            <img src="{{ asset('/svg/al15.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/al15.svg') }}" width="25px" height="50px" alt="">
                                             @elseif (ceil(($product->alcoholicity * 100) / 5) * 5 == 20 )
-                                            <img src="{{ asset('/svg/al20.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/al20.svg') }}"  width="25px" height="50px"alt="">
                                             @endif
                                             </div>
                                             <ul>
@@ -247,23 +247,23 @@
                                         <li class="product_seimai">
                                             <div class="grid_item">
                                             @if (ceil($product->ricePollishingRatio * 10) == 1 )
-                                            <img src="{{ asset('/svg/seimai10.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai10.svg') }}" width="30px" height="50px" alt="">
                                             @elseif (ceil($product->ricePollishingRatio * 10) == 2 )
-                                            <img src="{{ asset('/svg/seimai20.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai20.svg') }}" width="30px" height="50px" alt="">
                                             @elseif (ceil($product->ricePollishingRatio * 10) == 3 )
-                                            <img src="{{ asset('/svg/seimai30.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai30.svg') }}" width="30px" height="50px" alt="">
                                             @elseif (ceil($product->ricePollishingRatio * 10) == 4 )
-                                            <img src="{{ asset('/svg/seimai40.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai40.svg') }}" width="30px" height="50px" alt="">
                                             @elseif (ceil($product->ricePollishingRatio * 10) == 5 )
-                                            <img src="{{ asset('/svg/seimai50.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai50.svg') }}" width="30px" height="50px" alt="">
                                             @elseif (ceil($product->ricePollishingRatio * 10) == 6 )
-                                            <img src="{{ asset('/svg/seimai60.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai60.svg') }}" width="30px" height="50px" alt="">
                                             @elseif (ceil($product->ricePollishingRatio * 10) == 7 )
-                                            <img src="{{ asset('/svg/seimai70.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai70.svg') }}" width="30px" height="50px" alt="">
                                             @elseif (ceil($product->ricePollishingRatio * 10) == 8 )
-                                            <img src="{{ asset('/svg/seimai80.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai80.svg') }}" width="30px" height="50px" alt="">
                                             @elseif (ceil($product->ricePollishingRatio * 10) == 9 )
-                                            <img src="{{ asset('/svg/seimai90.svg') }}" alt="">
+                                            <img src="{{ asset('/svg/seimai90.svg') }}" width="30px" height="50px" alt="">
                                             @endif
                                         
                                         </div>
