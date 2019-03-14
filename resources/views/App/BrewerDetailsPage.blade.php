@@ -68,10 +68,12 @@
                 <h1 class="header_text">{{ $brewer->name }}</h1>
                 <section class="kura_info">
                     <div class="main_image">
+                        @if($brewer->keyVisual != null)
                         <img src="{{$brewer->keyVisual->files['780x520']->url}}" 
-                            srcset="{{$brewer->keyVisual->files['780x520']->url}} 320w, 
+                            srcset="{{$brewer->keyVisual->files['780x520']->url}} 780w, 
                                     {{$brewer->keyVisual->files['580x384']->url}} 580w, 
-                                    {{$brewer->keyVisual->files['320x240']->url}} 780w">
+                                    {{$brewer->keyVisual->files['320x240']->url}} 320w">
+                        @endif
                     </div>
                     <article class="about_kura">
                         <ul>
@@ -97,10 +99,12 @@
                                 </table>
                             </li>
 
+                            @if(array_key_exists('website', $brewer->links))
                             <li class="about_kura_url">
                             <a href="{{ $brewer->links['website']->url }}">
                                     {{ $brewer->links['website']->url }}</a>
                             </li>
+                            @endif
                         </ul>
                     </article>
                 </section>
@@ -192,12 +196,14 @@
                                 <th>E-mail</th>
                             <td>{{ $brewer->email }}</td>
                             </tr>
+                            @if(array_key_exists('website', $brewer->links))
                             <tr>
                                 <th>URL</th>
                                 <td>
                                     <a class="gaiyou_url" href="{{ $brewer->links['website']->url }}">{{ $brewer->links['website']->url }}</a>
                                 </td>
                             </tr>
+                            @endif
                             <tr>
                                 <th>住所</th>
                                 <td>{{ $brewer->address }}</td>
@@ -211,9 +217,9 @@
             <!--／ その蔵や製造品に関する記事、詳細情報 -->
             <!-- 製造品一覧 -->
             <section class="products">
-                <h1 class="title_text">代表柄</h1>
+                <h1 class="title_text">代表銘柄</h1>
                 <div class="items">
-                    @foreach ($products as $product)
+                    @foreach($products as $product)
                     <!-- カード -->
                         <div class="item_card">
                                 <div class="spec">
