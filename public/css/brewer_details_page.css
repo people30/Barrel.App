@@ -51,12 +51,21 @@ p.available {
     padding: 0 0 0 20px;
 }
 
+.about_kura_url {
+    margin-bottom: 12px;
+}
+
 .about_kura_url a {
     color: #ffffff;
 }
 
 .about_kura_url a:hover {
     color: #cccccc;
+}
+
+.about_kura_caution
+{
+    
 }
 
 /* 1239px以下 */
@@ -95,32 +104,60 @@ p.available {
 /* ###############その蔵や製造品に関する記事、詳細情報 ################*/
 .kura_details {
     display: grid;
-    grid-template-rows: 755px;
+    grid-template-rows: auto;
     grid-template-columns: 760px 1fr;
+}
+
+.post_item {
+    margin-bottom: 80px;
+}
+
+.post_item:last-child {
+    margin-bottom: 0px;
 }
 
 .kura_stories {
     border: solid 1px #ff6347;
-    padding: 39px 29px 0 19px;
+    padding: 39px 19px;
     margin-top: 40px;
 }
 
 .kura_stories p {
-    margin: 20px 0 40px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.kura_stories img {
+    width: 100%;
+    height: auto;
 }
 
 .blog_head {
+    margin-bottom: 40px;
     display: flex;
+    align-items: start;
 }
 
-.category {
+.blog_head .category {
     margin-right: 20px;
-    padding: auto 10px;
-    display: flex;
-    background-color: #d6d6d6;
-    white-space: nowrap;
-    align-items: center;
-    justify-content: center;
+    flex: none;
+    display: inline-flex;
+}
+
+.blog_head .category a {
+    display: block;
+    margin-right: 8px;
+    padding: 4px;
+    background-color: #D6D6D6;
+    overflow-wrap: normal;
+}
+
+.blog_head .category a:last-child {
+    margin-right: 0px;
+}
+
+.blog_head .title {
+    flex: auto;
 }
 
 .category a {
@@ -176,8 +213,16 @@ p.available {
         display: block;
     }
 
+    .blog_head {
+        margin-bottom: 40px;
+        display: block;
+        align-items: start;
+    }
 
-
+    .blog_head .category {
+        margin-bottom: 8px;
+    }
+    
     .company_gaiyou {
         margin-top: 80px;
         padding: 0;
@@ -293,7 +338,7 @@ p.available {
     border-bottom: 1px solid #d6d6d6;
 }
 
-.price_list tr:nth-child(3n) {
+.price_list tr:last-child {
     border: none;
     border-bottom: 1px solid #fff;
 }

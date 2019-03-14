@@ -82,9 +82,9 @@
                             </li>
                             <li class="about_kura_seeable">
                             @if ($brewer->isBackstageSeeable)
-                            <p class="available">見学可</p>
+                            <p class="available">酒蔵見学可</p>
                             @else
-                            <p>見学不可</p>
+                            <p>酒蔵見学不可</p>
                             @endif
                             </li>
                             <li class="about_kura_open">
@@ -99,11 +99,14 @@
                                 </table>
                             </li>
 
-                            @if(array_key_exists('website', $brewer->links))
+                            @if($brewer->links->has('website'))
                             <li class="about_kura_url">
                             <a href="{{ $brewer->links['website']->url }}">
                                     {{ $brewer->links['website']->url }}</a>
                             </li>
+                            @endif
+                            @if ($brewer->isBackstageSeeable)
+                            <li class="about_kura_caution caption_text">酒蔵の見学は予約が必要な場合があります。</li>
                             @endif
                         </ul>
                     </article>
@@ -133,21 +136,23 @@
                     <div class="kura_stories">
                         <!-- ブログ記事 リスト -->
                         <ul>
-                        @foreach ($stories as $story)
+                            @foreach ($stories as $story)
                               <!-- ブログ記事 一件 -->
-                            <li>
+                            <li class="post_item">
                                 <div class="blog_head">
                                     <div class="category">
-                                    <a href="{{ env('WP_URL')}}">{{ $stories->categories->name }}</a>
+                                    @foreach($story->categories as $category)
+                                    <a href="{{ $category->link }}">{{ $category->name }}</a>
+                                    @endforeach
                                     </div>
-                                    <div>
+                                    <div class="title">
                                         <h3>
-                                            <a class="subtitle_text story_title" href="{{ env }}">{{ $stories->title }}</a>
+                                            <a class="subtitle_text story_title" href="{{ $story->link }}">{{ $story->title }}</a>
                                         </h3>
                                     </div>
                                 </div>
                                 <p>
-                                    {{ $stories->text }}
+                                    {!! $story->html !!}
                                 </p>
                             </li>
                             <!-- ／ブログ記事 一件-->
@@ -196,7 +201,7 @@
                                 <th>E-mail</th>
                             <td>{{ $brewer->email }}</td>
                             </tr>
-                            @if(array_key_exists('website', $brewer->links))
+                            @if($brewer->links->has('website'))
                             <tr>
                                 <th>URL</th>
                                 <td>
@@ -363,7 +368,7 @@
         crossorigin="anonymous"></script>
     <!-- スクリプト -->
     <script src="{{ asset('/js/base.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="{{ asset('/js/jquery.bxslider.min.js') }}"></script>
 
     <script>
         $(document).ready(function () {
@@ -447,8 +452,7 @@ function initMap() {
 }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUsphC2nSkQJ6Gq240PD0MyAt0EXSbJ4&callback=initMap"
-        type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAP_KEY') }}&amp;callback=initMap"></script>
     <script type="text/javascript" src="{{ asset('/js/jquery.fancybox.min.js') }}"></script>
     <script type="text/javascript">
         // fullScreen(function ($) {
