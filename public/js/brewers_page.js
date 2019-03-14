@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         brewer.backstageTour = brewer.isBackstageSeeable ? '酒蔵見学可' : '酒蔵見学不可';
     });
 
-    var margin = 0.05;
+    var margin = 0;
 
     var vm = new Vue({
         el: '#brewers',
