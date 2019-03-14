@@ -1,151 +1,134 @@
 @charset "UTF-8";
 /* 価格スライダー */
+
 #noUiSlider {
     width: 90%;
     margin: 0 auto
-    }
-    
-    #range {
+}
+
+#range {
     margin: 50px;
-    }
+}
+
 /* 共通 */
+
 @media (min-width: 1px) {
-/* デザイン設定 */
-/* フォントサイズ フォントカラー等 */
-a {
-    text-decoration: none;
-    color: #000;
-}
-/* 検索フォームオンオフのフォントカラー */
-.search_onoff a {
-    color: #4A6F95;
-}
-
-/* 横ボーがつかない24pxフォントサイズ */
-.non_bar_text {
-    font-size: 24px;
-}
-
-.card_brewer {
-    color: #FF6347;
-}
-
-/* 味の表現背景色クラス */
-
-/* 軽快でなめらか */
-.soft {
-    background: linear-gradient(#fff 12px, #78CFE5 2px);
-    background-color: #78CFE5;
-}
-/* コクのある */
-.rich {
-    background: linear-gradient(#fff 12px, #F1E076 2px);
-    background-color: #F1E076;
-}
-/* 熟成 */
-.matured {
-    background: linear-gradient(#fff 12px, #FFA4A4 2px);
-    background-color: #FFA4A4;
-}
-/* 香りの高い */
-.flavory {
-    background: linear-gradient(#fff 12px, #A9F98C 2px);
-    background-color: #A9F98C;
-}
-/* サーチエリアボーダー */
-.search_area form {
-    border: solid 1px #D6D6D6;
-}
-
-/* アイテムの個数 */
-.card_sum {
-    margin-bottom: 20px;
-}
-
-/* カードインナーボーダー */
-.card_inner {
-    margin: 20px;
-}
-
-/* 酒蔵詳細へのリンク */
-.card_brewer a:link,
-.card_brewer a:visited {
-    color: #FF6347;
-}
-
-.card_brewer a:active,
-.card_brewer a:hover {
-    color: #FB7861;
-}
-
-/* タイトルエリアのマージンボトム共通 */
-.header_text {
-    margin-bottom: 20px;
-}
-
-/* テキスト ブロック ボタン */
-.text_block_button
-{
-    margin: 0px;
-    padding: 0px;
-    background-color: transparent;
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-    color: #000000;
-}
-.text_block_button:hover
-{
-    color: #333333;
-    cursor: pointer;
-}
-
-/*  */
-.text_block_button .items
-{
-    color: #FF6347;
-}
-.text_block_button:hover .items
-{
-    color: #FB7861;
-}
-
-/* 検索エリアのマージンボトム共通 */
-.search_area {
-    margin-bottom: 40px;
-}
-
-.search_control_expansion_button {
-    margin-bottom: 40px;
-}
-
-.search_onoff a:hover {
-    color: #5796c6;
-}
-
-.content {
-    display: grid;
-    grid-template: repeat(5, auto) / auto;
-}
+    /* デザイン設定 */
+    /* フォントサイズ フォントカラー等 */
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    /* 検索フォームオンオフのフォントカラー */
+    .search_onoff a {
+        color: #4A6F95;
+    }
+    /* 横ボーがつかない24pxフォントサイズ */
+    .non_bar_text {
+        font-size: 24px;
+    }
+    .card_brewer {
+        color: #FF6347;
+    }
+    /* 味の表現背景色クラス */
+    /* 軽快でなめらか */
+    .soft {
+        background: linear-gradient(#fff 12px, #78CFE5 2px);
+        background-color: #78CFE5;
+    }
+    /* コクのある */
+    .rich {
+        background: linear-gradient(#fff 12px, #F1E076 2px);
+        background-color: #F1E076;
+    }
+    /* 熟成 */
+    .matured {
+        background: linear-gradient(#fff 12px, #FFA4A4 2px);
+        background-color: #FFA4A4;
+    }
+    /* 香りの高い */
+    .flavory {
+        background: linear-gradient(#fff 12px, #A9F98C 2px);
+        background-color: #A9F98C;
+    }
+    /* サーチエリアボーダー */
+    .search_area form {
+        border: solid 1px #D6D6D6;
+    }
+    /* アイテムの個数 */
+    .card_sum {
+        margin-bottom: 20px;
+    }
+    /* カードインナーボーダー */
+    .card_inner {
+        margin: 20px;
+    }
+    /* 酒蔵詳細へのリンク */
+    .card_brewer a:link, .card_brewer a:visited {
+        color: #FF6347;
+    }
+    .card_brewer a:active, .card_brewer a:hover {
+        color: #FB7861;
+    }
+    /* タイトルエリアのマージンボトム共通 */
     .header_text {
+        margin-bottom: 20px;
+    }
+    /* テキスト ブロック ボタン */
+    .text_block_button {
+        margin: 0px;
+        padding: 0px;
+        background-color: transparent;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        color: #000000;
+    }
+    .text_block_button:hover {
+        color: #333333;
+        cursor: pointer;
+    }
+    /*  */
+    .text_block_button .items {
+        color: #FF6347;
+    }
+    .text_block_button:hover .items {
+        color: #FB7861;
+    }
+    /* 検索エリアのマージンボトム共通 */
+    .search_area {
+        margin-bottom: 40px;
+    }
+    .search_control_expansion_button {
+        margin-bottom: 40px;
+    }
+    .search_onoff a:hover {
+        color: #5796c6;
+    }
+    .content {
+        display: grid;
+        grid-template: repeat(5, auto) / auto;
+    }
+    .content .header_text {
         grid-row: 1/2;
     }
-    .search_area {
+    .content .search_area {
         grid-row: 2/3;
     }
-    .card_sum {
+    .content .card_sum {
         grid-row: 3/4;
     }
-    .card_list {
+    .content .card_list {
         grid-row: 4/5;
     }
-
 }
 
 /* ###################################################################### */
+
 /* タイトル */
 
 /* ###################################################################### */
+
 /* 検索フォーム */
 
 .search_area form {
@@ -168,13 +151,13 @@ a {
     margin-bottom: 0px;
 }
 
-.search_layout > .search_header {
+.search_layout>.search_header {
     width: 80px;
     margin-right: 20px;
     flex: none;
 }
 
-.search_layout > .search_content {
+.search_layout>.search_content {
     flex: auto;
 }
 
@@ -203,72 +186,60 @@ a {
     color: #ffffff;
 }
 
-.button_layout .button button,
-.button_layout .button a {
+.button_layout .button button, .button_layout .button a {
     display: inline-block;
     margin-right: 20px;
 }
 
-.button_layout .button button:last-child,
-.button_layout .button a:last-child {
+.button_layout .button button:last-child, .button_layout .button a:last-child {
     margin-right: 0px;
 }
 
-
 /* 検索エリア */
-@media (min-width: 800px) {
 
+@media (min-width: 800px) {
     /* 検索コントロールのレイアウト */
     .search_area form {
         padding: 39px 39px;
     }
-    
-    .search_layout#tastes > .search_content,
-    .search_layout#designations > .search_content {
+    .search_layout#tastes>.search_content, .search_layout#designations>.search_content {
         columns: auto 170px;
         column-gap: 20px;
         column-fill: auto;
     }
-
-    .search_layout > .search_header {
+    .search_layout>.search_header {
         width: 100px;
         margin-right: 40px;
         font-size: 20px;
         line-height: 24px;
     }
-
-    .search_layout#tastes > .search_content {
+    .search_layout#tastes>.search_content {
         height: 40px;
     }
-
-    .search_layout#designations > .search_content {
+    .search_layout#designations>.search_content {
         height: 101px;
     }
-    
     .button_layout .button {
         margin-left: 140px;
     }
-    
     .button_layout button {
         width: 170px;
     }
-    
 }
 
 @media (min-width: 1240px) {
-    .search_layout#tastes > .search_content {
+    .search_layout#tastes>.search_content {
         height: 40px;
     }
-
-    .search_layout#designations > .search_content {
+    .search_layout#designations>.search_content {
         height: 101px;
     }
-
 }
 
 /* ###################################################################### */
 
 /* カードエリア */
+
 @media (max-width: 800px) {
     .card {
         width: auto;
@@ -279,7 +250,7 @@ a {
         margin: 20px 0;
     }
     /* カードレイアウト */
-    .card_figure img{
+    .card_figure img {
         width: 100%;
         height: auto;
     }
@@ -288,13 +259,12 @@ a {
         display: grid;
         grid-template: auto / 48px 20px auto;
     }
-        .card_figure {
-            grid-column: 1/2;
-        }
-        .card_body {
-            grid-column: 3/4;
-        }
-    
+    .card_figure {
+        grid-column: 1/2;
+    }
+    .card_body {
+        grid-column: 3/4;
+    }
     /* カードボディの各テキストのマージンボトム */
     /* .sake_designation, */
     .sake_taste {
@@ -312,21 +282,20 @@ a {
     .card_footer {
         margin-bottom: 20px;
     }
-
-        /* アルコール度と精米歩合のグリッドレイアウト */
-        .sake_alcoholicity, .rice_pollishing_ratio{
-            width: 120px;
-            height: 52px;
-            display: grid;
-            grid-template: auto auto / 25px 8px auto;
-        }
-            .sake_alcoholicity img, .rice_pollishing_ratio img {
-                grid-column: 1/2;
-                grid-row: 1/-1;
-            }
-            .sake_alcoholicity p, .rice_pollishing_ratio p {
-                grid-column: 3/4;
-            }
+    /* アルコール度と精米歩合のグリッドレイアウト */
+    .sake_alcoholicity, .rice_pollishing_ratio {
+        width: 120px;
+        height: 52px;
+        display: grid;
+        grid-template: auto auto / 25px 8px auto;
+    }
+    .sake_alcoholicity img, .rice_pollishing_ratio img {
+        grid-column: 1/2;
+        grid-row: 1/-1;
+    }
+    .sake_alcoholicity p, .rice_pollishing_ratio p {
+        grid-column: 3/4;
+    }
 }
 
 @media (min-width: 801px) {
@@ -335,17 +304,14 @@ a {
         margin: 20px;
     }
     .card {
-      
         border: solid 1px #D6D6D6;
     }
-
     .card_list {
         display: grid;
         grid-template: auto/ repeat(auto-fit, 280px);
         grid-column-gap: 20px;
         grid-row-gap: 20px;
     }
-
     .card {
         width: 280px;
         height: auto;
@@ -356,26 +322,25 @@ a {
     }
     .card {
         border: solid 1px #D6D6D6;
-        box-sizing:border-box;
+        box-sizing: border-box;
     }
-        /* カードレイアウト */
-        .card_figure img{
-           width: auto;
-           height: 240px;
-        }
-        /* カードレイアウト */
-        .card_inner {
-            display: grid;
-            grid-template: auto auto / 240px;
-        }
-            .card_figure {
-                grid-row: 1/2;
-            }
-            .card_body {
-                grid-row: 2/3;
-            }
-
-            /* カードボディの各テキストのマージンボトム */
+    /* カードレイアウト */
+    .card_figure img {
+        width: auto;
+        height: 240px;
+    }
+    /* カードレイアウト */
+    .card_inner {
+        display: grid;
+        grid-template: auto auto / 240px;
+    }
+    .card_figure {
+        grid-row: 1/2;
+    }
+    .card_body {
+        grid-row: 2/3;
+    }
+    /* カードボディの各テキストのマージンボトム */
     /* .sake_designation, */
     .sake_taste {
         margin-bottom: 8px;
@@ -383,46 +348,41 @@ a {
     .sake_name {
         margin-bottom: 20px;
     }
-    .sake_alcoholicity {
-
-    }
+    .sake_alcoholicity {}
     .card_brewer {
         margin-top: 10px;
     }
     .card_footer {
         margin-top: 20px;
     }
-
     .card_body {
         display: grid;
         grid-template: 25px auto auto auto / repeat(2, 1fr);
     }
-        .sake_designation {
-            grid-row: 1/2;
-            grid-column: 1/2;
-        }
-        .sake_taste {
-            grid-row: 1/2;
-            grid-column: 2/3;
-        }
-        .sake_name {
-            grid-row: 2/3;
-            grid-column: 1/2;
-        }
-        .sake_alcoholicity {
-            grid-row: 3/4;
-            grid-column: 1/2;
-        }
-        .rice_pollishing_ratio {
-            grid-row: 3/4;
-            grid-column: 2/3;
-        }
-        .card_footer {
-            grid-row: 4/5;
-            grid-column: 1/-1;
-        }
-
-
+    .sake_designation {
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+    .sake_taste {
+        grid-row: 1/2;
+        grid-column: 2/3;
+    }
+    .sake_name {
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+    .sake_alcoholicity {
+        grid-row: 3/4;
+        grid-column: 1/2;
+    }
+    .rice_pollishing_ratio {
+        grid-row: 3/4;
+        grid-column: 2/3;
+    }
+    .card_footer {
+        grid-row: 4/5;
+        grid-column: 1/-1;
+    }
     .card_figure {
         display: flex;
         justify-content: center;
@@ -433,25 +393,24 @@ a {
         justify-content: end;
         align-items: flex-start;
     }
-
-        /* アルコール度と精米歩合のグリッドレイアウト */
-        .sake_alcoholicity {
-            width: 120px;
-            height: 52px;
-            display: grid;
-            grid-template: 30px auto / 25px 8px auto;
-        }
-        .rice_pollishing_ratio {
-            width: 120px;
-            height: 52px;
-            display: grid;
-            grid-template: 30px auto / 25px 12px auto;
-        }
-            .sake_alcoholicity img, .rice_pollishing_ratio img {
-                grid-column: 1/2;
-                grid-row: 1/-1;
-            }
-            .sake_alcoholicity p, .rice_pollishing_ratio p {
-                grid-column: 3/4;
-            }
+    /* アルコール度と精米歩合のグリッドレイアウト */
+    .sake_alcoholicity {
+        width: 120px;
+        height: 52px;
+        display: grid;
+        grid-template: 30px auto / 25px 8px auto;
+    }
+    .rice_pollishing_ratio {
+        width: 120px;
+        height: 52px;
+        display: grid;
+        grid-template: 30px auto / 25px 12px auto;
+    }
+    .sake_alcoholicity img, .rice_pollishing_ratio img {
+        grid-column: 1/2;
+        grid-row: 1/-1;
+    }
+    .sake_alcoholicity p, .rice_pollishing_ratio p {
+        grid-column: 3/4;
+    }
 }
