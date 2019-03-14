@@ -57,8 +57,8 @@ namespace App\Repositories
             }
             catch(\Throwable $th)
             {
-                throw $th;
-                // return collect([]);
+                \Log::error($th->getMessage());
+                return collect([]);
             }
         }
 

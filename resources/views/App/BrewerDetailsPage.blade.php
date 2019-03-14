@@ -145,6 +145,7 @@
                     <article>
                         <h2 class="title_text">読みもの</h2>
                         <div class="kura_stories">
+                            @if($stories->count() > 0)
                             <!-- ブログ記事 リスト -->
                             <ul>
                                 @foreach ($stories as $story)
@@ -171,6 +172,9 @@
 
                             </ul>
                             <!-- ブログ記事 リスト -->
+                            @else
+                            <p>投稿が存在しないか予期しないエラーにより表示できません。</p>
+                            @endif
 
                         </div>
                     </article>
