@@ -326,6 +326,11 @@ p.available {
     margin-top: 40px;
 }
 
+.price_list td,
+.price_list th {
+    vertical-align: middle;
+}
+
 .price_list th {
     padding: 10px 20px;
     background-color: #58e4ff;
