@@ -201,9 +201,8 @@
                 <!-- ／フッターリンクメニュー -->
                 <!-- SNS -->
                 <div class="sns header_text">
-                    <a href="#" class="fab fa-facebook"><span class="sr-only">Facebook</span></a>
-                    <a href="#" class="fab fa-twitter"><span class="sr-only">Twitter</span></a>
-                    <a href="#" class="fab fa-instagram"><span class="sr-only">instagram</span></a>
+                    <a href="https://www.facebook.com/Gubittotokushima-628717054256840/" class="fab fa-facebook"><span class="sr-only">Facebook</span></a>
+                    <a href="https://www.instagram.com/gubittotokushima/" class="fab fa-instagram"><span class="sr-only">instagram</span></a>
                 </div>
                 <!-- ／SNS -->
                 <!-- 注意書き-->
