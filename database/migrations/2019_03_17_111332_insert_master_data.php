@@ -4,13 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class InitStaticData extends Migration
+class InsertMasterData extends Migration
 {
     protected $tables = [
-        'designations',
         'prefectures',
         'areas',
-        'tastes'
+        'cities',
+        'designations',
+        'tastes',
+        'brewers',
+        'brewer_post_categories',
+        'links',
+        'sakes',
+        'sizes'
     ];
 
     /**
@@ -23,7 +29,12 @@ class InitStaticData extends Migration
         //
         for($i = 0; $i < count($this->tables); $i++)
         {
-            \DB::statement(file_get_contents(database_path('queries/' . $this->tables[$i] . '.insert_static_data.sql')));
+            $filepath = database_path('queries/' . $this->tables[$i] . '.insert_master_data.sql');
+            
+            if(file_exists($filepath))
+            {
+                \DB::statement(file_get_contents($filepath));
+            }
         }
     }
 
@@ -37,7 +48,7 @@ class InitStaticData extends Migration
         //
         try
         {
-            \DB::statement('set foreign_key_checks = 0');
+            //\DB::statement('set foreign_key_checks = 0');
 
             for($i = 0; $i < count($this->tables); $i++)
             {
@@ -50,7 +61,7 @@ class InitStaticData extends Migration
         }
         finally
         {
-            \DB::statement('set foreign_key_checks = 1');
+            //\DB::statement('set foreign_key_checks = 1');
         }
     }
 }
