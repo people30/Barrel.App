@@ -1,4 +1,4 @@
-Barrel.App 配置手順
+配置手順
 
 
 データベース
@@ -11,21 +11,19 @@ Barrel.App 配置手順
 
 WordPress
 
-1. WordPress のファイルは持ってないので誰か書いてください
+1. barrel_stories ディレクトリを c:\xampp\htdocs に移動します。
+2. 続きよろしく
 
 
 Web サイト
 
-1. エクスプローラでプロジェクトのディレクトリを開きます。
-1. .env ファイルを開きます。
-2. APP_URL にルート URL を記入します。これはフロント コントローラ (/public/index.php) がトップページに来るような URL です。 
-   例えば c:\xampp\htdocs\barrel-app に Web サイトを配置した場合は http://localhost/barrel-app/public/ です。
-3. WP_URL に WordPress のルート URL を記入します。これは無くても動作しますが酒蔵詳細ページに記事が表示されません。
-4. GMAP_KEY に Google Map API のキーを記入します。これは無くても動作しますが地図は表示されません。
-4. DB_DATABASE にデータベース名を記入します。
-5. DB_USERNAME にユーザ名を記入します。
-6. DB_PASSWORD にパスワードを記入します。
-7. ファイルを保存し閉じます。
-8. initialize.bat を実行します。
+1.  barrel_app ディレクトリを c:\xampp\htdocs に移動します。
+2.  .env ファイルを開きます。
+5.  GMAP_KEY に Google Map API のキーを記入します。これは無くても動作しますが地図は表示されません。
+6.  DB_DATABASE にデータベース名を記入します。
+7.  DB_USERNAME にユーザ名を記入します。
+8.  DB_PASSWORD にパスワードを記入します。
+9.  ファイルを保存し閉じます。
+10. initialize.bat を実行します。
 
 以上です。
