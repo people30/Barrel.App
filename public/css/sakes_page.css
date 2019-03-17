@@ -244,7 +244,7 @@ ul.search_content li:last-child {
     }
 
     .search_layout#designations > .search_content {
-        height: 180px;
+        height: 100px;
         columns: 4 170px;
     }
 
