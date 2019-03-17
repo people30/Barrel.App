@@ -33,8 +33,8 @@
 
     <body data-context="{{ json_encode([
         'brewers' => $brewers,
-        'backstageSeeableBrewerMarkerUrl' => asset('svg/mapicon1.svg'),
-        'backstageUnseeableBrewerMarkerUrl' => asset('svg/mapicon2.svg')
+        'backstageSeeableBrewerMarkerUrl' => asset('/svg/mapicon1.svg'),
+        'backstageUnseeableBrewerMarkerUrl' => asset('/svg/mapicon2.svg')
     ]) }}">
         <!-- ヘッダー -->
         <div class="sticky">
@@ -104,7 +104,7 @@
                 <div class="card_list" id="brewers">
                     <div class="card" v-if="brewersVisible.length > 0" v-for="brewer in brewersVisible">
                         <!-- ピン -->
-                        <div class="card_pin">
+                        <div class="card_pin" v-bind:class="{ available: brewer.isBackstageSeeable }">
                             <!-- ピンナンバー -->
                             <div class="card_pin_number">
                                 <p class="pin_number">@{{ brewer.mapNumber }}</p>
@@ -112,7 +112,7 @@
                             <!-- ／ピンナンバー -->
                             <!-- ピン画像 -->
                             <div class="card_pin_figure">
-                                <a href="#" class="pin_mark"><img src="{{ asset('/svg/mapicon1.svg') }}" alt="" width="28" height="64"></a>
+                                <a href="#" class="pin_mark"><img src="" v-bind:src="brewer.mapMark" alt="" width="28" height="64"></a>
                             </div>
                             <!-- ／ピン画像 -->
                         </div>

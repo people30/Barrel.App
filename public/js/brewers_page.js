@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     dataContext.brewers.forEach(function (brewer) {
         brewer.backstageTour = brewer.isBackstageSeeable ? '酒蔵見学可' : '酒蔵見学不可';
+        brewer.mapMark = brewer.isBackstageSeeable ? dataContext.backstageSeeableBrewerMarkerUrl : dataContext.backstageUnseeableBrewerMarkerUrl;
     });
 
     var margin = 0;

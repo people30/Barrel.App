@@ -20,17 +20,25 @@ font-size: 24px;
     z-index: 10;
 }
 /* カードピンの数字 */
-.card_pin_number {
+.card_pin .card_pin_number {
     z-index: 20;
+}
+
+.card_pin .card_pin_number {
+    color: #FF6347;
+}
+
+.card_pin.available .card_pin_number {
     color: #fff;
 }
+
 /* 見学不可の文字色 */
 .card_body_available {
     color: #808080;
 }
     /* 見学可の文字色 */
     .card_body_available .available {
-    color: #FF0000
+    color: #FF6347
     }
 /* カードの灰色の部分 */
 .card_body_time_header,
