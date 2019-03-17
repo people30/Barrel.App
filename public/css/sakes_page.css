@@ -53,6 +53,7 @@
     }
     /* サーチエリアボーダー */
     .search_area form {
+        margin-bottom: 40px;
         border: solid 1px #D6D6D6;
     }
     /* アイテムの個数 */
@@ -97,10 +98,10 @@
     }
     /* 検索エリアのマージンボトム共通 */
     .search_area {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
     .search_control_expansion_button {
-        margin-bottom: 40px;
+        margin-bottom: 0px;
     }
     .search_onoff a:hover {
         color: #5796c6;
@@ -257,9 +258,11 @@
     /* カードレイアウト */
     .card_inner {
         display: grid;
-        grid-template: auto / 48px 20px auto;
+        grid-template: auto / 88px 20px auto;
     }
     .card_figure {
+        margin-left: 20px;
+        margin-right: 20px;
         grid-column: 1/2;
     }
     .card_body {

@@ -74,12 +74,7 @@
                 <!-- 検索ボックス -->
 
                 <div class="search_area">
-                    <p class="search_control_expansion_button"><button type="button" id="text_block_button" class="text_block_button">{{ $sakes->count() }} 品 表示中: <span class="items">{{
-                        count($filterContents) > 0
-                        ? implode(', ', $filterContents)
-                        : 'すべて'
-                    }}</span></button></p>
-                    <form id="filter_control" method="get" action="{{ route('SakesPage') }}/" class="hidden">
+                    <form id="filter_control" method="get" action="{{ route('SakesPage') }}/">
                         <!-- 味わい -->
                         <div id="tastes" class="search_layout">
                             <!-- 味わいヘッダー -->
@@ -141,6 +136,11 @@
                         </div>
                         <!-- ／検索ボタン -->
                     </form>
+                <p class="search_control_expansion_button"><button type="button" id="text_block_button" class="text_block_button">{{ $sakes->count() }} 品 表示中: <span class="items">{{
+                    count($filterContents) > 0
+                    ? implode(', ', $filterContents)
+                    : 'すべて'
+                }}</span></button></p>
                 </div>
                 <!-- ／検索ボックス -->
 
