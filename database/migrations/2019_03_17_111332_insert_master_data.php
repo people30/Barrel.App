@@ -48,7 +48,7 @@ class InsertMasterData extends Migration
         //
         try
         {
-            //\DB::statement('set foreign_key_checks = 0');
+            \DB::statement('set foreign_key_checks = 0');
 
             for($i = 0; $i < count($this->tables); $i++)
             {
@@ -61,7 +61,7 @@ class InsertMasterData extends Migration
         }
         finally
         {
-            //\DB::statement('set foreign_key_checks = 1');
+            \DB::statement('set foreign_key_checks = 1');
         }
     }
 }
