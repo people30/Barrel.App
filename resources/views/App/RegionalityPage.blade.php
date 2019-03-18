@@ -150,21 +150,22 @@
             </div>
             <div class="contents02">
                 <div class="photo_box">
-                    <a href="https://www.instagram.com/gubittotokushima/?utm_source=ig_embed&amp;utm_medium=loading">
+                <a target="_blank" href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
                         <img class="photo01" src="{{ asset('/img/photo01.jpg') }}" alt="">
                     </a>
-                    <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                    <a target="_blank" href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
                         <img class="photo02" src="{{ asset('/img/photo02.jpg') }}" alt="">
                     </a>
-                    <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                    <a target="_blank" href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
                         <img class="photo03" src="{{ asset('/img/photo03.jpg') }}" alt="">
                     </a>
-                    <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                    <a target="_blank" href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
                         <img class="photo04" src="{{ asset('/img/photo04.jpg') }}" alt="">
                     </a>
                 </div>
                 <div class="photo_back"></div>
-                <a href="https://www.instagram.com/p/BuaGKEYg6mg/?utm_source=ig_embed&amp;utm_medium=loading">
+                    <a target="_blank" href="https://www.instagram.com/gubittotokushima/?utm_source=ig_embed&amp;utm_medium=loading">
+
                     <img class="insta_icon" src="{{ asset('/svg/Insta_icon.svg') }}">
                 </a>
             </div>
@@ -173,12 +174,12 @@
            <!-- バナー画像 -->
     <div class="banner">
         <div class="banner_pc">
-            <img src="{{ asset('/img/bn-awanavi01.gif') }}" alt="">
-            <img src="{{ asset('/img/bn-syuzo01.jpg') }}" alt="">
+            <a target="_blank" href="https://www.awanavi.jp/"><img src="{{ asset('/img/bn-awanavi01.gif') }}" alt=""></a>
+            <a target="_blank" href="https://tokushimasake.com/"><img src="{{ asset('/img/bn-syuzo01.jpg') }}" alt=""></a>
         </div>
         <div class="banner_sm">
-            <img src="{{ asset('/img/bn-awanavi02.gif') }}" alt="">
-            <img src="{{ asset('/img/bn-syuzo02.jpg') }}" alt="">
+                <a target="_blank" href="https://www.awanavi.jp/"><img src="{{ asset('/img/bn-awanavi02.gif') }}" alt=""></a>
+                <a target="_blank" href="https://tokushimasake.com/"><img src="{{ asset('/img/bn-syuzo02.jpg') }}" alt=""></a>
         </div>
     </div>
     <!-- ／バナー画像 -->
