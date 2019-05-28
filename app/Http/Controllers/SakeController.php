@@ -115,7 +115,7 @@ class SakeController extends Controller
             $filterContents[] = $selectedPriceMax . '円以下';
         }
         
-        return view('App.Sakespage',
+        return view('App.SakesPage',
             compact(
                 'allBrewers',
                 'sakes',
